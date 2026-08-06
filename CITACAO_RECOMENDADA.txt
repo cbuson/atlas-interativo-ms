@@ -1,0 +1,1 @@
+Busón Buesa, C., Zamberlan, C. O., & Centenaro, M. (2026). Atlas Interativo do Patrimônio e dos Itinerários Culturais de Mato Grosso do Sul (Versão 1.7.0) [Software e conjunto de dados]. Universidade Federal de Mato Grosso do Sul e Universidade Estadual de Mato Grosso do Sul. https://github.com/cbuson/atlas-interativo-ms

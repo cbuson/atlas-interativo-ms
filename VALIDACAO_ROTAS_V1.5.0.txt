@@ -1,0 +1,26 @@
+VALIDAÇÃO DA AMPLIAÇÃO DE ROTAS — v1.6.0
+
+OK  31 rotas e itinerários
+OK  IDs únicos
+OK  Fontes e classificações preenchidas
+OK  20 conjuntos locais
+OK  Manifesto rotas 31
+OK  Manifesto trechos
+OK  Catálogo atual 93 camadas; 89 correspondem ao estado anterior à ampliação ambiental
+OK  Catálogo rotas 31
+OK  Referências 162
+OK  KML válido
+OK  KMZ válido
+OK  GeoPackage íntegro
+OK  JavaScript inline válido
+OK  Sem links locais ausentes
+
+Rotas: 31
+Trechos: 137
+Referências: 162
+Falhas: 0
+
+OK  Índice recalculado sem rotas derivadas
+OK  Sensibilidade 500 simulações, semente 20260806
+Estabilidade média: 96.4%
+Estabilidade mediana: 100.0%

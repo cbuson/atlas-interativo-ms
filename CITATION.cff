@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "Se você utilizar este software ou conjunto de dados, cite a versão 1.7.0."
+title: "Atlas Interativo do Patrimônio e dos Itinerários Culturais de Mato Grosso do Sul"
+type: software
+version: 1.7.0
+date-released: 2026-08-06
+authors:
+  - family-names: "Busón Buesa"
+    given-names: "Carlos"
+    orcid: "https://orcid.org/0000-0002-1446-2252"
+    affiliation: "Universidade Federal de Mato Grosso do Sul"
+  - family-names: "Zamberlan"
+    given-names: "Carlos Otávio"
+    orcid: "https://orcid.org/0000-0001-9975-9612"
+    affiliation: "Universidade Estadual de Mato Grosso do Sul"
+  - family-names: "Centenaro"
+    given-names: "Moisés"
+    orcid: "https://orcid.org/0000-0003-2299-9102"
+    affiliation: "Universidade Estadual de Mato Grosso do Sul"
+abstract: >-
+  Projeto de pesquisa científica, atlas digital interativo e conjunto de dados
+  destinados à análise e experimentação de metodologias de desenho territorial
+  aplicadas ao patrimônio e aos itinerários culturais em Mato Grosso do Sul.
+  A versão 1.7.0 adota um único Índice de Potencial Geocientífico Territorial
+  documentado e mantém separados potencial, viabilidade, governança e reconhecimento.
+keywords:
+  - atlas interativo
+  - itinerários culturais
+  - patrimônio cultural
+  - geodiversidade
+  - potencial geocientífico territorial
+  - Mato Grosso do Sul
+license: MIT
+repository-code: "https://github.com/cbuson/atlas-interativo-ms"
+url: "https://cbuson.github.io/atlas-interativo-ms/"

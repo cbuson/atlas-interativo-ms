@@ -1,0 +1,5 @@
+ordem,componente,nome,definicao,peso_formula,fontes,limite
+1,T_n,Diversidade de tipos geocientíficos,Número de tipos presentes dividido por 5,0.4,geossitios_compilados_niveis_precisao; cavernas_canie,"Cinco tipos documentais: geologia, paleontologia, espeleologia, sedimentologia e geomorfologia/paisagem/formações superficiais"
+2,G_n,Riqueza geocientífica ajustada,"log10(G+1)/log10(Gmax+1), com G=min(geossítios,5)+0,5×min(cavidades,5)",0.3,geossitios_compilados_niveis_precisao; cavernas_canie,"Cavidades recebem peso 0,5 por constituírem inventário espeleológico e não avaliação individual de geossítio"
+3,C_n,Continuidade geocientífica,Número de hexágonos vizinhos com geossítio ou cavidade dividido por 6,0.2,resultado agregado da malha,Pode subestimar continuidade além das fronteiras de MS
+4,P_n,Contexto de proteção ambiental,1 quando o hexágono intersecta unidade de conservação CNUC; 0 caso contrário,0.1,unidades_conservacao,Proteção ambiental não equivale a valor geológico ou viabilidade de geoparque

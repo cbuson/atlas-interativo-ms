@@ -1,0 +1,7 @@
+ordem,id_dimensao,nome_publico,camadas_fonte,limite_contagem,tratamento,sensivel
+1,patrimonio_material,Patrimônio cultural material,patrimonio_material_tombado,5,contagem limitada,não
+2,patrimonio_imaterial,Patrimônio cultural imaterial,bcr_bens_culturais_ms,5,contagem limitada,não
+3,festividades,Celebrações e festividades,festividades_inventario_2026,5,contagem limitada,não
+4,museus_memoria,Museus e pontos de memória,museus_pontos_memoria,5,contagem limitada,não
+5,povos_indigenas,Presença territorial indígena protegida,localidades_indigenas_ibge,1,presença binária protegida,sim
+6,comunidades_quilombolas,Presença territorial quilombola protegida,localidades_quilombolas_ibge,1,presença binária protegida,sim

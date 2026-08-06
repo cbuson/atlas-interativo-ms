@@ -1,0 +1,31 @@
+VALIDAÇÃO DO REPOSITÓRIO — HOTFIX GEOMÉTRICO PEIC/IATI
+
+OK  Arquivos estruturais presentes  11 arquivos
+OK  JSON válido dados/manifesto.json  26
+OK  JSON válido .zenodo.json  10
+OK  index.html contém geomParts  ocorrências 1
+OK  index.html contém pointInRing  ocorrências 1
+OK  index.html contém pointInPolygonGeom  ocorrências 1
+OK  index.html contém segmentIntersection  ocorrências 1
+OK  index.html sem texto obsoleto 1000 km²
+OK  Sintaxe JavaScript index.html  b2:OK, b4:OK
+OK  Atlas_Interativo_MS_v1.7.0_Android_Arquivo_Unico.html contém geomParts  ocorrências 1
+OK  Atlas_Interativo_MS_v1.7.0_Android_Arquivo_Unico.html contém pointInRing  ocorrências 1
+OK  Atlas_Interativo_MS_v1.7.0_Android_Arquivo_Unico.html contém pointInPolygonGeom  ocorrências 1
+OK  Atlas_Interativo_MS_v1.7.0_Android_Arquivo_Unico.html contém segmentIntersection  ocorrências 1
+OK  Atlas_Interativo_MS_v1.7.0_Android_Arquivo_Unico.html sem texto obsoleto 1000 km²
+OK  Sintaxe JavaScript Atlas_Interativo_MS_v1.7.0_Android_Arquivo_Unico.html  b0:OK, b2:OK
+OK  Núcleo geométrico sincronizado entre web e Android
+OK  Execução geométrica real index.html  {"inside":true,"outside":true,"boundary":true,"point":true,"multipoint":true,"line_cross":true,"line_out":true,"polygon_contains_hex":true,"polygon_out":true,"hole":true}
+OK  Execução geométrica real Atlas_Interativo_MS_v1.7.0_Android_Arquivo_Unico.html  {"inside":true,"outside":true,"boundary":true,"point":true,"multipoint":true,"line_cross":true,"line_out":true,"polygon_contains_hex":true,"polygon_out":true,"hole":true}
+OK  Sintaxe dos módulos JavaScript  29 arquivos
+OK  Módulos do manifesto presentes  26 referências
+OK  Enlaces locais do index  0 ausentes
+OK  PEIC cultural independente das rotas
+OK  IATI combinado ativo
+OK  Diagnóstico interno verifica geometria
+OK  Catálogo cultural corrigido para 250 km²
+
+RESULTADO  25/25 controles aprovados
+
+A política administrativa do ambiente bloqueou localhost. Foram executados testes JavaScript reais do núcleo geométrico extraído das duas edições, além de validação sintática e estrutural.

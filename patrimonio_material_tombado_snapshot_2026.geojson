@@ -1,0 +1,239 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IPHAN-MS-001",
+        "municipio": "Jardim",
+        "nome": "Lugar em que estiveram sepultados o Guia Lopes, o Coronel Camisão e o Tenente Coronel Juvêncio",
+        "classificacao": "Conjunto Arquitetônico",
+        "processo_t": 533,
+        "ano_abertura": 1955,
+        "situacao": "TOMBADO",
+        "codigo_sicg": "MS5005004PSJD00001",
+        "ano_tombamento": 2017,
+        "representacao_espacial": "Sede municipal representativa. Não corresponde à coordenada exata do bem",
+        "precisao": "Municipal",
+        "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+        "arquivo_oficial": "2026_05_IPHAN_T.xlsx",
+        "data_fonte": "2026-05-05",
+        "data_compilacao": "2026-08-06",
+        "criterio_inclusao": "Registros em situação TOMBADO ou RERRATIFICAÇÃO. Processos indeferidos, em instrução ou duplicados por anexação foram excluídos do snapshot analítico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.1489,
+          -21.4799
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IPHAN-MS-002",
+        "municipio": "Corumbá",
+        "nome": "Conjunto de edificações que compõem o Forte de Coimbra",
+        "classificacao": "Conjunto Arquitetônico",
+        "processo_t": 917,
+        "ano_abertura": 1974,
+        "situacao": "RERRATIFICAÇÃO",
+        "codigo_sicg": "MS5003207BIED00001",
+        "ano_tombamento": 1974,
+        "representacao_espacial": "Sede municipal representativa. Não corresponde à coordenada exata do bem",
+        "precisao": "Municipal",
+        "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+        "arquivo_oficial": "2026_05_IPHAN_T.xlsx",
+        "data_fonte": "2026-05-05",
+        "data_compilacao": "2026-08-06",
+        "criterio_inclusao": "Registros em situação TOMBADO ou RERRATIFICAÇÃO. Processos indeferidos, em instrução ou duplicados por anexação foram excluídos do snapshot analítico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.651,
+          -19.0077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IPHAN-MS-003",
+        "municipio": "Bonito",
+        "nome": "Grutas do Lago Azul e de Nossa Senhora Aparecida",
+        "classificacao": "Patrimônio Natural",
+        "processo_t": 979,
+        "ano_abertura": 1978,
+        "situacao": "TOMBADO",
+        "codigo_sicg": "MS5002209PSPS00001",
+        "ano_tombamento": 1978,
+        "representacao_espacial": "Sede municipal representativa. Não corresponde à coordenada exata do bem",
+        "precisao": "Municipal",
+        "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+        "arquivo_oficial": "2026_05_IPHAN_T.xlsx",
+        "data_fonte": "2026-05-05",
+        "data_compilacao": "2026-08-06",
+        "criterio_inclusao": "Registros em situação TOMBADO ou RERRATIFICAÇÃO. Processos indeferidos, em instrução ou duplicados por anexação foram excluídos do snapshot analítico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -56.4836,
+          -21.1261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IPHAN-MS-004",
+        "municipio": "Corumbá",
+        "nome": "Conjunto Histórico, Arquitetônico e Paisagístico de Corumbá",
+        "classificacao": "Conjunto Urbano",
+        "processo_t": 1182,
+        "ano_abertura": 1985,
+        "situacao": "TOMBADO",
+        "codigo_sicg": "MS-5003207-BI-CU-00001",
+        "ano_tombamento": 1993,
+        "representacao_espacial": "Sede municipal representativa. Não corresponde à coordenada exata do bem",
+        "precisao": "Municipal",
+        "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+        "arquivo_oficial": "2026_05_IPHAN_T.xlsx",
+        "data_fonte": "2026-05-05",
+        "data_compilacao": "2026-08-06",
+        "criterio_inclusao": "Registros em situação TOMBADO ou RERRATIFICAÇÃO. Processos indeferidos, em instrução ou duplicados por anexação foram excluídos do snapshot analítico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.651,
+          -19.0077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IPHAN-MS-005",
+        "municipio": "Campo Grande",
+        "nome": "Complexo ferroviário da antiga Estrada de Ferro Noroeste do Brasil, EFNOB, em Campo Grande",
+        "classificacao": "Conjunto Urbano",
+        "processo_t": 1536,
+        "ano_abertura": 2006,
+        "situacao": "TOMBADO",
+        "codigo_sicg": "MS-5002704-BI-CU-00001",
+        "ano_tombamento": 2014,
+        "representacao_espacial": "Sede municipal representativa. Não corresponde à coordenada exata do bem",
+        "precisao": "Municipal",
+        "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+        "arquivo_oficial": "2026_05_IPHAN_T.xlsx",
+        "data_fonte": "2026-05-05",
+        "data_compilacao": "2026-08-06",
+        "criterio_inclusao": "Registros em situação TOMBADO ou RERRATIFICAÇÃO. Processos indeferidos, em instrução ou duplicados por anexação foram excluídos do snapshot analítico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -54.6295,
+          -20.4486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IPHAN-MS-006",
+        "municipio": "Corumbá",
+        "nome": "Ponte Ferroviária Eurico Gaspar Dutra sobre o Rio Paraguai",
+        "classificacao": "Infraestrutura ou equipamento urbano",
+        "processo_t": 1577,
+        "ano_abertura": 2009,
+        "situacao": "TOMBADO",
+        "codigo_sicg": "MS5003207BIOE00001",
+        "ano_tombamento": 2014,
+        "representacao_espacial": "Sede municipal representativa. Não corresponde à coordenada exata do bem",
+        "precisao": "Municipal",
+        "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+        "arquivo_oficial": "2026_05_IPHAN_T.xlsx",
+        "data_fonte": "2026-05-05",
+        "data_compilacao": "2026-08-06",
+        "criterio_inclusao": "Registros em situação TOMBADO ou RERRATIFICAÇÃO. Processos indeferidos, em instrução ou duplicados por anexação foram excluídos do snapshot analítico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.651,
+          -19.0077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IPHAN-MS-007",
+        "municipio": "Ladário",
+        "nome": "Base Fluvial de Ladário e peças de artilharia do conjunto das fortificações brasileiras",
+        "classificacao": "Edificação e Acervo",
+        "processo_t": 1613,
+        "ano_abertura": 2010,
+        "situacao": "TOMBADO",
+        "codigo_sicg": "MS5003207BIED00003",
+        "ano_tombamento": 2022,
+        "representacao_espacial": "Sede municipal representativa. Não corresponde à coordenada exata do bem",
+        "precisao": "Municipal",
+        "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+        "arquivo_oficial": "2026_05_IPHAN_T.xlsx",
+        "data_fonte": "2026-05-05",
+        "data_compilacao": "2026-08-06",
+        "criterio_inclusao": "Registros em situação TOMBADO ou RERRATIFICAÇÃO. Processos indeferidos, em instrução ou duplicados por anexação foram excluídos do snapshot analítico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.5973,
+          -19.0089
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "IPHAN-MS-008",
+        "municipio": "Corumbá",
+        "nome": "Forte Junqueira, conjunto das fortificações brasileiras",
+        "classificacao": "Edificação",
+        "processo_t": 1613,
+        "ano_abertura": 2010,
+        "situacao": "TOMBADO",
+        "codigo_sicg": "PA-1505106-BI-ED-00001",
+        "ano_tombamento": 2022,
+        "representacao_espacial": "Sede municipal representativa. Não corresponde à coordenada exata do bem",
+        "precisao": "Municipal",
+        "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+        "arquivo_oficial": "2026_05_IPHAN_T.xlsx",
+        "data_fonte": "2026-05-05",
+        "data_compilacao": "2026-08-06",
+        "criterio_inclusao": "Registros em situação TOMBADO ou RERRATIFICAÇÃO. Processos indeferidos, em instrução ou duplicados por anexação foram excluídos do snapshot analítico"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -57.651,
+          -19.0077
+        ]
+      }
+    }
+  ],
+  "atlas_metadata": {
+    "camada": "patrimonio_material_tombado",
+    "fonte": "https://www.gov.br/iphan/pt-br/patrimonio-cultural/patrimonio-material/bens-tombados/2026_05_iphan_t.xlsx",
+    "arquivo": "2026_05_IPHAN_T.xlsx",
+    "data_fonte": "2026-05-05",
+    "data_compilacao": "2026-08-06",
+    "registros": 8,
+    "precisao": "Sede municipal representativa quando a planilha não oferece coordenada",
+    "limitacao": "Não substitui a geometria cadastral do IPHAN"
+  }
+}

@@ -132,7 +132,7 @@ check(pwaManifest.icons.some(i=>String(i.purpose||'').includes('maskable')),'man
 const sw=fs.readFileSync(path.join(root,'service-worker.js'),'utf8');
 try{new Function(sw);pass('service-worker.js possui sintaxe JavaScript válida')}catch(e){fail(`service-worker.js inválido · ${e.message}`)}
 check(sw.includes('CACHE_OFFLINE_TERRITORIAL')&&sw.includes('OFFLINE_TERRITORIAL_ASSETS'),'Service Worker oferece pacote territorial offline explícito');
-check(sw.includes("2026-08-12-pwa-6-full-layer-ficha-audit")&&sw.includes('networkFirstCached'),'Service Worker usa revisão nova e network-first nos precalculados');
+check(sw.includes("2026-08-12-pwa-6-sparse-index-visualfix")&&sw.includes('networkFirstCached'),'Service Worker usa revisão nova e network-first nos precalculados');
 check(html.includes("updateViaCache:'none'")&&html.includes("navigator.serviceWorker?.addEventListener('controllerchange'"),'runtime força atualização do Service Worker e recarrega após troca de controlador');
 check(html.includes("input.addEventListener('input',filterLayerCards)")&&html.includes("clear.addEventListener('click'"),'busca de camadas possui eventos de filtro e limpeza');
 check(html.includes("if(document.getElementById('layerSearchInput')?.value)filterLayerCards()"),'busca de camadas é reaplicada após atualização dos cards');

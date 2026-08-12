@@ -3,12 +3,12 @@
   "version": "v1.8.0-dev",
   "package_date": "2026-08-10",
   "package_build_date": "2026-08-12",
-  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-full-layer-ficha-audit",
+  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-patch17-sparse-indices-visual-coherence",
   "entrypoint": "index.html",
   "deployment": "GitHub Pages from main branch root",
   "descriptor": "Atlas Integrado do Patrimônio e do Território de Mato Grosso do Sul",
   "tagline": "Territórios conectados. Patrimônios em movimento.",
-  "release_state": "snapshot territorial fechado e validado; oito índices materializados; carregamento do IPG corrigido para priorizar o produto R5 de 1554 células; barrido integral de 153 configurações, 90 conjuntos locais, 9 rasters, 12 precalculados e fichas R5 incorporado",
+  "release_state": "snapshot territorial fechado e validado; oito índices reconciliados célula a célula com a Ficha Territorial; visualização de IPG, PEIC e IATI distingue valor numérico, contexto protegido e ausência de evidência sem sugerir falha de carregamento",
   "snapshot_contract": "docs/CONTRATO_SNAPSHOT_FIRST_2026-08-10.md",
   "snapshot_cut": "2026-08-10",
   "snapshot_architecture": "precomputed-v1.8.0",
@@ -52,7 +52,7 @@
     "null_display_rule": "em snapshot fechado, null em IPG/PEIC/IATI é ausência de evidência/resultado conforme protocolo e nunca cálculo pendente"
   },
   "pwa": {
-    "version": "1.0.5",
+    "version": "1.0.6",
     "status": "ativo",
     "manifest": "manifest.webmanifest",
     "service_worker": "service-worker.js",
@@ -61,8 +61,8 @@
     "offline_territorial_pack": "opcional · aproximadamente 50 MB",
     "offline_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
     "remote_layers_offline": false,
-    "cache_revision": "2026-08-12-pwa-6-full-layer-ficha-audit",
+    "cache_revision": "2026-08-12-pwa-6-sparse-index-visualfix",
     "update_strategy": "Service Worker updateViaCache=none, skipWaiting/controllerchange com recarga e dados precalculados network-first com fallback offline"
   },
-  "ui_patch": "PATCH 16 · barrido integral de camadas e fichas + prioridade do IPG R5 fechado"
+  "ui_patch": "PATCH 17 · coerência visual dos índices esparsos e auditoria célula a célula"
 }

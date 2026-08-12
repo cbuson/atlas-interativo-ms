@@ -21,8 +21,9 @@
     "audit-snapshots-full": "node scripts/auditar_snapshots.mjs",
     "extrair-cobertura-movel-ms": "node scripts/extrair_cobertura_movel_ms.mjs",
     "audit-fichas": "node scripts/auditar_fichas.mjs",
-    "audit-completo": "node scripts/validar_precalculados.mjs && node scripts/auditar_fichas.mjs && node scripts/auditar_estatisticas.mjs && node scripts/auditar_carga_camadas_fichas.mjs && node scripts/auditar_release.mjs",
+    "audit-completo": "node scripts/validar_precalculados.mjs && node scripts/auditar_fichas.mjs && node scripts/auditar_estatisticas.mjs && node scripts/auditar_carga_camadas_fichas.mjs && node scripts/auditar_indices_fichas_celula_a_celula.mjs && node scripts/auditar_release.mjs",
     "audit-estatisticas": "node scripts/auditar_estatisticas.mjs",
-    "audit-carga-fichas": "node scripts/auditar_carga_camadas_fichas.mjs"
+    "audit-carga-fichas": "node scripts/auditar_carga_camadas_fichas.mjs",
+    "audit-indices-celula": "node scripts/auditar_indices_fichas_celula_a_celula.mjs"
   }
 }

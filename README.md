@@ -175,3 +175,9 @@ A revisão PATCH 14 endurece a separação entre a malha R5 publicada e grades h
 - os produtos de `dados/precalculados/` usam estratégia network-first no Service Worker, com cache apenas como contingência offline
 - uma atualização do Service Worker assume controle e recarrega a página uma única vez, reduzindo mistura entre código antigo e dados novos após publicação
 - a busca de camadas reaplica o filtro quando o navegador restaura automaticamente o valor do campo após recarga ou retorno à página
+
+
+## Cobertura visual dos índices esparsos
+
+IPG, PEIC e IATI não possuem valor numérico em todas as 1.554 células. A interface não interpreta esses nulos como falha de carregamento. IPG desenha somente células com valor numérico. PEIC desenha as células numéricas e preserva em cinza os contextos comunitários protegidos previstos pelo protocolo. IATI desenha somente células com resultado numérico. IAT, ISA, ICT, IPAE e ICD possuem cobertura numérica integral no corte fechado.
+

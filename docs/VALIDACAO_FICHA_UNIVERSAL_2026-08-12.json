@@ -23,5 +23,7 @@
     "warnings": 0,
     "failures": 0
   },
-  "snapshot_validation": "PASS"
+  "snapshot_validation": "PASS",
+  "superseded_by": "Ficha Universal 1.1 · docs/VALIDACAO_FICHAS_2026-08-12.json",
+  "note": "Validação histórica da versão 1.0. A revisão 1.1 corrige compatibilidade entre IDs de grades históricas e a malha R5."
 }

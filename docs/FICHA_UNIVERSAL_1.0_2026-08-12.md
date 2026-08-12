@@ -1,5 +1,7 @@
 # Ficha Universal 1.0 · JOAJU MS
 
+> Superada pela revisão 1.1 para compatibilidade entre grades históricas e a malha R5. Consulte `FICHA_UNIVERSAL_1.1_2026-08-12.md`.
+
 ## Regra
 
 Toda camada visível no catálogo possui uma ficha de camada. Todo elemento vetorial selecionável possui ficha própria.

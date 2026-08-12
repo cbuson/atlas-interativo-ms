@@ -1,7 +1,7 @@
 {
   "project": "JOAJU MS",
   "version": "v1.8.0-dev",
-  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa",
+  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-searchfix-ficha-r5fix",
   "generated_at": "2026-08-12",
   "status": "PASS",
   "snapshot_validation": {
@@ -47,11 +47,28 @@
     "snapshot_sha256": "PASS"
   },
   "release_audit": {
-    "passes": 197,
+    "passes": 206,
     "warnings": 0,
     "failures": 0,
     "node_check": "PASS",
     "http_smoke_test": "PASS"
+  },
+  "ficha_audit": {
+    "status": "PASS",
+    "passes": 42,
+    "warnings": 0,
+    "failures": 0,
+    "runtime_layer_sheets": 153,
+    "local_vector_datasets": 90,
+    "local_features_scanned": 50912,
+    "legacy_hex_ids": 3288,
+    "legacy_datasets": {
+      "potencial_geocientifico_territorial_250km2": 1690,
+      "convergencia_rotas_itinerarios_250km2": 1023,
+      "maturidade_rotas_hex_250km2_v1_8_0": 575
+    },
+    "rule": "todo identificador territorial explícito é validado contra a R5; IDs históricos são remapeados por geometria e nunca usados diretamente como R5",
+    "validation": "docs/VALIDACAO_FICHAS_2026-08-12.json"
   },
   "runtime": {
     "layers": 153,
@@ -164,19 +181,21 @@
     }
   ],
   "universal_feature_sheet": {
-    "version": "1.0",
+    "version": "1.1",
     "status": "PASS",
     "layer_sheets": 153,
     "vector_feature_handler": "showFeature",
     "territorial_resolver": "resolveFeatureHexContext",
+    "canonical_hex_validator": "universalFichaCanonicalHexId",
     "grid_features": 1554,
     "network_on_feature_click": false,
     "multi_hex_without_arbitrary_primary": true,
-    "validation": "docs/VALIDACAO_FICHA_UNIVERSAL_2026-08-12.json"
+    "legacy_grid_ids_never_treated_as_r5": true,
+    "validation": "docs/VALIDACAO_FICHAS_2026-08-12.json"
   },
   "pwa": {
     "status": "PASS",
-    "version": "1.0",
+    "version": "1.0.2",
     "installable": true,
     "standalone": true,
     "manifest": "manifest.webmanifest",
@@ -190,6 +209,15 @@
     "offline_pack_optional": true,
     "offline_pack_estimated_mb": 50,
     "offline_pack_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
-    "remote_layers_offline": false
+    "remote_layers_offline": false,
+    "cache_revision": "2026-08-12-pwa-3-fichas-r5"
+  },
+  "ui_validation": {
+    "layer_search": "PASS",
+    "input_event_bound": true,
+    "clear_button_bound": true,
+    "rerender_preserves_filter": true,
+    "ficha_r5_compatibility": "PASS",
+    "service_worker_cache_revision": "2026-08-12-pwa-3-fichas-r5"
   }
 }

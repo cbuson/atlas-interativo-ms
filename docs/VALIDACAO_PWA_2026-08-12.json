@@ -1,7 +1,7 @@
 {
   "project": "JOAJU MS",
   "date": "2026-08-12",
-  "component": "PWA 1.0",
+  "component": "PWA 1.0.2",
   "status": "PASS",
   "checks": {
     "manifest_present": true,
@@ -16,7 +16,12 @@
     "ios_install_guidance_present": true,
     "viewport_fit_cover": true,
     "standalone_safe_area_css": true,
-    "offline_pack_explicit_not_automatic": true
+    "offline_pack_explicit_not_automatic": true,
+    "layer_search_input_bound": true,
+    "layer_search_clear_bound": true,
+    "layer_search_persists_after_card_rerender": true,
+    "service_worker_cache_revision": "2026-08-12-pwa-3-fichas-r5",
+    "ficha_r5_fix_cached": true
   },
   "offline_pack": {
     "estimated_mb": 50,

@@ -1,4 +1,4 @@
-const JOAJU_PWA_VERSION='2026-08-12-pwa-1';
+const JOAJU_PWA_VERSION='2026-08-12-pwa-3-fichas-r5';
 const CORE_CACHE=`joaju-core-${JOAJU_PWA_VERSION}`;
 const RUNTIME_CACHE=`joaju-runtime-${JOAJU_PWA_VERSION}`;
 const DATA_CACHE=`joaju-data-${JOAJU_PWA_VERSION}`;

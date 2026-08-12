@@ -24,6 +24,8 @@ A validação canônica está em `VALIDACAO_V1.8.0-dev.md` e `docs/SNAPSHOT_PREC
 
 A consulta territorial ordinária usa arquivos estáticos em `dados/precalculados/`. Ativar um índice não inicia reconstrução da malha nem geoprocessamento pesado.
 
+A **Ficha Universal 1.1** valida qualquer identificador territorial contra a malha R5. Produtos históricos que conservam IDs `IPG-*` não são tratados como células atuais. Quando existe geometria, o vínculo com R5 é reconstruído localmente por interseção e pode resultar em uma ou várias células.
+
 O arquivo antigo `snapshot_indices_ficha.js` não faz parte desta distribuição. A ficha territorial fechada é carregada diretamente de `dados/precalculados/ficha_territorial_250km2.geojson`.
 
 As atualizações com fontes recentes continuam disponíveis como operações avançadas e explícitas.
@@ -69,6 +71,7 @@ Para verificar o snapshot territorial e a estrutura do repositório
 ```bash
 npm run validar-precalculados
 npm run audit-release
+npm run audit-fichas
 ```
 
 O primeiro comando valida as 1.554 células, identidade de `hex_id`, identidade geométrica, regras de nulos, ficha territorial e SHA256 do snapshot.

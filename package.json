@@ -19,6 +19,8 @@
     "materializar-analises": "node scripts/materializar_analises_derivadas_2026_08_10.mjs",
     "materializar-escolas": "node scripts/materializar_escolas_inep_2025.mjs",
     "audit-snapshots-full": "node scripts/auditar_snapshots.mjs",
-    "extrair-cobertura-movel-ms": "node scripts/extrair_cobertura_movel_ms.mjs"
+    "extrair-cobertura-movel-ms": "node scripts/extrair_cobertura_movel_ms.mjs",
+    "audit-fichas": "node scripts/auditar_fichas.mjs",
+    "audit-completo": "node scripts/validar_precalculados.mjs && node scripts/auditar_fichas.mjs && node scripts/auditar_release.mjs"
   }
 }

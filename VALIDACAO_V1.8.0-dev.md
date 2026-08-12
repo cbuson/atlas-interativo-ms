@@ -67,3 +67,13 @@ Validação específica em `docs/VALIDACAO_FICHA_UNIVERSAL_2026-08-12.json`. O a
 ## PWA instalável
 
 A distribuição pública incorpora PWA 1.0 com manifesto, ícones 192/512, ícone maskable, Service Worker e modo standalone. O pacote territorial offline é opcional e explícito. Ele não transforma fontes remotas em dados locais nem declara disponibilidade offline para mapas-base ou serviços externos.
+## Ficha Universal 1.1 · compatibilidade entre grades
+
+A Ficha Universal valida qualquer `hex_id`, `id_hex` ou `hex` contra a malha R5 publicada antes de abrir o perfil territorial. Identificadores históricos `IPG-*` não são aceitos como chaves R5. Quando a feição possui geometria, a associação ao corte atual é refeita por interseção local.
+
+A revisão estrutural percorreu as 153 configurações de camada e os 90 conjuntos vetoriais locais do `DATA_MANIFEST`, totalizando 50.912 feições. Foram reconhecidos 3.288 identificadores históricos em três produtos legados conhecidos. Todos os registros históricos com identificador explícito possuem geometria para remapeamento.
+
+O estado fechado dos índices é lido do `snapshot_metadata.json`, portanto uma ficha não apresenta IAT, ISA, ICT, IPAE ou ICD como cálculo pendente apenas porque a respectiva camada visual ainda não foi ativada. IPG, PEIC e IATI continuam preservando `null` quando essa ausência é metodologicamente documentada.
+
+Validação específica em `docs/VALIDACAO_FICHAS_2026-08-12.json` e `scripts/auditar_fichas.mjs`.
+

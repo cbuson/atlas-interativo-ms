@@ -104,9 +104,16 @@ const geom=configs.find(c=>c.id==='mapa_geomorfologico_ibge');
 check(!data.rede_hidrica&&rede?.mode==='arcgis','rede hídrica não aponta snapshot GitHub inexistente');
 check(!data.mapa_geomorfologico_ibge&&geom?.referenceOnly===true,'geomorfologia não aponta snapshot GitHub inexistente');
 
-check(html.includes('JOAJU MS · FICHA UNIVERSAL 1.0'),'Ficha Universal 1.0 incorporada ao runtime');
+check(html.includes('JOAJU MS · FICHA UNIVERSAL 1.1'),'Ficha Universal 1.1 incorporada ao runtime');
 check(html.includes('Ficha da camada')&&html.includes('showLayerFicha'),'todas as camadas expõem ação de ficha por meio do template comum');
 check(html.includes('resolveFeatureHexContext')&&html.includes('analysisGeomIntersectsCell'),'elementos vetoriais podem ser relacionados localmente à malha R5');
+check(html.includes('universalFichaCanonicalHexId'),'hex_id explícito é validado contra a malha R5 antes do uso na ficha');
+check(html.includes("explicitRaw?'legacy-remapped':'spatial'"),'identificadores de grades históricas usam remapeamento geométrico');
+check(!/if\(hid\)html\+=`<section class="universal-ficha-card"/.test(html),'showFeature não aceita hex_id não validado como R5');
+check(html.includes("territorialSnapshotByHex?.size===1554")&&html.includes("publicSnapshotMetadata?.status"),'estado fechado dos índices é reconhecido pelo snapshot público');
+check(fs.existsSync(path.join(root,'scripts/auditar_fichas.mjs')),'auditor estrutural de fichas presente');
+check(fs.existsSync(path.join(root,'docs/VALIDACAO_FICHAS_2026-08-12.json')),'validação estrutural das fichas presente');
+check(fs.existsSync(path.join(root,'docs/FICHA_UNIVERSAL_1.1_2026-08-12.md')),'documentação da Ficha Universal 1.1 presente');
 check(html.includes('não escolhe arbitrariamente um hexágono principal'),'geometrias multi-hex preservam todas as células sem escolha arbitrária');
 check(html.includes('viewport-fit=cover'),'viewport móvel usa viewport-fit=cover');
 check(html.includes('joaju-pwa-runtime')&&html.includes('serviceWorker.register'),'runtime registra Service Worker PWA');
@@ -122,6 +129,8 @@ check(pwaManifest.icons.some(i=>String(i.purpose||'').includes('maskable')),'man
 const sw=fs.readFileSync(path.join(root,'service-worker.js'),'utf8');
 try{new Function(sw);pass('service-worker.js possui sintaxe JavaScript válida')}catch(e){fail(`service-worker.js inválido · ${e.message}`)}
 check(sw.includes('CACHE_OFFLINE_TERRITORIAL')&&sw.includes('OFFLINE_TERRITORIAL_ASSETS'),'Service Worker oferece pacote territorial offline explícito');
+check(html.includes("input.addEventListener('input',filterLayerCards)")&&html.includes("clear.addEventListener('click'"),'busca de camadas possui eventos de filtro e limpeza');
+check(html.includes("if(document.getElementById('layerSearchInput')?.value)filterLayerCards()"),'busca de camadas é reaplicada após atualização dos cards');
 
 const staticRefs=new Set();
 for(const m of html.matchAll(/(?:src|href)=["']([^"'?#]+)["']/g)){

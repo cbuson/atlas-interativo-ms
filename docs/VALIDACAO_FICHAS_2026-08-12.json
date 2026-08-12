@@ -1,0 +1,53 @@
+{
+  "projeto": "JOAJU MS",
+  "data": "2026-08-12",
+  "componente": "Ficha Universal 1.1",
+  "status": "PASS",
+  "camadas_runtime": 153,
+  "datasets_vetoriais_locais": 90,
+  "feicoes_locais_auditadas": 50912,
+  "malha_r5": 1554,
+  "fichas_territoriais": 1554,
+  "indices": {
+    "IPG": {"numericos": 57, "null_permitido": true},
+    "PEIC": {"numericos": 82, "null_permitido": true},
+    "IATI": {"numericos": 1025, "null_permitido": true},
+    "IAT": {"numericos": 1554, "null_permitido": false},
+    "ISA": {"numericos": 1554, "null_permitido": false},
+    "ICT": {"numericos": 1554, "null_permitido": false},
+    "IPAE": {"numericos": 1554, "null_permitido": false},
+    "ICD": {"numericos": 1554, "null_permitido": false}
+  },
+  "ids_historicos": {
+    "total": 3288,
+    "datasets": {
+      "potencial_geocientifico_territorial_250km2": 1690,
+      "convergencia_rotas_itinerarios_250km2": 1023,
+      "maturidade_rotas_hex_250km2_v1_8_0": 575
+    },
+    "regra": "IDs IPG-* nunca são aceitos como R5 sem validação; registros com geometria são remapeados por interseção local"
+  },
+  "casos_teste": [
+    {
+      "tipo": "ponto",
+      "registro": "Campo Grande",
+      "resultado_r5": ["HX-10-30"]
+    },
+    {
+      "tipo": "linha",
+      "registro": "ROTA-PROP-001",
+      "resultado_r5": ["HX--14-41", "HX--15-41"]
+    },
+    {
+      "tipo": "poligono_legado",
+      "registro": "IPG-2--7",
+      "resultado_r5": ["HX-12-23", "HX-12-24", "HX-13-22", "HX-13-23"]
+    }
+  ],
+  "regressoes_protegidas": [
+    "showFeature não trata qualquer hex_id como R5",
+    "estado fechado dos índices não depende da ativação visual da camada",
+    "resumos multi-hex informam n numérico sobre total de células intersectadas",
+    "null metodológico não é convertido em zero"
+  ]
+}

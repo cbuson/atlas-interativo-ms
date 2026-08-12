@@ -43,3 +43,15 @@ Na R5, a geometria desse registro intersecta quatro células atuais.
 - `HX-13-23`
 
 A Ficha Universal 1.1 passa a mostrar o resumo dessas quatro células e mantém `IPG-2--7` apenas como identificador histórico da feição selecionada.
+
+## Revisão PATCH 14
+
+A identificação territorial foi endurecida após testes na publicação GitHub Pages.
+
+- somente `HX-*` existente na malha R5 é aceito como identificador territorial atual
+- a malha pública precalculada passa a ter prioridade sobre qualquer grade carregada por uma camada histórica
+- `IPG-*` nunca é usado como chave da Ficha Territorial R5
+- quando a Ficha Territorial fechada contém `PEIC = null`, a interface apresenta ausência de evidência cultural suficiente, e não cálculo pendente
+- a mesma regra separa `null` metodologicamente válido de ausência real de materialização
+
+A revisão também reforça atualização do Service Worker para evitar que uma aba antiga continue exibindo lógica anterior depois de um novo deploy.

@@ -1,7 +1,7 @@
 {
   "project": "JOAJU MS",
   "date": "2026-08-12",
-  "component": "PWA 1.0.2",
+  "component": "PWA 1.0.3",
   "status": "PASS",
   "checks": {
     "manifest_present": true,
@@ -20,8 +20,13 @@
     "layer_search_input_bound": true,
     "layer_search_clear_bound": true,
     "layer_search_persists_after_card_rerender": true,
-    "service_worker_cache_revision": "2026-08-12-pwa-3-fichas-r5",
-    "ficha_r5_fix_cached": true
+    "service_worker_cache_revision": "2026-08-12-pwa-4-fichas-r5-cachefix",
+    "ficha_r5_fix_cached": true,
+    "precomputed_network_first": true,
+    "service_worker_update_via_cache_none": true,
+    "service_worker_controllerchange_reload": true,
+    "layer_search_pageshow_sync": true,
+    "closed_snapshot_null_semantics": true
   },
   "offline_pack": {
     "estimated_mb": 50,

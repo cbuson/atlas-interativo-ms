@@ -1,74 +1,28 @@
 {
   "project": "JOAJU MS",
   "version": "v1.8.0-dev",
-  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-searchfix-ficha-r5fix",
+  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-full-layer-ficha-audit",
   "generated_at": "2026-08-12",
-  "status": "PASS",
+  "status": "PASS_WITH_SPATIAL_SCOPE_FINDING",
   "snapshot_validation": {
     "status": "PASS",
-    "grid_features": 1554,
-    "indices": {
-      "IPG": {
-        "numeric": 57,
-        "null_documented": 1497
-      },
-      "PEIC": {
-        "numeric": 82,
-        "null_documented": 1472
-      },
-      "IATI": {
-        "numeric": 1025,
-        "null_documented": 529
-      },
-      "IAT": {
-        "numeric": 1554,
-        "null_documented": 0
-      },
-      "ISA": {
-        "numeric": 1554,
-        "null_documented": 0
-      },
-      "ICT": {
-        "numeric": 1554,
-        "null_documented": 0
-      },
-      "IPAE": {
-        "numeric": 1554,
-        "null_documented": 0
-      },
-      "ICD": {
-        "numeric": 1554,
-        "null_documented": 0
-      }
-    },
-    "geometry_identity": "PASS",
-    "hex_id_identity": "PASS",
-    "ficha_territorial": "PASS",
-    "snapshot_sha256": "PASS"
+    "hexagons": 1554,
+    "indices": 8,
+    "geometry_identity": true,
+    "sha256_snapshot": true
   },
   "release_audit": {
-    "passes": 206,
+    "status": "PASS",
+    "passes": 216,
     "warnings": 0,
-    "failures": 0,
-    "node_check": "PASS",
-    "http_smoke_test": "PASS"
+    "failures": 0
   },
   "ficha_audit": {
     "status": "PASS",
-    "passes": 42,
+    "passes": 47,
     "warnings": 0,
     "failures": 0,
-    "runtime_layer_sheets": 153,
-    "local_vector_datasets": 90,
-    "local_features_scanned": 50912,
-    "legacy_hex_ids": 3288,
-    "legacy_datasets": {
-      "potencial_geocientifico_territorial_250km2": 1690,
-      "convergencia_rotas_itinerarios_250km2": 1023,
-      "maturidade_rotas_hex_250km2_v1_8_0": 575
-    },
-    "rule": "todo identificador territorial explícito é validado contra a R5; IDs históricos são remapeados por geometria e nunca usados diretamente como R5",
-    "validation": "docs/VALIDACAO_FICHAS_2026-08-12.json"
+    "scope": "153 camadas, 90 conjuntos locais, 50.912 feições, 1.554 fichas R5 e 3.288 IDs legados"
   },
   "runtime": {
     "layers": 153,
@@ -181,7 +135,7 @@
     }
   ],
   "universal_feature_sheet": {
-    "version": "1.1",
+    "version": "1.1.1",
     "status": "PASS",
     "layer_sheets": 153,
     "vector_feature_handler": "showFeature",
@@ -191,11 +145,13 @@
     "network_on_feature_click": false,
     "multi_hex_without_arbitrary_primary": true,
     "legacy_grid_ids_never_treated_as_r5": true,
-    "validation": "docs/VALIDACAO_FICHAS_2026-08-12.json"
+    "validation": "docs/VALIDACAO_FICHAS_2026-08-12.json",
+    "null_display_rule": "snapshot fechado impede texto de cálculo pendente para null válido em IPG, PEIC e IATI",
+    "canonical_id_rule": "somente HX-* existente na malha R5 de 1554 células"
   },
   "pwa": {
     "status": "PASS",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "installable": true,
     "standalone": true,
     "manifest": "manifest.webmanifest",
@@ -210,14 +166,55 @@
     "offline_pack_estimated_mb": 50,
     "offline_pack_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
     "remote_layers_offline": false,
-    "cache_revision": "2026-08-12-pwa-3-fichas-r5"
+    "cache_revision": "2026-08-12-pwa-4-fichas-r5-cachefix",
+    "update_strategy": "updateViaCache none + update/skipWaiting/controllerchange + recarga automática",
+    "precomputed_strategy": "network-first com cache offline como contingência"
   },
   "ui_validation": {
-    "layer_search": "PASS",
+    "layer_search": "PASS · input/search/Escape/Limpar + reaplicação após render e pageshow/autofill",
     "input_event_bound": true,
     "clear_button_bound": true,
     "rerender_preserves_filter": true,
     "ficha_r5_compatibility": "PASS",
-    "service_worker_cache_revision": "2026-08-12-pwa-3-fichas-r5"
+    "service_worker_cache_revision": "2026-08-12-pwa-3-fichas-r5",
+    "closed_snapshot_nulls": "PASS · PEIC/IATI null não aparecem como cálculo pendente no corte fechado"
+  },
+  "statistics_audit": {
+    "status": "PASS",
+    "passes": 16,
+    "warnings": 0,
+    "failures": 0
+  },
+  "full_layer_ficha_audit": {
+    "status": "PASS",
+    "passes": 150,
+    "warnings": 0,
+    "failures": 0,
+    "configs": 153,
+    "data_manifest": 90,
+    "data_manifest_features": 50912,
+    "raster_manifest": 9,
+    "precomputed_products": 12,
+    "bad_geometries": 0,
+    "documental_records_without_geometry": 14,
+    "closed_or_packaged_unique_configs": 109,
+    "nonlocal_by_design": {
+      "reference_only": 28,
+      "remote_capture": 8,
+      "direct_remote_visual": 4,
+      "session_derived": 3,
+      "user_import": 1
+    },
+    "loader_fixes": [
+      "IPG fechado priorizado antes do fallback legado 1690",
+      "modos remotos de visualização direta ativáveis sem preparação"
+    ]
+  },
+  "spatial_scope_finding": {
+    "status": "REQUIRES_FUTURE_SANITATION_NOT_RUNTIME_FAILURE",
+    "features_outside_r5": 7122,
+    "datasets_affected": 41,
+    "interpretation": "snapshots de fonte capturados por envelope podem incluir registros de UFs vizinhas; originais devem ser preservados e saneamento deve ser específico por fonte",
+    "closed_indices_affected": false
   }
 }

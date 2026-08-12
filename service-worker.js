@@ -1,4 +1,4 @@
-const JOAJU_PWA_VERSION='2026-08-12-pwa-3-fichas-r5';
+const JOAJU_PWA_VERSION='2026-08-12-pwa-6-full-layer-ficha-audit';
 const CORE_CACHE=`joaju-core-${JOAJU_PWA_VERSION}`;
 const RUNTIME_CACHE=`joaju-runtime-${JOAJU_PWA_VERSION}`;
 const DATA_CACHE=`joaju-data-${JOAJU_PWA_VERSION}`;
@@ -70,6 +70,17 @@ async function cacheFirst(request, cacheName=RUNTIME_CACHE){
   return response;
 }
 
+async function networkFirstCached(request,cacheName=DATA_CACHE){
+  const cache=await caches.open(cacheName);
+  try{
+    const response=await fetch(request,{cache:'no-store'});
+    if(response&&response.ok)cache.put(request,response.clone()).catch(()=>{});
+    return response;
+  }catch(error){
+    return (await cache.match(request)) || Response.error();
+  }
+}
+
 async function staleWhileRevalidate(request){
   const cache=await caches.open(RUNTIME_CACHE);
   const cached=await cache.match(request);
@@ -91,7 +102,11 @@ self.addEventListener('fetch',event=>{
   }
 
   if(url.origin===self.location.origin){
-    if(url.pathname.includes('/dados/precalculados/')||url.pathname.includes('/dados/materializados/')||url.pathname.includes('/dados/')){
+    if(url.pathname.includes('/dados/precalculados/')){
+      event.respondWith(networkFirstCached(request,DATA_CACHE));
+      return;
+    }
+    if(url.pathname.includes('/dados/materializados/')||url.pathname.includes('/dados/')){
       event.respondWith(cacheFirst(request,DATA_CACHE));
       return;
     }

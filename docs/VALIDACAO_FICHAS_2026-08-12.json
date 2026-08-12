@@ -9,14 +9,38 @@
   "malha_r5": 1554,
   "fichas_territoriais": 1554,
   "indices": {
-    "IPG": {"numericos": 57, "null_permitido": true},
-    "PEIC": {"numericos": 82, "null_permitido": true},
-    "IATI": {"numericos": 1025, "null_permitido": true},
-    "IAT": {"numericos": 1554, "null_permitido": false},
-    "ISA": {"numericos": 1554, "null_permitido": false},
-    "ICT": {"numericos": 1554, "null_permitido": false},
-    "IPAE": {"numericos": 1554, "null_permitido": false},
-    "ICD": {"numericos": 1554, "null_permitido": false}
+    "IPG": {
+      "numericos": 57,
+      "null_permitido": true
+    },
+    "PEIC": {
+      "numericos": 82,
+      "null_permitido": true
+    },
+    "IATI": {
+      "numericos": 1025,
+      "null_permitido": true
+    },
+    "IAT": {
+      "numericos": 1554,
+      "null_permitido": false
+    },
+    "ISA": {
+      "numericos": 1554,
+      "null_permitido": false
+    },
+    "ICT": {
+      "numericos": 1554,
+      "null_permitido": false
+    },
+    "IPAE": {
+      "numericos": 1554,
+      "null_permitido": false
+    },
+    "ICD": {
+      "numericos": 1554,
+      "null_permitido": false
+    }
   },
   "ids_historicos": {
     "total": 3288,
@@ -31,17 +55,27 @@
     {
       "tipo": "ponto",
       "registro": "Campo Grande",
-      "resultado_r5": ["HX-10-30"]
+      "resultado_r5": [
+        "HX-10-30"
+      ]
     },
     {
       "tipo": "linha",
       "registro": "ROTA-PROP-001",
-      "resultado_r5": ["HX--14-41", "HX--15-41"]
+      "resultado_r5": [
+        "HX--14-41",
+        "HX--15-41"
+      ]
     },
     {
       "tipo": "poligono_legado",
       "registro": "IPG-2--7",
-      "resultado_r5": ["HX-12-23", "HX-12-24", "HX-13-22", "HX-13-23"]
+      "resultado_r5": [
+        "HX-12-23",
+        "HX-12-24",
+        "HX-13-22",
+        "HX-13-23"
+      ]
     }
   ],
   "regressoes_protegidas": [
@@ -49,5 +83,18 @@
     "estado fechado dos índices não depende da ativação visual da camada",
     "resumos multi-hex informam n numérico sobre total de células intersectadas",
     "null metodológico não é convertido em zero"
-  ]
+  ],
+  "patch14": {
+    "audit_passes": 47,
+    "warnings": 0,
+    "failures": 0,
+    "canonical_r5_rule": "somente HX-* presente na malha R5",
+    "closed_null_rule": "null em IPG/PEIC/IATI no snapshot fechado não é cálculo pendente",
+    "legacy_case_IPG--13-6": [
+      "HX--2-35",
+      "HX--3-36",
+      "HX--2-36",
+      "HX--3-37"
+    ]
+  }
 }

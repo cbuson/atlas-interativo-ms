@@ -1,0 +1,75 @@
+{
+  "project": "JOAJU MS",
+  "date": "2026-08-12",
+  "patch": "PATCH 14",
+  "status": "PASS",
+  "snapshot_cut": "2026-08-10",
+  "grid": "R5",
+  "hexagons": 1554,
+  "checks": {
+    "closed_null_semantics": true,
+    "canonical_id_requires_HX_and_membership": true,
+    "legacy_ipg_id_never_canonical": true,
+    "public_grid_preferred": true,
+    "precalculated_network_first": true,
+    "service_worker_auto_update": true,
+    "search_pageshow_sync": true
+  },
+  "regression_cases": {
+    "HX--3-30": {
+      "peic_100": 24.73,
+      "iati_100": 46.02,
+      "iat_100": 89.54,
+      "isa_100": 34.48,
+      "ict_100": 79.78,
+      "ipae_100": 22.39,
+      "icd_100": 89.48
+    },
+    "HX-0-32": {
+      "peic_100": null,
+      "iati_100": 18.21,
+      "iat_100": 54.74,
+      "isa_100": 18.57,
+      "ict_100": 64.45,
+      "ipae_100": 42.48,
+      "icd_100": 80.91
+    },
+    "HX--2-35": {
+      "peic_100": null,
+      "iati_100": 6.54,
+      "iat_100": 40.05,
+      "isa_100": 25.0,
+      "ict_100": 64.45,
+      "ipae_100": 17.48,
+      "icd_100": 80.91
+    },
+    "HX--2-36": {
+      "peic_100": null,
+      "iati_100": 2.57,
+      "iat_100": 32.2,
+      "isa_100": 34.75,
+      "ict_100": 64.45,
+      "ipae_100": 14.44,
+      "icd_100": 80.91
+    },
+    "IPG--13-6": {
+      "canonical_r5": false,
+      "intersects_r5": [
+        "HX--2-35",
+        "HX--3-36",
+        "HX--2-36",
+        "HX--3-37"
+      ]
+    }
+  },
+  "audit_fichas": {
+    "passes": 47,
+    "warnings": 0,
+    "failures": 0
+  },
+  "release_audit": {
+    "passes": 213,
+    "warnings": 0,
+    "failures": 0
+  }
+}

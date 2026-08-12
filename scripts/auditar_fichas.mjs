@@ -102,12 +102,17 @@ else warn(`${totalNoGeometry} feições locais sem geometria · revisar se esper
 
 check(html.includes('JOAJU MS · FICHA UNIVERSAL 1.1'),'Ficha Universal 1.1 incorporada');
 check(html.includes('universalFichaCanonicalHexId'),'qualquer hex_id explícito é validado contra a malha R5 antes do uso');
+check(html.includes("if(!/^HX-/.test(id))return ''")&&html.includes('universalFichaHexIdSet?.has(id)'), 'somente IDs HX-* presentes na malha R5 podem ser usados como chave territorial canônica');
+check(html.includes('publicSnapshotGrid')&&html.includes('universalFichaIsR5Grid'),'resolvedor territorial prioriza a malha pública R5 de 1554 células');
 check(html.includes("explicitRaw?'legacy-remapped':'spatial'")&&html.includes('grade histórica'),'identificadores de grade histórica são remapeados pela geometria e rotulados como legado');
 check(!/if\(hid\)html\+=`<section class="universal-ficha-card"/.test(html),'showFeature não possui atalho que trate qualquer hex_id como R5');
 check(html.includes('const ctx=await resolveFeatureHexContext(f)'),'toda ficha de elemento passa pelo resolvedor territorial único');
+check(html.includes('const snapshotClosed=useSnap')&&html.includes("'sem evidência cultural suficiente'"),'ficha fechada interpreta PEIC null como ausência de evidência, nunca como cálculo pendente');
+check(html.includes("snapshotClosed?'Snapshot territorial fechado do corte 10/08/2026"),'aviso da ficha diferencia snapshot fechado de cálculo de sessão');
 check(html.includes("territorialSnapshotByHex?.size===1554")&&html.includes("publicSnapshotMetadata?.status"),'estado fechado dos índices é lido do snapshot público, não da ativação visual da camada');
 check(html.includes("firstFinite(currentProps,['maturidade_media_atlas'])"),'ficha de maturidade preserva o atributo da entidade selecionada sem falsificar o hexágono R5');
 check(html.includes('n ${x.n}/${x.total}'),'resumos multi-hex informam cobertura numérica do índice nas células intersectadas');
+check(html.includes("window.addEventListener('pageshow'")&&html.includes('syncLayerSearchState'),'busca de camadas reaplica o filtro após restauração/autofill do navegador');
 
 console.log('\nConjuntos com IDs históricos reconhecidos');
 for(const x of legacyByDataset)console.log(`  ${x.id} · ${x.legacy}/${x.features}`);

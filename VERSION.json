@@ -3,12 +3,12 @@
   "version": "v1.8.0-dev",
   "package_date": "2026-08-10",
   "package_build_date": "2026-08-12",
-  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-searchfix-ficha-r5fix",
+  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-full-layer-ficha-audit",
   "entrypoint": "index.html",
   "deployment": "GitHub Pages from main branch root",
   "descriptor": "Atlas Integrado do Patrimônio e do Território de Mato Grosso do Sul",
   "tagline": "Territórios conectados. Patrimônios em movimento.",
-  "release_state": "snapshot territorial fechado e validado; oito índices materializados na malha R5 de 1554 células; quatro análises derivadas materializadas; Ficha Universal 1.1 valida todo hex_id contra a malha R5 e remapeia por geometria identificadores de grades históricas; PWA instalável; busca de camadas reativa",
+  "release_state": "snapshot territorial fechado e validado; oito índices materializados; carregamento do IPG corrigido para priorizar o produto R5 de 1554 células; barrido integral de 153 configurações, 90 conjuntos locais, 9 rasters, 12 precalculados e fichas R5 incorporado",
   "snapshot_contract": "docs/CONTRATO_SNAPSHOT_FIRST_2026-08-10.md",
   "snapshot_cut": "2026-08-10",
   "snapshot_architecture": "precomputed-v1.8.0",
@@ -48,10 +48,11 @@
     "territorial_link": "malha R5 local de 1554 células",
     "multi_hex_rule": "lista todas as células intersectadas e resume índices sem escolher célula principal arbitrária",
     "network_on_click": false,
-    "legacy_hex_rule": "qualquer hex_id explícito é validado contra a malha R5; IDs IPG-* históricos são remapeados por geometria e nunca usados como chave R5"
+    "legacy_hex_rule": "somente IDs HX-* presentes na malha R5 são canônicos; qualquer IPG-* histórico é remapeado exclusivamente pela geometria",
+    "null_display_rule": "em snapshot fechado, null em IPG/PEIC/IATI é ausência de evidência/resultado conforme protocolo e nunca cálculo pendente"
   },
   "pwa": {
-    "version": "1.0.2",
+    "version": "1.0.5",
     "status": "ativo",
     "manifest": "manifest.webmanifest",
     "service_worker": "service-worker.js",
@@ -60,7 +61,8 @@
     "offline_territorial_pack": "opcional · aproximadamente 50 MB",
     "offline_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
     "remote_layers_offline": false,
-    "cache_revision": "2026-08-12-pwa-3-fichas-r5"
+    "cache_revision": "2026-08-12-pwa-6-full-layer-ficha-audit",
+    "update_strategy": "Service Worker updateViaCache=none, skipWaiting/controllerchange com recarga e dados precalculados network-first com fallback offline"
   },
-  "ui_patch": "PATCH 13 · revisão integral das fichas e vínculo R5"
+  "ui_patch": "PATCH 16 · barrido integral de camadas e fichas + prioridade do IPG R5 fechado"
 }

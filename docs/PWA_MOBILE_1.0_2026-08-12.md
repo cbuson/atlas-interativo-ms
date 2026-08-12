@@ -32,3 +32,7 @@ A instalação e o cache offline não enviam observações pessoais ao projeto. 
 ## Experiência móvel
 
 O viewport usa `viewport-fit=cover` e o modo standalone respeita as safe areas do dispositivo. O dock móvel, a documentação, os painéis laterais e a Ficha Universal permanecem disponíveis na aplicação instalada.
+
+## Atualização de cache após PATCH 14
+
+A revisão `2026-08-12-pwa-4-fichas-r5-cachefix` evita mistura de versões depois de novos deploys. O registro usa `updateViaCache: none`, solicita atualização do Service Worker e recarrega a página quando o novo controlador assume a aba. Os arquivos de `dados/precalculados/` passam a usar estratégia network-first, preservando o cache apenas como contingência offline.

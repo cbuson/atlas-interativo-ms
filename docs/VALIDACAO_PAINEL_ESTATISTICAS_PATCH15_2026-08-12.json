@@ -1,0 +1,52 @@
+{
+  "patch": "PATCH_15",
+  "status": "PASS",
+  "date": "2026-08-12",
+  "coverage_from_closed_ficha": {
+    "IPG": {
+      "numeric": 57,
+      "total": 1554,
+      "coverage_pct": 3.67
+    },
+    "PEIC": {
+      "numeric": 82,
+      "total": 1554,
+      "coverage_pct": 5.28
+    },
+    "IATI": {
+      "numeric": 1025,
+      "total": 1554,
+      "coverage_pct": 65.96
+    },
+    "IAT": {
+      "numeric": 1554,
+      "total": 1554,
+      "coverage_pct": 100.0
+    },
+    "ISA": {
+      "numeric": 1554,
+      "total": 1554,
+      "coverage_pct": 100.0
+    },
+    "ICT": {
+      "numeric": 1554,
+      "total": 1554,
+      "coverage_pct": 100.0
+    },
+    "IPAE": {
+      "numeric": 1554,
+      "total": 1554,
+      "coverage_pct": 100.0
+    },
+    "ICD": {
+      "numeric": 1554,
+      "total": 1554,
+      "coverage_pct": 100.0
+    }
+  },
+  "remote_capture": false,
+  "recalculation": false,
+  "mobile_toolbar_sticky": false,
+  "state_counts_source": "DATA_MANIFEST",
+  "index_coverage_source": "ficha_territorial_250km2.geojson"
+}

@@ -4,9 +4,9 @@ O Atlas distingue validação documental, espacial, institucional, de campo e co
 
 ## Estado do corte territorial de 10/08/2026
 
-A malha mestra R5 possui 1.554 células. IPG, PEIC, IATI, IAT, ISA e IPAE possuem produtos precalculados compatíveis com essa malha. O IPG foi rematerializado a partir do inventário geocientífico da Fase 3.2, com 57 células com evidência e 1.497 células mantidas como null por ausência de evidência suficiente. ICT e ICD estão materializados sobre a malha R5.
+A malha mestra R5 possui 1.554 células. IPG, PEIC, IATI, IAT, ISA, ICT, IPAE e ICD possuem produtos precalculados compatíveis com essa mesma malha. O IPG foi rematerializado a partir do inventário geocientífico da Fase 3.2, com 57 células com evidência e 1.497 células mantidas como `null` por ausência de evidência suficiente.
 
-Por isso o snapshot geral ainda não deve ser declarado **fechado**. A interface não pode substituir ausência de evidência por zero nem iniciar recálculo apenas porque o usuário marcou uma camada.
+O snapshot territorial de 10/08/2026 está **fechado e validado**. IPG, PEIC e IATI preservam `null` quando a ausência de evidência está documentada. IAT, ISA, ICT, IPAE e ICD possuem cobertura numérica integral. A interface não pode substituir ausência de evidência por zero nem iniciar recálculo apenas porque o usuário marcou uma camada.
 
 ## Malha
 
@@ -77,3 +77,17 @@ O estado fechado dos índices é lido do `snapshot_metadata.json`, portanto uma 
 
 Validação específica em `docs/VALIDACAO_FICHAS_2026-08-12.json` e `scripts/auditar_fichas.mjs`.
 
+
+## Revisão de apresentação das fichas · PATCH 14
+
+A inspeção da versão publicada identificou um problema de apresentação, não de cálculo dos oito produtos territoriais. Células com PEIC nulo no snapshot fechado podiam ser rotuladas como `cálculo pendente` quando o estado global do snapshot ainda não estava disponível na memória da aba. A Ficha Territorial passa a usar a própria presença da célula no produto fechado para distinguir nulo metodológico de pendência de cálculo.
+
+Também foi reforçada a regra de identidade territorial. Somente IDs `HX-*` pertencentes à malha R5 são canônicos. IDs históricos `IPG-*` são tratados como grade legada e relacionados ao corte atual somente pela geometria.
+
+## Barrido integral de camadas e fichas · PATCH 16
+
+Antes da publicação foi executado um barrido estrutural de todas as 153 configurações de camada, dos 90 conjuntos vetoriais do `DATA_MANIFEST`, dos 9 snapshots raster/KMZ, dos 12 produtos precalculados e das 1.554 fichas R5. Os 90 arquivos vetoriais locais foram executados em ambiente isolado e produziram o identificador e a contagem esperados, totalizando 50.912 feições. Não foram encontradas geometrias GeoJSON malformadas.
+
+O barrido corrigiu dois defeitos de carregamento. O IPG fechado podia ser preterido pelo fallback histórico de 1.690 células na ativação genérica, e quatro mapas ArcGIS de visualização direta podiam ficar classificados como se exigissem preparação sem oferecer um caminho de ativação. O runtime passa a priorizar produtos fechados com `precomputedUrl` e `closedSnapshotDate`, e os modos de visualização remota direta podem ser ativados sem preparação.
+
+A auditoria também identificou 7.122 feições em 41 snapshots locais cuja geometria não intersecta a malha R5. A maior parte decorre de capturas por envelope retangular que incluem áreas de UFs vizinhas. Este é um achado de **escopo espacial da fonte**, não uma falha de sintaxe ou de carregamento, e não altera os oito índices fechados. O saneamento desses snapshots deve preservar os arquivos originais e aplicar regras explícitas por fonte em uma versão posterior.

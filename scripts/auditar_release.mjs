@@ -108,8 +108,11 @@ check(html.includes('JOAJU MS · FICHA UNIVERSAL 1.1'),'Ficha Universal 1.1 inco
 check(html.includes('Ficha da camada')&&html.includes('showLayerFicha'),'todas as camadas expõem ação de ficha por meio do template comum');
 check(html.includes('resolveFeatureHexContext')&&html.includes('analysisGeomIntersectsCell'),'elementos vetoriais podem ser relacionados localmente à malha R5');
 check(html.includes('universalFichaCanonicalHexId'),'hex_id explícito é validado contra a malha R5 antes do uso na ficha');
+check(html.includes("if(!/^HX-/.test(id))return ''")&&html.includes('universalFichaHexIdSet?.has(id)'),'somente HX-* pertencente à R5 pode ser chave territorial canônica');
+check(html.includes('publicSnapshotGrid')&&html.includes('universalFichaIsR5Grid'),'Ficha Universal prioriza a malha pública R5 de 1554 células');
 check(html.includes("explicitRaw?'legacy-remapped':'spatial'"),'identificadores de grades históricas usam remapeamento geométrico');
 check(!/if\(hid\)html\+=`<section class="universal-ficha-card"/.test(html),'showFeature não aceita hex_id não validado como R5');
+check(html.includes('const snapshotClosed=useSnap')&&html.includes("closedOrLoaded(CULTURAL_LAYER_ID)?'sem evidência cultural suficiente'"),'PEIC null em snapshot fechado não aparece como cálculo pendente');
 check(html.includes("territorialSnapshotByHex?.size===1554")&&html.includes("publicSnapshotMetadata?.status"),'estado fechado dos índices é reconhecido pelo snapshot público');
 check(fs.existsSync(path.join(root,'scripts/auditar_fichas.mjs')),'auditor estrutural de fichas presente');
 check(fs.existsSync(path.join(root,'docs/VALIDACAO_FICHAS_2026-08-12.json')),'validação estrutural das fichas presente');
@@ -129,8 +132,15 @@ check(pwaManifest.icons.some(i=>String(i.purpose||'').includes('maskable')),'man
 const sw=fs.readFileSync(path.join(root,'service-worker.js'),'utf8');
 try{new Function(sw);pass('service-worker.js possui sintaxe JavaScript válida')}catch(e){fail(`service-worker.js inválido · ${e.message}`)}
 check(sw.includes('CACHE_OFFLINE_TERRITORIAL')&&sw.includes('OFFLINE_TERRITORIAL_ASSETS'),'Service Worker oferece pacote territorial offline explícito');
+check(sw.includes("2026-08-12-pwa-6-full-layer-ficha-audit")&&sw.includes('networkFirstCached'),'Service Worker usa revisão nova e network-first nos precalculados');
+check(html.includes("updateViaCache:'none'")&&html.includes("navigator.serviceWorker?.addEventListener('controllerchange'"),'runtime força atualização do Service Worker e recarrega após troca de controlador');
 check(html.includes("input.addEventListener('input',filterLayerCards)")&&html.includes("clear.addEventListener('click'"),'busca de camadas possui eventos de filtro e limpeza');
 check(html.includes("if(document.getElementById('layerSearchInput')?.value)filterLayerCards()"),'busca de camadas é reaplicada após atualização dos cards');
+check(html.includes("window.addEventListener('pageshow'")&&html.includes('syncLayerSearchState'),'busca é reaplicada após restauração/autofill do navegador');
+check(fs.existsSync(path.join(root,'docs/VALIDACAO_FICHAS_R5_PATCH14_2026-08-12.json')),'validação de regressão PATCH 14 presente');
+check(fs.existsSync(path.join(root,'scripts/auditar_carga_camadas_fichas.mjs')),'auditor integral de carga de camadas e fichas presente');
+check(fs.existsSync(path.join(root,'docs/BARRIDO_COMPLETO_CAMADAS_FICHAS_2026-08-12.csv')),'relatório completo de camadas e fichas presente');
+check(html.includes('const closedPreferred=Boolean(cfg.precomputedUrl&&cfg.closedSnapshotDate)'),'loader prioriza produtos territoriais fechados antes de fallback legado');
 
 const staticRefs=new Set();
 for(const m of html.matchAll(/(?:src|href)=["']([^"'?#]+)["']/g)){

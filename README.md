@@ -38,6 +38,16 @@ Quando um ponto pertence a uma única célula R5, a ficha incorpora diretamente 
 
 A associação é executada localmente sobre a malha R5 já carregada. Um clique em uma ficha **não inicia captura remota nem recalcula índices**. Camadas raster, mapas dinâmicos e referências externas continuam tendo ficha de camada mesmo quando não possuem entidade vetorial individual clicável.
 
+## Barrido integral de camadas e fichas
+
+A distribuição inclui `scripts/auditar_carga_camadas_fichas.mjs`, que verifica a coerência das 153 configurações, a execução dos 90 arquivos do `DATA_MANIFEST`, os 9 snapshots raster/KMZ, os 12 produtos precalculados e a correspondência dos oito índices com as 1.554 fichas R5. O auditor também impede que o fallback histórico do IPG de 1.690 células substitua silenciosamente o produto fechado R5.
+
+O barrido espacial complementar está documentado em `docs/BARRIDO_COMPLETO_CAMADAS_FICHAS_2026-08-12.*`. Ele identifica também registros válidos de snapshots capturados por envelope que ficam fora da R5. Esses casos são tratados como questão de recorte de fonte e não como falha de carregamento.
+
+## Painel Dados e Estatísticas
+
+O painel **Dados** lê diretamente a Ficha Territorial fechada para calcular a cobertura dos oito índices. Assim, IPG, PEIC, IATI, IAT, ISA, ICT, IPAE e ICD mostram a cobertura do corte publicado mesmo quando suas camadas visuais ainda não foram ativadas. Na escala estadual, contagens dos conjuntos locais incorporados usam `DATA_MANIFEST`. Recortes municipais e gráficos detalhados carregam somente os conjuntos locais necessários, sem captura remota automática e sem recalcular índices.
+
 ## Distribuição GitHub e arquivos muito grandes
 
 Dois snapshots vetoriais integrais do computador de trabalho ultrapassam o limite normal de arquivo do GitHub e não são incluídos no repositório principal.
@@ -154,3 +164,14 @@ Moisés Centenaro · UEMS · ORCID 0000-0003-2299-9102
 Código próprio sob MIT. Textos, documentação, metodologia e produtos autorais sob CC BY 4.0. Dados e componentes de terceiros mantêm os termos de suas fontes.
 
 Consulte `THIRD_PARTY_NOTICES.md` e `docs/MATRIZ_LICENCAS_E_REDISTRIBUICAO.csv`.
+
+## Correção de fichas e cache · 12/08/2026
+
+A revisão PATCH 14 endurece a separação entre a malha R5 publicada e grades históricas.
+
+- somente IDs `HX-*` existentes nas 1.554 células R5 são aceitos como chave territorial canônica
+- IDs históricos `IPG-*` são relacionados à R5 exclusivamente pela geometria
+- em ficha de snapshot fechado, `null` em IPG, PEIC ou IATI significa ausência de evidência ou resultado conforme o protocolo, nunca `cálculo pendente`
+- os produtos de `dados/precalculados/` usam estratégia network-first no Service Worker, com cache apenas como contingência offline
+- uma atualização do Service Worker assume controle e recarrega a página uma única vez, reduzindo mistura entre código antigo e dados novos após publicação
+- a busca de camadas reaplica o filtro quando o navegador restaura automaticamente o valor do campo após recarga ou retorno à página

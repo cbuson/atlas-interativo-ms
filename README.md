@@ -1,74 +1,153 @@
-# Atlas Interativo do Patrimônio e dos Itinerários Culturais de Mato Grosso do Sul
+# JOAJU MS
 
-[![GitHub Pages](https://github.com/cbuson/atlas-interativo-ms/actions/workflows/pages.yml/badge.svg)](https://github.com/cbuson/atlas-interativo-ms/actions/workflows/pages.yml)
-[![Versão](https://img.shields.io/badge/vers%C3%A3o-1.7.0-155b4c)](CHANGELOG.md)
-[![Código MIT](https://img.shields.io/badge/c%C3%B3digo-MIT-blue)](LICENSE-CODE-MIT.txt)
-[![Conteúdo CC BY 4.0](https://img.shields.io/badge/conte%C3%BAdo-CC%20BY%204.0-lightgrey)](LICENSE-CONTENT-CC-BY-4.0.txt)
+**Atlas Integrado do Patrimônio e do Território de Mato Grosso do Sul**
 
-**Aplicação online prevista**  
-https://cbuson.github.io/atlas-interativo-ms/
+**Territórios conectados. Patrimônios em movimento.**
 
-**Versão científica**  
-1.7.0, com data de corte em 6 de agosto de 2026
+JOAJU MS é a identidade pública do *Atlas Interativo do Patrimônio e dos Itinerários Culturais de Mato Grosso do Sul*, título bibliográfico mantido na citação Zenodo.
+
+## Estado do pacote
+
+A distribuição GitHub desta versão usa o corte territorial de **10/08/2026**.
+
+- malha territorial R5 com **1.554 células**
+- IPG, PEIC, IATI, IAT, ISA, ICT, IPAE e ICD materializados
+- IPG, PEIC e IATI preservam `null` quando a ausência de evidência está documentada
+- IAT, ISA, ICT, IPAE e ICD possuem cobertura numérica integral
+- ficha territorial consolidada para as 1.554 células
+- quatro análises derivadas materializadas, acessibilidade rodoviária, rotas × unidades de conservação, cavidades próximas às rotas e cavidades × unidades de conservação
+- SHA256 dos produtos territoriais registrado em `dados/precalculados/snapshot_metadata.json`
+
+A validação canônica está em `VALIDACAO_V1.8.0-dev.md` e `docs/SNAPSHOT_PRECALCULADO_V1.8.0_2026-08-10.md`.
+
+## Arquitetura snapshot-first
+
+A consulta territorial ordinária usa arquivos estáticos em `dados/precalculados/`. Ativar um índice não inicia reconstrução da malha nem geoprocessamento pesado.
+
+O arquivo antigo `snapshot_indices_ficha.js` não faz parte desta distribuição. A ficha territorial fechada é carregada diretamente de `dados/precalculados/ficha_territorial_250km2.geojson`.
+
+As atualizações com fontes recentes continuam disponíveis como operações avançadas e explícitas.
+
+## Ficha Universal
+
+A interface desta distribuição aplica uma regra única de consulta. **Toda camada possui ficha de camada** com fonte, estado, corte, proveniência, licença e limitações disponíveis. **Todo elemento vetorial selecionável possui ficha própria**.
+
+Quando um ponto pertence a uma única célula R5, a ficha incorpora diretamente o perfil territorial com IPG, PEIC, IATI, IAT, ISA, ICT, IPAE e ICD. Quando uma linha ou polígono atravessa várias células, o Atlas registra todos os hexágonos intersectados e apresenta uma síntese mínimo–média–máximo dos índices, sem escolher arbitrariamente uma célula principal. Cada hexágono pode ser aberto individualmente a partir da ficha.
+
+A associação é executada localmente sobre a malha R5 já carregada. Um clique em uma ficha **não inicia captura remota nem recalcula índices**. Camadas raster, mapas dinâmicos e referências externas continuam tendo ficha de camada mesmo quando não possuem entidade vetorial individual clicável.
+
+## Distribuição GitHub e arquivos muito grandes
+
+Dois snapshots vetoriais integrais do computador de trabalho ultrapassam o limite normal de arquivo do GitHub e não são incluídos no repositório principal.
+
+- `rede_hidrica` permanece como captura oficial sob demanda
+- `mapa_geomorfologico_ibge` permanece como referência e download oficial
+
+A interface não os anuncia como snapshots locais inexistentes. Eles podem ser materializados novamente no ambiente de trabalho a partir das fontes configuradas.
+
+Os pacotes completos KML, KMZ, GeoJSON e as variantes SINGLEFILE são artefatos de distribuição. Não são necessários para executar o site e devem ser publicados, quando desejado, como assets de uma Release.
+
+## Executar localmente
+
+A ficha territorial usa `fetch`, portanto a forma recomendada é servir a pasta por HTTP.
+
+```bash
+npm ci
+npm run serve
+```
+
+Abra
+
+```text
+http://127.0.0.1:8765/index.html
+```
+
+## Validação
+
+Para verificar o snapshot territorial e a estrutura do repositório
+
+```bash
+npm run validar-precalculados
+npm run audit-release
+```
+
+O primeiro comando valida as 1.554 células, identidade de `hex_id`, identidade geométrica, regras de nulos, ficha territorial e SHA256 do snapshot.
+
+O segundo verifica manifesto, arquivos locais, produtos precalculados, referências estáticas, estado dos oito índices e sintaxe JavaScript da aplicação.
+
+## Materialização científica
+
+Os produtos fechados desta distribuição já estão presentes. Para reproduzir ou criar um novo corte no computador de trabalho
+
+```bash
+npm run preparar-snapshot
+npm run fechar-snapshot
+```
+
+As análises derivadas podem ser materializadas com
+
+```bash
+npm run materializar-analises
+```
+
+Os diretórios `resultados_indices/`, `resultados_analises/`, variantes SINGLEFILE e outros artefatos gerados são deliberadamente ignorados pelo Git porque podem ser reconstruídos.
+
+## Estrutura principal
+
+- `index.html` aplicação canônica para GitHub Pages
+- `dados/precalculados/` malha, ficha e oito índices fechados
+- `dados/materializados/2026_08_10/` snapshots locais usados pelo Atlas
+- `scripts/` materializadores, validadores e utilitários reproduzíveis
+- `docs/` protocolos, validações e documentação operacional
+- `metodologia.html` metodologia navegável
+- `atlas_ms_v1.8.0-dev_catalogo_camadas.csv` catálogo atual das camadas
+- `atlas_ms_v1.8.0-dev_mapa_fontes_camadas.csv` relação atual entre camadas e fontes
+- `docs/MATRIZ_LICENCAS_E_REDISTRIBUICAO.csv` matriz de licenças e distribuição
+- `SHA256SUMS.txt` hashes da distribuição GitHub
+
+## Privacidade e precisão pública
+
+As localidades pontuais indígenas e quilombolas incorporadas ao pacote usam a generalização pública definida pelo projeto. Limites territoriais legais oficiais não são deformados por generalização.
+
+A existência de uma fonte pública não equivale a validação de campo, confirmação institucional ou participação comunitária. Consulte sempre os campos de evidência, validação e limites da camada.
+
+## Céu noturno
+
+O Atlas integra referências NASA Black Marble, World Atlas de Falchi et al. e VIIRS para orientação territorial. Radiância orbital, skyglow modelado e classe de Bortle não são equivalentes. Essas camadas não constituem certificação de céu escuro.
+
+
+## Aplicativo instalável · PWA
+
+Esta distribuição também funciona como **Progressive Web App**. Em navegadores compatíveis, JOAJU MS pode ser instalado no celular, tablet ou computador e aberto em modo `standalone`, sem uma aplicação nativa separada.
+
+O manifest está em `manifest.webmanifest`, o Service Worker em `service-worker.js` e os ícones em `assets/icons/`. A interface oferece a ação **Instalar JOAJU no dispositivo**.
+
+A opção **Preparar núcleo offline** baixa aproximadamente 50 MB com a malha R5, a Ficha Territorial, os oito índices e as quatro análises derivadas. Esse pacote offline não inclui mapas-base, serviços oficiais remotos nem todas as 153 camadas. As demais camadas continuam sendo carregadas sob demanda e podem depender de conexão.
+
+Em iPhone e iPad, a instalação é feita pelo Safari com **Compartilhar → Adicionar à Tela de Início**.
+
+## GitHub Pages
+
+A aplicação pode ser publicada a partir da raiz da branch `main` com **Deploy from a branch**.
+
+Não é necessário publicar `node_modules`, backups, patches históricos, resultados duplicados ou variantes de distribuição.
+
+## Citação
+
+Busón Buesa, C., Zamberlan, C. O., & Centenaro, M. (2026). *Atlas Interativo do Patrimônio e dos Itinerários Culturais de Mato Grosso do Sul* [Software e conjunto de dados]. Zenodo. DOI 10.5281/zenodo.21829982.
+
+Consulte também `CITATION.cff` e `CITACAO_RECOMENDADA.txt`.
 
 ## Autores
 
-- Carlos Busón Buesa, Universidade Federal de Mato Grosso do Sul
-- Carlos Otávio Zamberlan, Universidade Estadual de Mato Grosso do Sul
-- Moisés Centenaro, Universidade Estadual de Mato Grosso do Sul
+Carlos Busón Buesa · UFMS · ORCID 0000-0002-1446-2252
 
-## Escopo
+Carlos Otávio Zamberlan · UEMS · ORCID 0000-0001-9975-9612
 
-O atlas integra patrimônio, geodiversidade, comunidades, infraestrutura, turismo, paisagem e hipóteses exploratórias de itinerários culturais em Mato Grosso do Sul. As rotas e áreas derivadas são objetos científicos revisáveis. Não constituem percursos oficiais, produtos turísticos, autorizações de acesso nem propostas aprovadas pelo PRICI.
+Moisés Centenaro · UEMS · ORCID 0000-0003-2299-9102
 
-## Arquitetura do repositório
+## Licenças
 
-- `index.html` é a edição modular para GitHub Pages
-- `config.js` reúne a configuração pública sem segredos
-- `dados/` contém 24 conjuntos locais editáveis, um arquivo JavaScript por camada
-- `dados/manifesto.json` registra arquivo e número de elementos de cada conjunto local
-- `vendor/` contém a dependência local usada para exportação ZIP
-- `Atlas_Interativo_MS_v1.7.0_Android_Arquivo_Unico.html` é a edição autônoma com dados incorporados
-- `.github/workflows/pages.yml` publica automaticamente cada push em `main`
+Código próprio sob MIT. Textos, documentação, metodologia e produtos autorais sob CC BY 4.0. Dados e componentes de terceiros mantêm os termos de suas fontes.
 
-## Indicador geocientífico vigente
-
-A versão 1.7.0 utiliza somente o Índice de Potencial Geocientífico Territorial documentado
-
-`IPG100 = 100 × (0,40 Dn + 0,35 Qn + 0,25 Cn)`
-
-O índice mede evidência geocientífica documentada, diversidade temática, qualidade ou riqueza ajustada e continuidade territorial. Não mede viabilidade de geoparque, governança, consentimento, acesso, infraestrutura, reconhecimento UNESCO ou prioridade pública. Células sem registros são classificadas como sem evidência suficiente e não recebem valor zero.
-
-## Rio Verde de Mato Grosso
-
-A camada `ativacao_geocientifica_extensao` permanece desativada por padrão. Registra documentação de educação e extensão associada a Rio Verde e não altera o IPG. Sua presença não representa um inventário estadual completo nem uma comparação definitiva entre municípios.
-
-## Rastreabilidade bibliográfica por camada
-
-- `atlas_ms_v1.7.0_referencias_apa7.csv` vincula cada uma das 191 referências a um ou mais `camada_id` válidos
-- `atlas_ms_v1.7.0_matriz_referencias_camadas.csv` normaliza a relação muitos para muitos, com uma linha por vínculo
-- `AUDITORIA_VINCULOS_REFERENCIAS_CAMADAS_V1.7.0.csv` registra o valor anterior, o vínculo aplicado, o método e a confiança
-- vínculos de bibliotecas e mapas-base são marcados como componentes transversais ou contextuais, sem serem apresentados como fontes temáticas diretas
-
-## Integridade e citação
-
-- `MANIFESTO_SHA256.txt` permite verificar os arquivos distribuídos
-- `CITATION.cff` e `.zenodo.json` contêm os metadados de citação
-- `LICENSE` apresenta o licenciamento misto reconhecível pelo GitHub
-- `CHANGELOG.md` registra a evolução metodológica e técnica
-
-## Publicação
-
-Extraia o ZIP na raiz do repositório, preserve arquivos ocultos e selecione GitHub Actions em `Settings` e `Pages`. Consulte `PUBLICACAO_GITHUB.md`.
-
-## Licenciamento
-
-Código próprio sob MIT. Documentação, metodologia e produtos autorais sob CC BY 4.0. Dados derivados do OpenStreetMap permanecem sob ODbL 1.0. Dados de terceiros mantêm seus termos originais. Consulte `LICENSE`, `NOTAS_DE_LICENCAS.md` e `THIRD_PARTY_NOTICES.md`.
-
-- PEIC cultural em malha estável de 250 km², calculado sem utilizar as rotas propostas.
-- camada combinada IATI em 250 km², com 70% de estrutura cultural e 30% de convergência cartográfica das rotas.
-- base de convergência de rotas pré-calculada para acelerar o aplicativo.
-
-## Correção funcional PEIC e IATI
-
-A edição atual restaura o núcleo geométrico compartilhado pelos cálculos PEIC e IATI. A correção elimina a falha `pointInRing is not defined` observada na edição anterior. As fórmulas, os pesos e a malha nominal de 250 km² permanecem inalterados. O diagnóstico interno agora verifica automaticamente essas funções antes do uso.
+Consulte `THIRD_PARTY_NOTICES.md` e `docs/MATRIZ_LICENCAS_E_REDISTRIBUICAO.csv`.

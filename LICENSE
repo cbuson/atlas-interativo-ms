@@ -1,15 +1,14 @@
-LICENCIAMENTO MISTO DO ATLAS INTERATIVO MS v1.7.0
+JOAJU MS — aviso de licenciamento
 
-1. O código original da aplicação é distribuído sob a MIT License.
-   Consulte LICENSE-CODE-MIT.txt.
+O pacote combina código, conteúdo autoral e dados de terceiros sob regimes distintos.
 
-2. A documentação, a metodologia, os textos e os produtos autorais próprios
-   são distribuídos sob Creative Commons Attribution 4.0 International.
-   Consulte LICENSE-CONTENT-CC-BY-4.0.txt.
+1. Código próprio do projeto
+   Licença MIT. Texto integral em LICENSE-CODE-MIT.txt.
 
-3. Dados derivados do OpenStreetMap permanecem sujeitos à ODbL 1.0 e à
-   atribuição obrigatória aos colaboradores do OpenStreetMap.
+2. Textos, documentação, metodologia e demais conteúdos autorais identificados como produção do projeto
+   Creative Commons Attribution 4.0 International. Termos em LICENSE-CONTENT-CC-BY-4.0.txt.
 
-4. Dados, serviços e materiais de terceiros não são relicenciados pelos
-   autores. Mantêm as licenças, termos de uso e restrições das fontes originais.
-   Consulte THIRD_PARTY_NOTICES.md e NOTAS_DE_LICENCAS.md.
+3. Dados, bibliotecas, serviços, mapas, imagens e outros componentes de terceiros
+   Mantêm as licenças e condições das respectivas fontes. A inclusão, referência ou visualização no Atlas não os relicencia. Consulte THIRD_PARTY_NOTICES.md e docs/MATRIZ_LICENCAS_E_REDISTRIBUICAO.csv.
+
+Em caso de dúvida sobre um conjunto específico, prevalecem os termos da fonte primária e a redistribuição deve ser verificada antes de reutilização externa.

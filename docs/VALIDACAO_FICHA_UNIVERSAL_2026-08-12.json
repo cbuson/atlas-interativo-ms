@@ -1,0 +1,27 @@
+{
+  "project": "JOAJU MS",
+  "feature": "Ficha Universal 1.0",
+  "date": "2026-08-12",
+  "status": "PASS",
+  "runtime_layers": 153,
+  "layer_sheet_rule": "Todas as 153 camadas runtime usam o mesmo template de cartão com ação Ficha da camada.",
+  "vector_feature_rule": "Elementos vetoriais renderizados por makeLeaflet usam showFeature e recebem ficha própria.",
+  "territorial_rule": "Associação local à malha R5 de 1554 células, sem captura remota e sem recálculo de índices.",
+  "multi_hex_rule": "Linhas e polígonos preservam todos os hexágonos intersectados. Não é escolhido um hexágono principal arbitrário.",
+  "sample_spatial_test": {
+    "school_points_tested": 5,
+    "school_points_with_exactly_one_hex": 5,
+    "sample_hex": "HX-20-30",
+    "route_tested": "ROTA-PROP-001",
+    "route_intersected_hexagons": [
+      "HX--15-41",
+      "HX--14-41"
+    ]
+  },
+  "release_audit": {
+    "passes": 178,
+    "warnings": 0,
+    "failures": 0
+  },
+  "snapshot_validation": "PASS"
+}

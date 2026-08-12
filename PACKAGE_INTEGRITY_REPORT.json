@@ -1,0 +1,195 @@
+{
+  "project": "JOAJU MS",
+  "version": "v1.8.0-dev",
+  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa",
+  "generated_at": "2026-08-12",
+  "status": "PASS",
+  "snapshot_validation": {
+    "status": "PASS",
+    "grid_features": 1554,
+    "indices": {
+      "IPG": {
+        "numeric": 57,
+        "null_documented": 1497
+      },
+      "PEIC": {
+        "numeric": 82,
+        "null_documented": 1472
+      },
+      "IATI": {
+        "numeric": 1025,
+        "null_documented": 529
+      },
+      "IAT": {
+        "numeric": 1554,
+        "null_documented": 0
+      },
+      "ISA": {
+        "numeric": 1554,
+        "null_documented": 0
+      },
+      "ICT": {
+        "numeric": 1554,
+        "null_documented": 0
+      },
+      "IPAE": {
+        "numeric": 1554,
+        "null_documented": 0
+      },
+      "ICD": {
+        "numeric": 1554,
+        "null_documented": 0
+      }
+    },
+    "geometry_identity": "PASS",
+    "hex_id_identity": "PASS",
+    "ficha_territorial": "PASS",
+    "snapshot_sha256": "PASS"
+  },
+  "release_audit": {
+    "passes": 197,
+    "warnings": 0,
+    "failures": 0,
+    "node_check": "PASS",
+    "http_smoke_test": "PASS"
+  },
+  "runtime": {
+    "layers": 153,
+    "data_manifest_entries": 90,
+    "raster_manifest_entries": 9,
+    "derived_products_materialized": 4
+  },
+  "github_distribution": {
+    "files_above_95mb": 0,
+    "omitted_large_snapshots": [
+      {
+        "id": "rede_hidrica",
+        "original_audit_size_mb": 216.56,
+        "published_behavior": "captura oficial sob demanda"
+      },
+      {
+        "id": "mapa_geomorfologico_ibge",
+        "original_audit_size_mb": 198.21,
+        "published_behavior": "referência e download oficial"
+      }
+    ],
+    "generated_assets_not_versioned": [
+      "JOAJU_MS_SINGLEFILE_*.html",
+      "resultados_indices/",
+      "resultados_analises/",
+      "KML/KMZ/GeoJSON integrais gerados"
+    ]
+  },
+  "cleanup": {
+    "first_stage_removed_files": 40,
+    "second_stage_removed_files": 29,
+    "obsolete_runtime_bundle_removed": "dados/precalculados/snapshot_indices_ficha.js",
+    "historical_partial_runtime_removed": true
+  },
+  "largest_files": [
+    {
+      "path": "dados/materializados/2026_08_10/mapa_solos_ms.js",
+      "bytes": 53764902,
+      "mb": 51.27
+    },
+    {
+      "path": "dados/materializados/2026_08_10/mapa_vegetacao_original_radam.js",
+      "bytes": 52973178,
+      "mb": 50.52
+    },
+    {
+      "path": "dados/materializados/2026_08_10/municipios_limites.js",
+      "bytes": 31994510,
+      "mb": 30.51
+    },
+    {
+      "path": "dados/materializados/2026_08_10/skyglow_falchi_2016.kmz",
+      "bytes": 26001739,
+      "mb": 24.8
+    },
+    {
+      "path": "dados/materializados/2026_08_10/estradas_vicinais.js",
+      "bytes": 20596542,
+      "mb": 19.64
+    },
+    {
+      "path": "dados/materializados/2026_08_10/mapa_hidrogeologico_ms.js",
+      "bytes": 17096345,
+      "mb": 16.3
+    },
+    {
+      "path": "dados/precalculados/ficha_territorial_250km2.geojson",
+      "bytes": 8109416,
+      "mb": 7.73
+    },
+    {
+      "path": "dados/materializados/2026_08_10/mapa_geologico_ms.js",
+      "bytes": 7828387,
+      "mb": 7.47
+    },
+    {
+      "path": "dados/precalculados/ipg_250km2.geojson",
+      "bytes": 6727333,
+      "mb": 6.42
+    },
+    {
+      "path": "dados/materializados/2026_08_10/concessoes_rodoviarias.js",
+      "bytes": 6538051,
+      "mb": 6.24
+    },
+    {
+      "path": "dados/materializados/2026_08_10/risco_fogo_observado_ms.js",
+      "bytes": 5845572,
+      "mb": 5.57
+    },
+    {
+      "path": "dados/materializados/2026_08_10/assentamentos_rurais_incra.js",
+      "bytes": 5057959,
+      "mb": 4.82
+    },
+    {
+      "path": "dados/precalculados/icd_250km2.geojson",
+      "bytes": 4932371,
+      "mb": 4.7
+    },
+    {
+      "path": "dados/precalculados/ipae_250km2.geojson",
+      "bytes": 4880523,
+      "mb": 4.65
+    },
+    {
+      "path": "dados/precalculados/iati_250km2.geojson",
+      "bytes": 4805620,
+      "mb": 4.58
+    }
+  ],
+  "universal_feature_sheet": {
+    "version": "1.0",
+    "status": "PASS",
+    "layer_sheets": 153,
+    "vector_feature_handler": "showFeature",
+    "territorial_resolver": "resolveFeatureHexContext",
+    "grid_features": 1554,
+    "network_on_feature_click": false,
+    "multi_hex_without_arbitrary_primary": true,
+    "validation": "docs/VALIDACAO_FICHA_UNIVERSAL_2026-08-12.json"
+  },
+  "pwa": {
+    "status": "PASS",
+    "version": "1.0",
+    "installable": true,
+    "standalone": true,
+    "manifest": "manifest.webmanifest",
+    "service_worker": "service-worker.js",
+    "icons": [
+      "assets/icons/joaju-192.png",
+      "assets/icons/joaju-512.png",
+      "assets/icons/joaju-maskable-512.png",
+      "assets/icons/apple-touch-icon.png"
+    ],
+    "offline_pack_optional": true,
+    "offline_pack_estimated_mb": 50,
+    "offline_pack_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
+    "remote_layers_offline": false
+  }
+}

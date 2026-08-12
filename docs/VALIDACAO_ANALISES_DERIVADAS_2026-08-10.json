@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "corte_base_joaju": "2026-08-10",
+  "materializado_em": "2026-08-12T03:44:07.491Z",
+  "fontes_base": {
+    "rotas": 32,
+    "unidades_conservacao": 8,
+    "cavernas_canie": 341
+  },
+  "produtos": {
+    "acessibilidade_rodoviaria_estimada_rotas_base_externa": {
+      "registros": 37,
+      "rotas": 9,
+      "expectedGeometry": "LineString",
+      "fonte_externa": "OSRM + OpenStreetMap"
+    },
+    "interacoes_rotas_unidades_conservacao": {
+      "registros": 8,
+      "expectedGeometry": "Point"
+    },
+    "cavidades_proximas_rotas_estudo": {
+      "registros": 303,
+      "limiar_km": 50,
+      "expectedGeometry": "Point"
+    },
+    "cavidades_em_unidades_conservacao": {
+      "registros": 63,
+      "expectedGeometry": "Point"
+    }
+  },
+  "observacoes": [
+    "As três análises CNUC/CANIE usam somente snapshots locais do corte 10/08/2026.",
+    "A acessibilidade rodoviária usa as nove rotas priorizadas do corte JOAJU e a rede disponibilizada pelo endpoint OSRM na data de materialização.",
+    "Nenhum resultado implica autorização de acesso, validação turística, segurança da via, plano de manejo ou validação de campo."
+  ]
+}

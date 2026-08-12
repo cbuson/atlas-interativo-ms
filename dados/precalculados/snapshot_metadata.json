@@ -1,0 +1,62 @@
+{
+  "projeto": "JOAJU MS",
+  "data_corte": "2026-08-10",
+  "versao_metodo": "1.8.0",
+  "status": "fechado",
+  "n_hexagonos": 1554,
+  "grid_revision": "IBGE-MS-MMD2025-FULLCOVER-CLIP-20260810-R5",
+  "indices": [
+    "IPG",
+    "PEIC",
+    "IATI",
+    "IAT",
+    "ISA",
+    "ICT",
+    "IPAE",
+    "ICD"
+  ],
+  "formulas": {
+    "IPG": "40% diversidade geocientífica + 35% riqueza + 25% continuidade territorial",
+    "PEIC": "45% diversidade cultural + 25% equilíbrio + 20% riqueza cultural + 10% continuidade territorial",
+    "IATI": "70% PEIC + 30% convergência de rotas",
+    "IAT": "30% rede pavimentada + 20% rede vicinal + 25% proximidade à rede pavimentada + 15% proximidade a núcleo urbano + 10% multimodalidade",
+    "ISA": "25% unidades de conservação + 25% zonas de amortecimento + 25% corredores ecológicos + 25% áreas de uso restrito",
+    "ICT": "50% hospedagem formal + 50% serviços Cadastur",
+    "IPAE": "25% escolas + 25% museus e memória + 25% ensino superior + 25% bibliotecas e arquivos",
+    "ICD": "20% completude + 20% atualidade + 20% adequação posicional + 20% completude temática + 20% rastreabilidade"
+  },
+  "arquivos": [
+    "malha_territorial_250km2.geojson",
+    "ipg_250km2.geojson",
+    "peic_250km2.geojson",
+    "iati_250km2.geojson",
+    "iat_250km2.geojson",
+    "isa_250km2.geojson",
+    "ict_250km2.geojson",
+    "ipae_250km2.geojson",
+    "icd_250km2.geojson",
+    "ficha_territorial_250km2.geojson"
+  ],
+  "sha256": {
+    "malha_territorial_250km2.geojson": "2cd1504c4e2202105aa824c4c4b4c0769ade6b2bd907738e444d561023ccef3c",
+    "ipg_250km2.geojson": "f130293e8bb7ad560d513d3e7fab75415929995e5d37442b0eb9e116bcb01947",
+    "peic_250km2.geojson": "217f799f1ec6c30d313be30c1eb8eaa9486a4475758917aceac60c2a351ae6eb",
+    "iati_250km2.geojson": "92ab7464ce8b98326967b048de27614e6e93c493e4c49787556caf55e72f754e",
+    "iat_250km2.geojson": "581022e3cfd9045c450f162251fe6a902e8b7de36d94291b1c153b81e0e34699",
+    "isa_250km2.geojson": "0ee4353821c39c407b621630994a87cee674c5162744811f5d7ee52e407b0b21",
+    "ict_250km2.geojson": "dda740261170ffae8f35cd1e7ac99975fb282620cc33366f3c839b8a06bfe97f",
+    "ipae_250km2.geojson": "63820e45011c7b26cd6d40b7678e99fc8b6dd16d36de448a273ead5cbc07682d",
+    "icd_250km2.geojson": "b450e728258f351a8c48ed06aae427a2033a591adcf569953f8b26a81a6877ad",
+    "ficha_territorial_250km2.geojson": "de1701370b418889bfe2b14a30c2f88de5c286133487058a2291daa1b67b1689"
+  },
+  "crosswalk_municipal": {
+    "arquivo": "hex_municipios_crosswalk_250km2.json",
+    "metodo": "HEX-MUN-R5-TURF-01",
+    "n_hexagonos": 1554,
+    "n_municipios": 79
+  },
+  "regra_publica": "O Atlas lê malha, ficha e índices precalculados. Nenhum cálculo territorial pesado é iniciado ao ativar uma camada.",
+  "regra_nulos": "Null em IPG, PEIC ou IATI significa ausência de resultado e nunca é convertido em zero.",
+  "regra_atualizacao": "Novos cálculos exigem ação avançada explícita e não substituem automaticamente o corte publicado.",
+  "fechado_em": "2026-08-12T03:28:59.149Z"
+}

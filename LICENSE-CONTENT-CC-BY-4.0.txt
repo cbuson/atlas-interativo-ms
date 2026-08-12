@@ -1,1 +1,9 @@
-Conteúdos autorais e produtos analíticos do Atlas sob CC BY 4.0. As fontes primárias conservam suas licenças, atribuições e restrições próprias.
+Creative Commons Attribution 4.0 International · CC BY 4.0
+
+Os textos, a documentação, a metodologia e os produtos autorais identificados pelo projeto são disponibilizados sob CC BY 4.0. É permitido compartilhar e adaptar o material para qualquer finalidade, desde que seja fornecida atribuição apropriada, seja indicada a licença e sejam assinaladas as alterações realizadas.
+
+A licença não altera os direitos, licenças ou condições aplicáveis a dados e componentes de terceiros.
+
+Identificador da licença · CC BY 4.0
+Página oficial · https://creativecommons.org/licenses/by/4.0/
+Texto jurídico · https://creativecommons.org/licenses/by/4.0/legalcode

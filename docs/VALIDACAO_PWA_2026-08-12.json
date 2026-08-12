@@ -1,0 +1,26 @@
+{
+  "project": "JOAJU MS",
+  "date": "2026-08-12",
+  "component": "PWA 1.0",
+  "status": "PASS",
+  "checks": {
+    "manifest_present": true,
+    "manifest_name_short_name_start_url_display": true,
+    "icon_192_present": true,
+    "icon_512_present": true,
+    "maskable_icon_present": true,
+    "apple_touch_icon_present": true,
+    "service_worker_present": true,
+    "service_worker_registered": true,
+    "install_ui_present": true,
+    "ios_install_guidance_present": true,
+    "viewport_fit_cover": true,
+    "standalone_safe_area_css": true,
+    "offline_pack_explicit_not_automatic": true
+  },
+  "offline_pack": {
+    "estimated_mb": 50,
+    "includes": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
+    "does_not_include": "mapas-base, tiles, fontes remotas e todas as camadas do catálogo"
+  }
+}

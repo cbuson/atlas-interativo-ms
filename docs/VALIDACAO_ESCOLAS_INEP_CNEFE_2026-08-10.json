@@ -1,0 +1,81 @@
+{
+  "project": "JOAJU MS",
+  "cut": "2026-08-10",
+  "layer": "escolas",
+  "method": "INEP 2025 como universo escolar e atributos. Geometria IBGE CNEFE 2022 associada por código municipal, normalização nominal auditável, tratamento de abreviações e truncamentos e endereço somente quando realmente disponível. Nenhuma escola sem correspondência é geocodificada ou deslocada para sede municipal.",
+  "inep_total": 1965,
+  "matched": 885,
+  "unmatched": 1080,
+  "match_coverage_pct": 45.04,
+  "mean_match_confidence_pct": 80.51,
+  "minimum_required_pct": 80,
+  "cnefe_education_points": 2648,
+  "inep_csv_encoding": "latin1",
+  "address_signal_pairs": 7103,
+  "accepted_by_tier": {
+    "catalogo_cep_numero": 0,
+    "catalogo_endereco_forte": 136,
+    "catalogo_nome_endereco": 204,
+    "exact": 301,
+    "truncated": 37,
+    "strong_name": 38,
+    "name_address": 0
+  },
+  "cnefe_sources": [
+    {
+      "arquivo": "capturas_fontes_2026_08_10/camadas/cnefe_ms_2022/local_0/50_MS.csv",
+      "sha256": "93ef5d1ab994502a1c70e4e3dcaf2118cd724b53f34101247593b7edb7a1f585",
+      "registros_ensino": 2648
+    }
+  ],
+  "cnefe_raw_points": 2648,
+  "cnefe_deduplicated_points": 2648,
+  "bridge_inep_2022": {
+    "used": true,
+    "inep_2022_total": 1920,
+    "inep_2022_cnefe_matched": 850,
+    "inep_2022_cnefe_coverage_pct": 44.27,
+    "added_to_2025": 175,
+    "source_file": "capturas_fontes_2026_08_10/camadas/escolas_inep_censo_escolar_2022.zip",
+    "source_sha256": "450d6f60d3447a8ca926b58d64eb5a0c4da823da07f045e129c3c8f154253a39",
+    "csv_entry": "Microdados do Censo Escolar da Educa��o B�sica 2022/dados/microdados_ed_basica_2022.csv"
+  },
+  "catalogo_inep": {
+    "file": "../Users/cbuso/Downloads/Análise - Tabela da lista das escolas - Detalhado.csv",
+    "sha256": "2823c0e55ca7519da4faa29f03cf25174433a30b56487d2f9c6536af569586d6",
+    "headers": [
+      "Restrição de Atendimento",
+      "Escola",
+      "Código INEP",
+      "UF",
+      "Município",
+      "Localização",
+      "Localidade Diferenciada",
+      "Categoria Administrativa",
+      "Endereço",
+      "Telefone",
+      "Dependência Administrativa",
+      "Categoria Escola Privada",
+      "Conveniada Poder Público",
+      "Regulamentação pelo Conselho de Educação",
+      "Porte da Escola",
+      "Etapas e Modalidade de Ensino Oferecidas",
+      "Outras Ofertas Educacionais",
+      "Latitude",
+      "Longitude"
+    ],
+    "total_rows": 1926,
+    "ms_rows": 1926,
+    "with_address": 1926,
+    "encoding": "utf8",
+    "matched_by_code": 1924,
+    "matched_by_unique_name": 4,
+    "without_catalog_match": 37,
+    "address_enriched": 1928,
+    "total_inep": 1965,
+    "source_page": "https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/inep-data/catalogo-de-escolas"
+  },
+  "status": "FAIL_COVERAGE",
+  "diagnostics": "docs/ESCOLAS_INEP_CNEFE_PENDENCIAS_2026-08-10.csv",
+  "generated_at": "2026-08-10T23:18:34.358Z"
+}

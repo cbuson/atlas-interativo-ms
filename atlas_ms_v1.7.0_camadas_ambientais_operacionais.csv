@@ -1,6 +1,0 @@
-﻿id,classe,fonte,captura,inclui_indice_estavel
-unidades_conservacao,fonte oficial dinâmica,CNUC/MMA,"WFS ICMBio/INDE, contingência PAMGIA, importação manual",não
-cavernas_canie,fonte oficial dinâmica,CANIE/CECAV/ICMBio,"WFS ICMBio/INDE, contingência Infra S.A., importação manual",não
-interacoes_rotas_unidades_conservacao,derivada na sessão,rotas do estudo + CNUC,cruzamento geométrico exploratório,não
-cavidades_proximas_rotas_estudo,derivada na sessão,CANIE + rotas do estudo,"distância mínima, limiar 50 km",não
-cavidades_em_unidades_conservacao,derivada na sessão,CANIE + CNUC,ponto em polígono,não

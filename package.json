@@ -1,0 +1,24 @@
+{
+  "name": "joaju-ms-materializador",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "playwright": "1.54.2"
+  },
+  "scripts": {
+    "serve": "node scripts/servidor_local.mjs",
+    "validar-precalculados": "node scripts/validar_precalculados.mjs",
+    "audit-release": "node scripts/auditar_release.mjs",
+    "audit-final": "STRICT_CUT=1 node scripts/auditar_release.mjs",
+    "gerar-catalogos": "node scripts/gerar_catalogos.mjs",
+    "gerar-singlefile": "node scripts/gerar_variantes_singlefile.mjs",
+    "materializar-camadas": "node scripts/materializar_camadas_ms.mjs",
+    "preparar-snapshot": "node scripts/preparar_snapshot_ms.mjs",
+    "fechar-snapshot": "node scripts/fechar_snapshot_precalculado.mjs",
+    "materializar-indices": "node scripts/materializar_indices.mjs",
+    "materializar-analises": "node scripts/materializar_analises_derivadas_2026_08_10.mjs",
+    "materializar-escolas": "node scripts/materializar_escolas_inep_2025.mjs",
+    "audit-snapshots-full": "node scripts/auditar_snapshots.mjs",
+    "extrair-cobertura-movel-ms": "node scripts/extrair_cobertura_movel_ms.mjs"
+  }
+}

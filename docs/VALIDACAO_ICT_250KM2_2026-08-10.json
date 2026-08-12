@@ -1,0 +1,29 @@
+{
+  "project": "JOAJU MS",
+  "cut": "2026-08-10",
+  "index": "ICT",
+  "status": "PASS",
+  "hexagons": 1554,
+  "ict_min": 0,
+  "ict_mean": 40.72,
+  "ict_max": 100,
+  "hexagons_positive": 1479,
+  "hospedagem_municipios": 42,
+  "servicos_municipios": 59,
+  "raw_rows_hospedagem": 16613,
+  "raw_rows_servicos": 98725,
+  "periodos": {
+    "hospedagem": "arquivo oficial local",
+    "agencia": "arquivo oficial local",
+    "guia": "arquivo oficial local",
+    "transportadora": "arquivo oficial local"
+  },
+  "formula": "100 × (0,50 hospedagem formal + 0,50 serviços Cadastur)",
+  "servicos_operacionalizados": "Agências de Turismo + Guias de Turismo + Transportadoras Turísticas",
+  "escala": "contexto municipal ponderado pela interseção município–hexágono",
+  "positional_adequacy_pct": 50,
+  "precomputed": "dados/precalculados/ict_250km2.geojson",
+  "sha256": "dda740261170ffae8f35cd1e7ac99975fb282620cc33366f3c839b8a06bfe97f",
+  "generated_at": "2026-08-12T03:04:36.814Z",
+  "note": "Materialização isolada do ICT. Restaurantes, cafeterias e bares permanecem camada contextual separada e não entram na fórmula congelada do ICT."
+}

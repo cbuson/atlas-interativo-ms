@@ -1,0 +1,77 @@
+{
+  "project": "JOAJU MS",
+  "cut": "2026-08-10",
+  "index": "ISA",
+  "status": "PASS",
+  "hexagons": 1554,
+  "isa_min": 0,
+  "isa_max": 71.18,
+  "isa_mean": 12.89,
+  "hexagons_with_isa_gt_0": 1035,
+  "formula": "100 × (0,25 UC + 0,25 ZA + 0,25 corredores + 0,25 uso restrito)",
+  "denominator_rule": "Área efetiva da geometria do hexágono já recortada ao limite de Mato Grosso do Sul.",
+  "source_service": "https://www.pinms.ms.gov.br/arcgis/rest/services/IMASUL/SiriemaGeo_Sisla/MapServer",
+  "source_capture_manifest": "capturas_fontes_2026_08_10/pinms_imasul_siriemageo_sisla_full/manifest_siriemageo_sisla.json",
+  "source_capture_manifest_sha256": "02391ee343b9b094b592fe54d323404fd2090f019c6064f035d5a5c28136fd2f",
+  "source_capture_finished_at": "2026-08-10T23:53:12.285Z",
+  "source_layers": [
+    {
+      "atlas_id": "isa_uc_ms",
+      "siriema_layer_id": 3,
+      "siriema_layer_name": "Mosaico das UCs em MS",
+      "features": 132,
+      "source_file": "capturas_fontes_2026_08_10/pinms_imasul_siriemageo_sisla_full/camadas/layer_003_Mosaico_das_UCs_em_MS.geojson",
+      "source_sha256": "7a54584749cd84f260da55130c15bfa5d60681487461847a40ba538880b41faf",
+      "materialized_geojson": "dados/materializados/2026_08_10/isa_uc_ms.geojson",
+      "materialized_js": "dados/materializados/2026_08_10/isa_uc_ms.js"
+    },
+    {
+      "atlas_id": "isa_za_ms",
+      "siriema_layer_id": 4,
+      "siriema_layer_name": "Zonas de Amortecimento das UCs - MS",
+      "features": 15,
+      "source_file": "capturas_fontes_2026_08_10/pinms_imasul_siriemageo_sisla_full/camadas/layer_004_Zonas_de_Amortecimento_das_UCs_-_MS.geojson",
+      "source_sha256": "9f5230fc601bd5f5d3484dc63aab03ea29567e9c041c84e57453e7ac2608a3c8",
+      "materialized_geojson": "dados/materializados/2026_08_10/isa_za_ms.geojson",
+      "materialized_js": "dados/materializados/2026_08_10/isa_za_ms.js"
+    },
+    {
+      "atlas_id": "isa_corredores_ecologicos",
+      "siriema_layer_id": 6,
+      "siriema_layer_name": "Corredores Ecológicos",
+      "features": 4,
+      "source_file": "capturas_fontes_2026_08_10/pinms_imasul_siriemageo_sisla_full/camadas/layer_006_Corredores_Ecologicos.geojson",
+      "source_sha256": "7a4afec449c6fbdb4ad9a6dac0efc61dc226533433f225b7a737270e086060a6",
+      "materialized_geojson": "dados/materializados/2026_08_10/isa_corredores_ecologicos.geojson",
+      "materialized_js": "dados/materializados/2026_08_10/isa_corredores_ecologicos.js"
+    },
+    {
+      "atlas_id": "isa_uso_restrito",
+      "siriema_layer_id": 49,
+      "siriema_layer_name": "Áreas de Uso Restrito - Decreto Normativo 15.661 de 04 de maio de 2021",
+      "features": 4,
+      "source_file": "capturas_fontes_2026_08_10/pinms_imasul_siriemageo_sisla_full/camadas/layer_049_Areas_de_Uso_Restrito_-_Decreto_Normativo_15.661_de_04_de_maio_de_2021.geojson",
+      "source_sha256": "2433178478edc11f38b0d18d3a2a2aa487fe61d3923011ab1f2c6ca0a38f353f",
+      "materialized_geojson": "dados/materializados/2026_08_10/isa_uso_restrito.geojson",
+      "materialized_js": "dados/materializados/2026_08_10/isa_uso_restrito.js"
+    },
+    {
+      "atlas_id": "isa_aur_pantanal",
+      "siriema_layer_id": 47,
+      "siriema_layer_name": "Áreas Uso Restrito Pantanal",
+      "features": 2,
+      "source_file": "capturas_fontes_2026_08_10/pinms_imasul_siriemageo_sisla_full/camadas/layer_047_Areas_Uso_Restrito_Pantanal.geojson",
+      "source_sha256": "0de3606f5cde06f600e9721ec285d31b12ffa84e170a47ee20b8ead390e71667",
+      "materialized_geojson": "dados/materializados/2026_08_10/isa_aur_pantanal.geojson",
+      "materialized_js": "dados/materializados/2026_08_10/isa_aur_pantanal.js"
+    }
+  ],
+  "restricted_use_union": [
+    "Siriema layer 49",
+    "Siriema layer 47"
+  ],
+  "precomputed": "dados/precalculados/isa_250km2.geojson",
+  "precomputed_sha256": "0ee4353821c39c407b621630994a87cee674c5162744811f5d7ee52e407b0b21",
+  "generated_at": "2026-08-11T00:24:32.927Z",
+  "note": "Materialização isolada do ISA. Não declara o snapshot geral dos oito índices como fechado."
+}

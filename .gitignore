@@ -1,0 +1,18 @@
+node_modules/
+temp/
+patch_backups/
+capturas_fontes_*/
+resultados_indices/
+resultados_analises/
+JOAJU_MS_SINGLEFILE_*.html
+JOAJU_GITHUB_*.zip
+PATCH_*.zip
+PATCH_*.mjs
+Atlas_Interativo_MS_Completo_v1.8.0-dev.kml
+Atlas_Interativo_MS_Completo_v1.8.0-dev.kmz
+atlas_ms_v1.8.0-dev_nucleo_local.geojson
+atlas_ms_v1.8.0-dev_nucleo_local.gpkg
+
+# Snapshots integrais que excedem o limite normal de arquivo do GitHub
+dados/materializados/2026_08_10/rede_hidrica.js
+dados/materializados/2026_08_10/mapa_geomorfologico_ibge.js

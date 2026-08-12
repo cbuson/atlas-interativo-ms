@@ -1,0 +1,105 @@
+{
+  "project": "JOAJU MS",
+  "cut": "2026-08-10",
+  "index": "IAT",
+  "status": "PASS",
+  "hexagons": 1554,
+  "formula": "IAT100 = 100 × (0,30 RPn + 0,20 EVn + 0,25 DPn + 0,15 NUn + 0,10 MMn)",
+  "components": {
+    "paved_road_network_weight": 0.3,
+    "local_road_network_weight": 0.2,
+    "proximity_to_paved_network_weight": 0.25,
+    "proximity_to_urban_center_weight": 0.15,
+    "rail_air_multimodality_weight": 0.1,
+    "multimodality_internal_weights": {
+      "airports": 0.5,
+      "railways": 0.5
+    }
+  },
+  "sources": [
+    {
+      "id": "iat_rodovias_estaduais_pavimentadas",
+      "label": "Rodovias estaduais pavimentadas/duplicadas",
+      "geom": [
+        "LineString",
+        "MultiLineString"
+      ],
+      "features": 693,
+      "usable": 693,
+      "captured_at": "2026-08-10T13:05:28.580Z",
+      "status": "PASS"
+    },
+    {
+      "id": "rodovias_federais",
+      "label": "Rodovias federais",
+      "geom": [
+        "LineString",
+        "MultiLineString"
+      ],
+      "features": 16,
+      "usable": 16,
+      "captured_at": "2026-08-10T12:30:59.531Z",
+      "status": "PASS"
+    },
+    {
+      "id": "estradas_vicinais",
+      "label": "Estradas vicinais",
+      "geom": [
+        "LineString",
+        "MultiLineString"
+      ],
+      "features": 18857,
+      "usable": 18857,
+      "captured_at": "2026-08-10T12:31:49.605Z",
+      "status": "PASS"
+    },
+    {
+      "id": "ferrovias_operacao",
+      "label": "Ferrovias em operação",
+      "geom": [
+        "LineString",
+        "MultiLineString"
+      ],
+      "features": 98,
+      "usable": 98,
+      "captured_at": "2026-08-10T12:58:43.797Z",
+      "status": "PASS"
+    },
+    {
+      "id": "aeroportos_aerodromos",
+      "label": "Aeroportos e aeródromos",
+      "geom": [
+        "Point"
+      ],
+      "features": 41,
+      "usable": 41,
+      "captured_at": "2026-08-10T12:58:48.275Z",
+      "status": "PASS"
+    },
+    {
+      "id": "municipios_sedes",
+      "label": "Sedes municipais",
+      "geom": [
+        "Point"
+      ],
+      "features": 79,
+      "usable": 79,
+      "captured_at": null,
+      "status": "PASS"
+    }
+  ],
+  "iat_min": 0.25,
+  "iat_mean": 49.72,
+  "iat_max": 97.36,
+  "mean_stability_pct": null,
+  "sensitivity_simulations": 500,
+  "visual_rule": "baixo claro, alto escuro",
+  "visual_patch": {
+    "changed": true,
+    "backup": "docs/BACKUP_index_pre_IAT_VISUAL_2026-08-11.html"
+  },
+  "precomputed": "dados/precalculados/iat_250km2.geojson",
+  "legacy": "resultados_indices_v1_8_0/iat_acessibilidade_territorial_250km2.geojson",
+  "sha256": "581022e3cfd9045c450f162251fe6a902e8b7de36d94291b1c153b81e0e34699",
+  "generated_at": "2026-08-11T14:04:39.978Z"
+}

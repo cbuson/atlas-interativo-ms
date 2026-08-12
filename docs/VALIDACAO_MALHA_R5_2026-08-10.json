@@ -1,0 +1,15 @@
+{
+  "project": "JOAJU MS",
+  "cut": "2026-08-10",
+  "grid_revision": "IBGE-MS-MMD2025-FULLCOVER-CLIP-20260810-R5",
+  "features": 1554,
+  "border_cells": 211,
+  "interior_cells": 1343,
+  "min_percentual_em_ms": 0.01,
+  "max_percentual_em_ms": 100,
+  "unique_hex_ids": 1554,
+  "source_boundary": "IBGE — Malha Municipal Digital 2025",
+  "method": "Grade completa gerada sobre envelope fixo de MS. Toda célula que intersecta o estado é mantida e depois recortada geometricamente no limite oficial. Este método evita simultaneamente sobras fora de MS e lacunas periféricas causadas por seleção apenas pelo centroide.",
+  "output": "dados/malha_itinerarios_snapshot_2026_08_10.js",
+  "status": "PASS"
+}

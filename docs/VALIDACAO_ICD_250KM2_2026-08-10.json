@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "produto": "ICD territorial 250 km²",
+  "corte_dados": "2026-08-10",
+  "hexagons": 1554,
+  "grid_revision": "IBGE-MS-MMD2025-FULLCOVER-CLIP-20260810-R5",
+  "valores_numericos": 1554,
+  "minimo": 72.34,
+  "media": 78.76,
+  "maximo": 98.05,
+  "regra_nulos": "Null em IPG, PEIC ou IATI é tratado como ausência de resultado. Null nunca é convertido em zero.",
+  "dimensoes": [
+    "completude",
+    "atualidade",
+    "adequação posicional",
+    "completude temática",
+    "rastreabilidade"
+  ],
+  "modulos": [
+    "IPG",
+    "PEIC",
+    "IATI",
+    "IAT",
+    "ISA",
+    "ICT",
+    "IPAE"
+  ],
+  "validacoes": [
+    "1554 células",
+    "mesmos hex_id da malha R5",
+    "mesma geometria da malha R5",
+    "valores ICD entre 0 e 100",
+    "null não convertido em zero",
+    "500 simulações de sensibilidade"
+  ],
+  "validado_em": "2026-08-12T03:23:13.727Z"
+}

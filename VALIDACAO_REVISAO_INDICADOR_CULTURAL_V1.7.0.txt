@@ -1,8 +1,0 @@
-VALIDAÇÃO DO INDICADOR CULTURAL E IATI — v1.7.0
-
-- resolução nominal  250 km²
-- PEIC cultural independente das rotas
-- IATI combinado  70% PEIC + 30% convergência de rotas
-- cobertura documental informada separadamente
-- células sem base cultural não sensível não são classificadas como nodos estratégicos
-- núcleo geométrico restaurado e testado

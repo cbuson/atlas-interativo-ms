@@ -1,0 +1,14 @@
+JOAJU MS · Catálogo de Escolas INEP
+
+A exportação oficial do Catálogo de Escolas ainda não foi localizada.
+
+1. Abra https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/inep-data/catalogo-de-escolas
+2. Entre no Catálogo de Escolas.
+3. Filtre Mato Grosso do Sul.
+4. Use a função de exportação do próprio Catálogo e escolha CSV.
+5. Salve o CSV em Downloads.
+6. Execute novamente apenas este comando
+
+node scripts/materializar_escolas_inep_2025.mjs
+
+O script rejeita o arquivo atlas_ms_v1.8.0-dev_catalogo_camadas.csv porque ele é o catálogo de camadas do Atlas e não uma exportação escolar do INEP.

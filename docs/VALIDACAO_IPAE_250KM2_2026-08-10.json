@@ -1,0 +1,18 @@
+{
+  "project": "JOAJU MS",
+  "cut": "2026-08-10",
+  "index": "IPAE",
+  "status": "PASS",
+  "hexagons": 1554,
+  "school_points_counted_across_hexagons": 1761,
+  "ipae_min": 0,
+  "ipae_max": 47.17,
+  "ipae_mean": 19.38,
+  "ipae_coverage_pct": 97.4,
+  "ipae_positional_pct": 84.4,
+  "formula": "25% escolas + 25% museus e memória + 25% ensino superior + 25% bibliotecas e arquivos. Cada componente usa 70% densidade + 30% proximidade.",
+  "precomputed": "dados/precalculados/ipae_250km2.geojson",
+  "sha256": "63820e45011c7b26cd6d40b7678e99fc8b6dd16d36de448a273ead5cbc07682d",
+  "generated_at": "2026-08-10T23:48:24.258Z",
+  "note": "Materialização isolada do IPAE. Não declara o snapshot geral dos oito índices como fechado."
+}

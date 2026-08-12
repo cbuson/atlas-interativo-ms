@@ -1,0 +1,30 @@
+{
+  "project": "JOAJU MS",
+  "cut": "2026-08-10",
+  "index": "PEIC",
+  "status": "PASS",
+  "hexagons": 1554,
+  "dimensions_available": [
+    "patrimonio_material",
+    "patrimonio_imaterial",
+    "festividades",
+    "museus_memoria",
+    "povos_indigenas",
+    "comunidades_quilombolas"
+  ],
+  "dimensions_missing": [],
+  "coverage_documental_pct": 100,
+  "cells_with_peic_value": 82,
+  "cells_without_sufficient_evidence": 1472,
+  "cells_eligible": 82,
+  "structuring_poles": 3,
+  "peic_min": 16.11,
+  "peic_mean": 35.03,
+  "peic_max": 94.47,
+  "formula": "PEIC100 = 100 × (0,45 Dn + 0,25 Sn + 0,20 Qn + 0,10 Cn)",
+  "rule_no_evidence": "null, nunca zero artificial",
+  "precomputed": "dados/precalculados/peic_250km2.geojson",
+  "sha256": "217f799f1ec6c30d313be30c1eb8eaa9486a4475758917aceac60c2a351ae6eb",
+  "generated_at": "2026-08-11T12:44:00.760Z",
+  "note": "Materialização isolada do PEIC sobre a malha territorial mestra de 1554 células. O arquivo precalculado preserva todas as células e usa null onde não há evidência suficiente."
+}

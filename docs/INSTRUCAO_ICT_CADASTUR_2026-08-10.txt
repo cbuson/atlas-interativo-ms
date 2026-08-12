@@ -1,0 +1,16 @@
+JOAJU MS · ICT · arquivos Cadastur ainda necessários · corte 2026-08-10
+
+Baixe os XLSX oficiais e salve-os em Downloads. Não renomeie se não for necessário. Depois execute novamente:
+node scripts\materializar_ict_cadastur_250km2.mjs
+
+Meios de Hospedagem
+https://dados.turismo.gov.br/pt_BR/dataset/meios-de-hospedagem
+
+Agência de Turismo
+https://dados.turismo.gov.br/pt_BR/dataset/agencia-de-turismo
+
+Guia de Turismo
+https://dados.turismo.gov.br/pt_BR/dataset/prestadores-de-servicos-turisticos-guia-turismo_2
+
+Transportadora Turística
+https://dados.turismo.gov.br/pt_BR/dataset/transportadora-turistica

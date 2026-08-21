@@ -592,6 +592,149 @@ body{font-size:15px!important;line-height:1.5}
 <script id="joaju-r8-close-normalizer">
 (function(){function normalize(){document.querySelectorAll('button').forEach(b=>{const label=(b.getAttribute('aria-label')||'').toLowerCase(),id=(b.id||'').toLowerCase();if((label.includes('fechar')||id.includes('close'))&&b.textContent.trim().toLowerCase()==='fechar'){b.textContent='×';b.title=b.title||'Fechar';b.setAttribute('aria-label',b.getAttribute('aria-label')||'Fechar');}})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',normalize);else normalize();new MutationObserver(normalize).observe(document.documentElement,{childList:true,subtree:true});})();
 </script>
+<style id="joaju-mobile-r9-round1">
+:root{--joaju-mobile-dock-h:76px;--joaju-safe-top:env(safe-area-inset-top,0px);--joaju-safe-right:env(safe-area-inset-right,0px);--joaju-safe-bottom:env(safe-area-inset-bottom,0px);--joaju-safe-left:env(safe-area-inset-left,0px)}
+html,body{min-height:100%;min-height:100dvh}html{overflow-x:hidden;overscroll-behavior:none}body{overflow-x:hidden}
+@media(max-width:900px){
+:root{--joaju-mobile-dock-h:78px}
+body{min-height:100dvh!important;padding-left:var(--joaju-safe-left)!important;padding-right:var(--joaju-safe-right)!important;padding-bottom:calc(var(--joaju-mobile-dock-h) + var(--joaju-safe-bottom) + 10px)!important;overscroll-behavior-y:none}
+.atlas-topbar{padding-top:max(7px,var(--joaju-safe-top))!important;padding-left:max(9px,var(--joaju-safe-left))!important;padding-right:max(9px,var(--joaju-safe-right))!important}
+.mobile-dock{left:max(6px,var(--joaju-safe-left))!important;right:max(6px,var(--joaju-safe-right))!important;bottom:max(6px,var(--joaju-safe-bottom))!important;z-index:3000!important}
+.panel#left,.panel#right,.workspace,.statistics-workspace{bottom:calc(var(--joaju-mobile-dock-h) + var(--joaju-safe-bottom) + 8px)!important;max-height:calc(100dvh - var(--joaju-mobile-dock-h) - var(--joaju-safe-top) - 20px)!important}
+.panel#left,.panel#right{left:max(5px,var(--joaju-safe-left))!important;right:max(5px,var(--joaju-safe-right))!important;width:auto!important;overflow:hidden!important}
+.panel#left .panel-inner,.panel#right .panel-inner,.workspace-body,.statistics-workspace .stats-shell{min-height:0!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding-bottom:calc(18px + var(--joaju-safe-bottom))!important}
+.modal{inset:0!important;width:100%!important;height:100dvh!important;min-height:100dvh!important;padding:max(5px,var(--joaju-safe-top)) max(5px,var(--joaju-safe-right)) max(5px,var(--joaju-safe-bottom)) max(5px,var(--joaju-safe-left))!important;align-items:stretch!important;overflow:hidden!important}
+.modal-box{width:100%!important;max-width:none!important;min-width:0!important;height:auto!important;max-height:calc(100dvh - var(--joaju-safe-top) - var(--joaju-safe-bottom) - 10px)!important;margin:0!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;scrollbar-gutter:stable;padding-bottom:calc(16px + var(--joaju-safe-bottom))!important}
+.modal-head,.my-research-head,.mr-camera-head,.evl-head,.prici-self-head,.prici-help-head{position:sticky!important;top:0!important;z-index:50!important;background:var(--panel,#fffdf8)!important}
+.modal-head>div,.my-research-head>div,.mr-camera-head>div,.evl-head>div,.prici-self-head>div{min-width:0!important}.modal-head h2,.my-research-head h2,.mr-camera-head h2,.evl-head h2,.prici-self-head h2{overflow-wrap:anywhere}
+.modal [id*="close" i],.modal [aria-label*="Fechar"],.icon-close-btn,.panel-close-btn,.workspace-close-btn,.stats-close{flex:0 0 48px!important;width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;padding:0!important;display:grid!important;place-items:center!important;font-size:30px!important;line-height:1!important;border-radius:14px!important;touch-action:manipulation}
+.my-research-modal .modal-box{height:calc(100dvh - var(--joaju-safe-top) - var(--joaju-safe-bottom) - 10px)!important;overflow:hidden!important}.my-research-shell{height:100%!important;max-height:none!important;display:flex!important;flex-direction:column!important;min-height:0!important}.my-research-head{flex:0 0 auto!important}.my-research-body{flex:1 1 auto!important;min-height:0!important;max-height:none!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;padding-bottom:calc(20px + var(--joaju-safe-bottom))!important}.my-research-main{min-width:0!important;overflow:visible!important;padding-bottom:18px!important}
+.atlas-general-help-box,.refs,.methodology-shell,.evl-modal-box,.prici-self-modal .modal-box,.mr-camera-box{max-height:calc(100dvh - var(--joaju-safe-top) - var(--joaju-safe-bottom) - 10px)!important}.atlas-help-layout,.atlas-help-content,.prici-self-body,.prici-self-main,.mr-camera-box{min-height:0!important}.atlas-help-content,.prici-self-main{overflow-y:visible!important}
+input,select,textarea{max-width:100%!important}img,video,canvas,iframe{max-width:100%}
+.leaflet-bottom{bottom:calc(var(--joaju-mobile-dock-h) + var(--joaju-safe-bottom) + 2px)!important}.leaflet-control-attribution{max-width:calc(100vw - 24px)!important;white-space:normal!important}
+}
+@media(max-width:430px){.modal-box{border-radius:16px!important}.modal-head,.my-research-head,.mr-camera-head,.evl-head,.prici-self-head{gap:8px!important}.modal [id*="close" i],.modal [aria-label*="Fechar"],.icon-close-btn,.panel-close-btn,.workspace-close-btn,.stats-close{flex-basis:46px!important;width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important}}
+@media(orientation:landscape) and (max-height:600px) and (max-width:900px){:root{--joaju-mobile-dock-h:64px}.mobile-dock{min-height:60px!important}.mobile-dock-btn{min-height:50px!important}.modal-box{max-height:calc(100dvh - var(--joaju-safe-top) - var(--joaju-safe-bottom) - 8px)!important}}
+</style>
+
+<style id="joaju-mobile-round2">
+/* JOAJU MS · Mobile First · Ronda 2 · identidade, mapa e navegação */
+@media (max-width:900px){
+  :root{--joaju-mobile-dock-h:72px}
+  .atlas-topbar{
+    min-height:74px!important;
+    padding:8px max(8px,var(--joaju-safe-right)) 8px max(8px,var(--joaju-safe-left))!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px!important;
+    align-items:center!important;
+  }
+  .atlas-brand{min-width:0!important;display:flex!important;align-items:center!important;gap:8px!important}
+  .atlas-brand .mark{width:40px!important;height:40px!important;min-width:40px!important;font-size:16px!important;border-radius:12px!important}
+  .brand-copy{min-width:0!important}
+  .brand-kicker,.atlas-brand .subtitle{display:none!important}
+  .atlas-brand h1{margin:0!important;display:block!important;line-height:1.13!important;white-space:normal!important}
+  .atlas-brand .brand-main{display:block!important;font-size:18px!important;line-height:1.05!important;white-space:nowrap!important}
+  .atlas-brand .brand-descriptor{
+    display:block!important;
+    margin-top:3px!important;
+    max-width:34ch!important;
+    font-size:11.5px!important;
+    line-height:1.25!important;
+    font-weight:700!important;
+    opacity:.92!important;
+    white-space:normal!important;
+    overflow:visible!important;
+  }
+  .atlas-status{display:none!important}
+  .header-actions{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:5px!important;
+    overflow:visible!important;
+    max-width:none!important;
+  }
+  .header-actions > *{display:none!important}
+  .header-actions > .header-more,
+  .header-actions > #projectInfoQuickBtn{display:block!important}
+  #moreMenuBtn,#projectInfoQuickBtn{
+    display:grid!important;
+    place-items:center!important;
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    min-height:42px!important;
+    padding:0!important;
+    border-radius:13px!important;
+    font-size:20px!important;
+  }
+  .header-more-menu{
+    position:fixed!important;
+    top:calc(max(8px,var(--joaju-safe-top)) + 70px)!important;
+    right:max(8px,var(--joaju-safe-right))!important;
+    width:min(300px,calc(100vw - 16px - var(--joaju-safe-left) - var(--joaju-safe-right)))!important;
+    max-height:calc(100dvh - 98px - var(--joaju-safe-bottom))!important;
+    overflow:auto!important;
+    overscroll-behavior:contain!important;
+  }
+  .research-ribbon{min-height:44px!important;padding:7px 10px!important}
+  .research-ribbon-main{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:7px!important}
+  .research-ribbon .research-label{font-size:10.5px!important;white-space:nowrap!important}
+  .research-ribbon .research-banner-text{font-size:11.5px!important;line-height:1.25!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  .research-more-btn{font-size:11px!important;white-space:nowrap!important;min-height:34px!important}
+
+  /* cinco destinos primários, sem rolagem horizontal */
+  .mobile-dock{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    grid-auto-flow:initial!important;
+    grid-auto-columns:initial!important;
+    overflow:visible!important;
+    gap:3px!important;
+    min-height:64px!important;
+    padding:5px!important;
+  }
+  #mobileStatsBtn,#mobileHelpBtn{display:none!important}
+  .mobile-dock-btn{min-width:0!important;min-height:54px!important;padding:5px 2px!important}
+  .mobile-dock-btn span{font-size:20px!important;line-height:20px!important}
+  .mobile-dock-btn small{font-size:11px!important;line-height:1.05!important;white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important}
+  .mobile-dock-btn.active{box-shadow:inset 0 0 0 1px #b8d5c8!important}
+
+  /* mapa com zonas de controle claras */
+  .leaflet-top.leaflet-left{top:8px!important;left:8px!important}
+  .leaflet-top.leaflet-right{top:8px!important;right:8px!important}
+  .joaju-location-control{margin-top:10px!important}
+  .joaju-location-btn{width:50px!important;height:50px!important;min-width:50px!important;min-height:50px!important}
+  .joaju-location-btn svg{width:40px!important;height:40px!important}
+  .leaflet-control-zoom a{width:46px!important;height:46px!important;line-height:46px!important;font-size:24px!important}
+  .leaflet-control-layers-toggle{width:48px!important;height:48px!important;background-size:28px 28px!important}
+  .leaflet-control-scale{margin-bottom:4px!important}
+  .leaflet-control-attribution{font-size:10px!important;line-height:1.25!important}
+}
+@media (max-width:430px){
+  .atlas-topbar{min-height:80px!important;gap:6px!important}
+  .atlas-brand .mark{width:38px!important;height:38px!important;min-width:38px!important}
+  .atlas-brand .brand-main{font-size:17px!important}
+  .atlas-brand .brand-descriptor{display:block!important;font-size:10.8px!important;line-height:1.22!important;max-width:28ch!important}
+  #moreMenuBtn,#projectInfoQuickBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important}
+  .research-ribbon{padding-left:8px!important;padding-right:8px!important}
+  .research-ribbon .research-banner-text{font-size:11px!important}
+  .mobile-dock-btn small{font-size:10.5px!important}
+}
+@media (max-width:360px){
+  .atlas-topbar{grid-template-columns:minmax(0,1fr) auto!important;padding-left:6px!important;padding-right:6px!important}
+  .atlas-brand{gap:6px!important}
+  .atlas-brand .mark{width:36px!important;height:36px!important;min-width:36px!important;font-size:14px!important}
+  .atlas-brand .brand-main{font-size:16px!important}
+  .atlas-brand .brand-descriptor{font-size:10.2px!important;line-height:1.18!important;max-width:25ch!important}
+  #moreMenuBtn,#projectInfoQuickBtn{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;font-size:18px!important}
+  .mobile-dock{left:max(4px,var(--joaju-safe-left))!important;right:max(4px,var(--joaju-safe-right))!important;gap:1px!important;padding:4px!important}
+  .mobile-dock-btn small{font-size:10px!important}
+  .mobile-dock-btn span{font-size:19px!important}
+}
+</style>
+
 </head>
 <body>
 <header class="atlas-topbar">
@@ -620,6 +763,7 @@ body{font-size:15px!important;line-height:1.5}
 <div class="menu-divider"></div>
 <div class="menu-section-label">Ferramentas</div>
 <button class="menu-action" id="pwaInstallMenuBtn" role="menuitem" type="button"><strong>⌂</strong> Instalar JOAJU no dispositivo</button>
+<button class="menu-action" id="mobileStatsMenuBtn" role="menuitem" type="button"><strong>▥</strong> Dados e estatísticas</button>
 <button class="menu-action" id="diagnosticsBtn" role="menuitem" type="button">Diagnóstico técnico</button>
 <button class="menu-action" id="satelliteHeaderBtn" role="menuitem" type="button">Imagem de satélite</button>
 <button class="menu-action" id="googleEarthHeaderBtn" role="menuitem" type="button">Google Earth</button>
@@ -1336,15 +1480,15 @@ function initMap(){
     onAdd:function(){
       const wrap=L.DomUtil.create('div','leaflet-control joaju-location-control');
       const btn=L.DomUtil.create('button','joaju-location-btn',wrap);
-      btn.type='button';btn.title='Minha posição';btn.setAttribute('aria-label','Minha posição');btn.innerHTML=JOAJU_MS_SVG;
+      btn.type='button';btn.title='Minha posição';btn.setAttribute('aria-label','Minha posição · tocar para localizar');btn.setAttribute('aria-live','polite');btn.innerHTML=JOAJU_MS_SVG;
       L.DomEvent.disableClickPropagation(wrap);L.DomEvent.disableScrollPropagation(wrap);
       L.DomEvent.on(btn,'click',async e=>{
         L.DomEvent.stop(e);
-        btn.classList.remove('is-found','is-error');btn.classList.add('is-loading');btn.setAttribute('aria-busy','true');
-        if(!navigator.geolocation){btn.classList.remove('is-loading');btn.classList.add('is-error');btn.setAttribute('aria-busy','false');toast('Geolocalização não disponível neste navegador.');return;}
+        btn.classList.remove('is-found','is-error');btn.classList.add('is-loading');btn.setAttribute('aria-busy','true');btn.setAttribute('aria-label','Minha posição · localizando');btn.title='Localizando minha posição';
+        if(!navigator.geolocation){btn.classList.remove('is-loading');btn.classList.add('is-error');btn.setAttribute('aria-busy','false');btn.setAttribute('aria-label','Minha posição · não foi possível localizar');btn.title='Não foi possível obter sua posição';btn.setAttribute('aria-label','Minha posição · GPS indisponível');btn.title='Geolocalização indisponível';toast('Geolocalização não disponível neste navegador.');return;}
         navigator.geolocation.getCurrentPosition(pos=>{
           const lat=pos.coords.latitude,lng=pos.coords.longitude,acc=Number(pos.coords.accuracy)||0;
-          btn.classList.remove('is-loading','is-error');btn.classList.add('is-found');btn.setAttribute('aria-busy','false');
+          btn.classList.remove('is-loading','is-error');btn.classList.add('is-found');btn.setAttribute('aria-busy','false');btn.setAttribute('aria-label',`Minha posição encontrada · precisão aproximada ${Math.round(acc)} metros`);btn.title=`Minha posição · precisão aproximada ±${Math.round(acc)} m`;
           if(joajuLocationMarker)map.removeLayer(joajuLocationMarker);if(joajuAccuracyCircle)map.removeLayer(joajuAccuracyCircle);
           joajuAccuracyCircle=L.circle([lat,lng],{radius:Math.max(acc,1),weight:1,color:'#0866b3',fillColor:'#0866b3',fillOpacity:.08,interactive:false}).addTo(map);
           joajuLocationMarker=L.circleMarker([lat,lng],{radius:8,weight:3,color:'#ffffff',fillColor:'#0866b3',fillOpacity:1}).addTo(map).bindPopup(`<strong>Minha posição</strong><br>Precisão aproximada ±${Math.round(acc)} m`);
@@ -4644,7 +4788,7 @@ function bindActions(){content.querySelectorAll('[data-open-layer]').forEach(b=>
 async function openStats(){document.getElementById('left')?.classList.remove('open');document.getElementById('right')?.classList.remove('open');document.getElementById('docsDrawer')?.classList.remove('open');workspace.classList.add('open');workspace.setAttribute('aria-hidden','false');document.body.classList.add('stats-open');await render();syncStatsMobile();}
 function closeStats(){workspace.classList.remove('open');workspace.setAttribute('aria-hidden','true');document.body.classList.remove('stats-open');syncStatsMobile();}
 function syncStatsMobile(){const b=document.getElementById('mobileStatsBtn');if(!b)return;document.querySelectorAll('.mobile-dock-btn').forEach(x=>x.classList.remove('active'));if(workspace.classList.contains('open'))b.classList.add('active');else document.getElementById('mobileMapBtn')?.classList.add('active');}
-document.getElementById('statisticsHeaderBtn')?.addEventListener('click',()=>workspace.classList.contains('open')?closeStats():openStats());document.getElementById('mobileStatsBtn')?.addEventListener('click',()=>workspace.classList.contains('open')?closeStats():openStats());document.getElementById('closeStatisticsBtn')?.addEventListener('click',closeStats);document.getElementById('statsBackMapBtn')?.addEventListener('click',closeStats);document.getElementById('statsRefreshBtn')?.addEventListener('click',()=>render());scopeSelect.addEventListener('change',async()=>{munSelect.disabled=scopeSelect.value!=='municipality';await render();});munSelect.addEventListener('change',()=>render());document.querySelectorAll('.stats-tab').forEach(b=>b.addEventListener('click',async()=>{statsTab=b.dataset.statsTab;document.querySelectorAll('.stats-tab').forEach(x=>x.classList.toggle('active',x===b));await render();workspace.scrollTo({top:0,behavior:'smooth'});}));
+document.getElementById('statisticsHeaderBtn')?.addEventListener('click',()=>workspace.classList.contains('open')?closeStats():openStats());document.getElementById('mobileStatsBtn')?.addEventListener('click',()=>workspace.classList.contains('open')?closeStats():openStats());document.getElementById('mobileStatsMenuBtn')?.addEventListener('click',()=>{document.getElementById('headerMore')?.classList.remove('open');document.getElementById('moreMenuBtn')?.setAttribute('aria-expanded','false');openStats();});document.getElementById('closeStatisticsBtn')?.addEventListener('click',closeStats);document.getElementById('statsBackMapBtn')?.addEventListener('click',closeStats);document.getElementById('statsRefreshBtn')?.addEventListener('click',()=>render());scopeSelect.addEventListener('change',async()=>{munSelect.disabled=scopeSelect.value!=='municipality';await render();});munSelect.addEventListener('change',()=>render());document.querySelectorAll('.stats-tab').forEach(b=>b.addEventListener('click',async()=>{statsTab=b.dataset.statsTab;document.querySelectorAll('.stats-tab').forEach(x=>x.classList.toggle('active',x===b));await render();workspace.scrollTo({top:0,behavior:'smooth'});}));
 ['mobileMapBtn','mobileLayersBtn','mobileRoutesBtn','mobileInfoBtn','mobileHelpBtn','toggleLeft','routesHeaderBtn','toggleRight'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>{if(id!=='mobileStatsBtn')closeStats();}));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&workspace.classList.contains('open'))closeStats();});
 window.ATLAS_STATISTICS={open:openStats,close:closeStats,render,version:'v1.8.0-dev'};
 })();
@@ -4923,6 +5067,125 @@ function printReport(){syncIdentification();const a=current,x=summary(),win=wind
 }
 @media(max-width:430px){.atlas-brand .brand-descriptor{display:none}.atlas-brand .brand-main{font-size:16px!important}.research-ribbon .research-banner-text{font-size:10.5px!important}.docs-grid{grid-template-columns:1fr!important}.doc-card{min-height:78px!important}.mobile-dock{left:6px!important;right:6px!important}.mobile-dock-btn{min-width:56px!important}.panel#left,#right{left:5px!important;right:5px!important;width:calc(100vw - 10px)!important;max-width:calc(100vw - 10px)!important}.universal-ficha-grid,.hex-profile-meta,.hex-raw-grid,.kv{grid-template-columns:1fr!important}.universal-ficha-grid .k,.hex-profile-meta .k,.hex-raw-grid .k,.kv .k{margin-top:3px}}
 </style>
+
+<style id="joaju-mobile-round2">
+/* JOAJU MS · Mobile First · Ronda 2 · identidade, mapa e navegação */
+@media (max-width:900px){
+  :root{--joaju-mobile-dock-h:72px}
+  .atlas-topbar{
+    min-height:74px!important;
+    padding:8px max(8px,var(--joaju-safe-right)) 8px max(8px,var(--joaju-safe-left))!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px!important;
+    align-items:center!important;
+  }
+  .atlas-brand{min-width:0!important;display:flex!important;align-items:center!important;gap:8px!important}
+  .atlas-brand .mark{width:40px!important;height:40px!important;min-width:40px!important;font-size:16px!important;border-radius:12px!important}
+  .brand-copy{min-width:0!important}
+  .brand-kicker,.atlas-brand .subtitle{display:none!important}
+  .atlas-brand h1{margin:0!important;display:block!important;line-height:1.13!important;white-space:normal!important}
+  .atlas-brand .brand-main{display:block!important;font-size:18px!important;line-height:1.05!important;white-space:nowrap!important}
+  .atlas-brand .brand-descriptor{
+    display:block!important;
+    margin-top:3px!important;
+    max-width:34ch!important;
+    font-size:11.5px!important;
+    line-height:1.25!important;
+    font-weight:700!important;
+    opacity:.92!important;
+    white-space:normal!important;
+    overflow:visible!important;
+  }
+  .atlas-status{display:none!important}
+  .header-actions{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:5px!important;
+    overflow:visible!important;
+    max-width:none!important;
+  }
+  .header-actions > *{display:none!important}
+  .header-actions > .header-more,
+  .header-actions > #projectInfoQuickBtn{display:block!important}
+  #moreMenuBtn,#projectInfoQuickBtn{
+    display:grid!important;
+    place-items:center!important;
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    min-height:42px!important;
+    padding:0!important;
+    border-radius:13px!important;
+    font-size:20px!important;
+  }
+  .header-more-menu{
+    position:fixed!important;
+    top:calc(max(8px,var(--joaju-safe-top)) + 70px)!important;
+    right:max(8px,var(--joaju-safe-right))!important;
+    width:min(300px,calc(100vw - 16px - var(--joaju-safe-left) - var(--joaju-safe-right)))!important;
+    max-height:calc(100dvh - 98px - var(--joaju-safe-bottom))!important;
+    overflow:auto!important;
+    overscroll-behavior:contain!important;
+  }
+  .research-ribbon{min-height:44px!important;padding:7px 10px!important}
+  .research-ribbon-main{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:7px!important}
+  .research-ribbon .research-label{font-size:10.5px!important;white-space:nowrap!important}
+  .research-ribbon .research-banner-text{font-size:11.5px!important;line-height:1.25!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  .research-more-btn{font-size:11px!important;white-space:nowrap!important;min-height:34px!important}
+
+  /* cinco destinos primários, sem rolagem horizontal */
+  .mobile-dock{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    grid-auto-flow:initial!important;
+    grid-auto-columns:initial!important;
+    overflow:visible!important;
+    gap:3px!important;
+    min-height:64px!important;
+    padding:5px!important;
+  }
+  #mobileStatsBtn,#mobileHelpBtn{display:none!important}
+  .mobile-dock-btn{min-width:0!important;min-height:54px!important;padding:5px 2px!important}
+  .mobile-dock-btn span{font-size:20px!important;line-height:20px!important}
+  .mobile-dock-btn small{font-size:11px!important;line-height:1.05!important;white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important}
+  .mobile-dock-btn.active{box-shadow:inset 0 0 0 1px #b8d5c8!important}
+
+  /* mapa com zonas de controle claras */
+  .leaflet-top.leaflet-left{top:8px!important;left:8px!important}
+  .leaflet-top.leaflet-right{top:8px!important;right:8px!important}
+  .joaju-location-control{margin-top:10px!important}
+  .joaju-location-btn{width:50px!important;height:50px!important;min-width:50px!important;min-height:50px!important}
+  .joaju-location-btn svg{width:40px!important;height:40px!important}
+  .leaflet-control-zoom a{width:46px!important;height:46px!important;line-height:46px!important;font-size:24px!important}
+  .leaflet-control-layers-toggle{width:48px!important;height:48px!important;background-size:28px 28px!important}
+  .leaflet-control-scale{margin-bottom:4px!important}
+  .leaflet-control-attribution{font-size:10px!important;line-height:1.25!important}
+}
+@media (max-width:430px){
+  .atlas-topbar{min-height:80px!important;gap:6px!important}
+  .atlas-brand .mark{width:38px!important;height:38px!important;min-width:38px!important}
+  .atlas-brand .brand-main{font-size:17px!important}
+  .atlas-brand .brand-descriptor{display:block!important;font-size:10.8px!important;line-height:1.22!important;max-width:28ch!important}
+  #moreMenuBtn,#projectInfoQuickBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important}
+  .research-ribbon{padding-left:8px!important;padding-right:8px!important}
+  .research-ribbon .research-banner-text{font-size:11px!important}
+  .mobile-dock-btn small{font-size:10.5px!important}
+}
+@media (max-width:360px){
+  .atlas-topbar{grid-template-columns:minmax(0,1fr) auto!important;padding-left:6px!important;padding-right:6px!important}
+  .atlas-brand{gap:6px!important}
+  .atlas-brand .mark{width:36px!important;height:36px!important;min-width:36px!important;font-size:14px!important}
+  .atlas-brand .brand-main{font-size:16px!important}
+  .atlas-brand .brand-descriptor{font-size:10.2px!important;line-height:1.18!important;max-width:25ch!important}
+  #moreMenuBtn,#projectInfoQuickBtn{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;font-size:18px!important}
+  .mobile-dock{left:max(4px,var(--joaju-safe-left))!important;right:max(4px,var(--joaju-safe-right))!important;gap:1px!important;padding:4px!important}
+  .mobile-dock-btn small{font-size:10px!important}
+  .mobile-dock-btn span{font-size:19px!important}
+}
+</style>
+
 </head><body><h1>Apoio digital à Autoavaliação do Manual PRICI</h1><div class="meta">Atlas Interativo MS · ${esc(a.atlas_version)} · ficha ${esc(VERSION)} · ${new Date(a.updated_at).toLocaleString('pt-BR')}</div><div class="notice"><b>Origem do questionário.</b> A folha de autoavaliação e o questionário de referência pertencem ao <i>Manual de Rutas e Itinerarios Culturales para Iberoamérica</i>, PRICI/OEI. O Atlas fornece somente uma interface digital independente de apoio à gestão. Os rótulos operacionais não substituem a redação oficial. Consulte o Manual para critérios, definições, indicadores e qualquer uso formal. Esta interface não constitui avaliação, validação, reconhecimento ou certificação pela OEI ou pelo PRICI.</div><h2>Identificação</h2><div class="grid"><b>Itinerário</b><span>${esc(a.identification.name)}</span><b>Tema</b><span>${esc(a.identification.theme)}</span><b>Território</b><span>${esc(a.identification.territory)}</span><b>Municípios</b><span>${esc(a.identification.municipalities)}</span><b>Entidade gestora</b><span>${esc(a.identification.manager_entity||'Não informada')}</span><b>Fase</b><span>${esc(a.identification.phase)}</span><b>Comunidades relacionadas</b><span>${esc(a.identification.communities||'Não informadas')}</span></div><h2>Resumo</h2><div class="summary"><div><b>${x.sim}</b>Sim</div><div><b>${x.parcial}</b>Parcial</div><div><b>${x.nao}</b>Não</div><div><b>${x.nao_sei}</b>Requer verificação</div></div><p><b>Percentual auxiliar de respostas Sim entre respostas binárias registradas</b> · ${pctText(x.pct)}. Denominador = Sim + Não.</p><table><thead><tr><th>Dimensão</th><th>Sim</th><th>Parcial</th><th>Não</th><th>Verificar</th><th>% Sim</th></tr></thead><tbody>${dims.map(([d,n])=>{const v=dimensionSummary(d,a);return `<tr><td>${esc(n)}</td><td>${v.sim}</td><td>${v.parcial}</td><td>${v.nao}</td><td>${v.nao_sei}</td><td>${pctText(v.pct)}</td></tr>`;}).join('')}</tbody></table><h2>Registros de apoio ao questionário</h2>${criteria}${ind}<h2>Lacunas e próximas ações</h2>${gapsRows?`<ul>${gapsRows}</ul>`:'<p>Nenhuma lacuna registrada com os estados Não, Parcial ou Não sei.</p>'}<div class="footer">Questionário e metodologia de referência · ${esc(MANUAL.title)} · OEI · ${esc(MANUAL.year)}. Implementação digital independente de apoio · Atlas Interativo MS. Assessment ID · ${esc(a.assessment_id)}. Os dados digitados permanecem sob controle e responsabilidade do usuário e não são enviados pelo módulo à OEI, ao PRICI ou ao GitHub.</div><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script>
 
 
@@ -5148,6 +5411,125 @@ function printReport(){const win=window.open('','_blank');if(!win){toast('O nave
 }
 @media(max-width:430px){.atlas-brand .brand-descriptor{display:none}.atlas-brand .brand-main{font-size:16px!important}.research-ribbon .research-banner-text{font-size:10.5px!important}.docs-grid{grid-template-columns:1fr!important}.doc-card{min-height:78px!important}.mobile-dock{left:6px!important;right:6px!important}.mobile-dock-btn{min-width:56px!important}.panel#left,#right{left:5px!important;right:5px!important;width:calc(100vw - 10px)!important;max-width:calc(100vw - 10px)!important}.universal-ficha-grid,.hex-profile-meta,.hex-raw-grid,.kv{grid-template-columns:1fr!important}.universal-ficha-grid .k,.hex-profile-meta .k,.hex-raw-grid .k,.kv .k{margin-top:3px}}
 </style>
+
+<style id="joaju-mobile-round2">
+/* JOAJU MS · Mobile First · Ronda 2 · identidade, mapa e navegação */
+@media (max-width:900px){
+  :root{--joaju-mobile-dock-h:72px}
+  .atlas-topbar{
+    min-height:74px!important;
+    padding:8px max(8px,var(--joaju-safe-right)) 8px max(8px,var(--joaju-safe-left))!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px!important;
+    align-items:center!important;
+  }
+  .atlas-brand{min-width:0!important;display:flex!important;align-items:center!important;gap:8px!important}
+  .atlas-brand .mark{width:40px!important;height:40px!important;min-width:40px!important;font-size:16px!important;border-radius:12px!important}
+  .brand-copy{min-width:0!important}
+  .brand-kicker,.atlas-brand .subtitle{display:none!important}
+  .atlas-brand h1{margin:0!important;display:block!important;line-height:1.13!important;white-space:normal!important}
+  .atlas-brand .brand-main{display:block!important;font-size:18px!important;line-height:1.05!important;white-space:nowrap!important}
+  .atlas-brand .brand-descriptor{
+    display:block!important;
+    margin-top:3px!important;
+    max-width:34ch!important;
+    font-size:11.5px!important;
+    line-height:1.25!important;
+    font-weight:700!important;
+    opacity:.92!important;
+    white-space:normal!important;
+    overflow:visible!important;
+  }
+  .atlas-status{display:none!important}
+  .header-actions{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:5px!important;
+    overflow:visible!important;
+    max-width:none!important;
+  }
+  .header-actions > *{display:none!important}
+  .header-actions > .header-more,
+  .header-actions > #projectInfoQuickBtn{display:block!important}
+  #moreMenuBtn,#projectInfoQuickBtn{
+    display:grid!important;
+    place-items:center!important;
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    min-height:42px!important;
+    padding:0!important;
+    border-radius:13px!important;
+    font-size:20px!important;
+  }
+  .header-more-menu{
+    position:fixed!important;
+    top:calc(max(8px,var(--joaju-safe-top)) + 70px)!important;
+    right:max(8px,var(--joaju-safe-right))!important;
+    width:min(300px,calc(100vw - 16px - var(--joaju-safe-left) - var(--joaju-safe-right)))!important;
+    max-height:calc(100dvh - 98px - var(--joaju-safe-bottom))!important;
+    overflow:auto!important;
+    overscroll-behavior:contain!important;
+  }
+  .research-ribbon{min-height:44px!important;padding:7px 10px!important}
+  .research-ribbon-main{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;align-items:center!important;gap:7px!important}
+  .research-ribbon .research-label{font-size:10.5px!important;white-space:nowrap!important}
+  .research-ribbon .research-banner-text{font-size:11.5px!important;line-height:1.25!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  .research-more-btn{font-size:11px!important;white-space:nowrap!important;min-height:34px!important}
+
+  /* cinco destinos primários, sem rolagem horizontal */
+  .mobile-dock{
+    display:grid!important;
+    grid-template-columns:repeat(5,minmax(0,1fr))!important;
+    grid-auto-flow:initial!important;
+    grid-auto-columns:initial!important;
+    overflow:visible!important;
+    gap:3px!important;
+    min-height:64px!important;
+    padding:5px!important;
+  }
+  #mobileStatsBtn,#mobileHelpBtn{display:none!important}
+  .mobile-dock-btn{min-width:0!important;min-height:54px!important;padding:5px 2px!important}
+  .mobile-dock-btn span{font-size:20px!important;line-height:20px!important}
+  .mobile-dock-btn small{font-size:11px!important;line-height:1.05!important;white-space:nowrap!important;overflow:visible!important;text-overflow:clip!important}
+  .mobile-dock-btn.active{box-shadow:inset 0 0 0 1px #b8d5c8!important}
+
+  /* mapa com zonas de controle claras */
+  .leaflet-top.leaflet-left{top:8px!important;left:8px!important}
+  .leaflet-top.leaflet-right{top:8px!important;right:8px!important}
+  .joaju-location-control{margin-top:10px!important}
+  .joaju-location-btn{width:50px!important;height:50px!important;min-width:50px!important;min-height:50px!important}
+  .joaju-location-btn svg{width:40px!important;height:40px!important}
+  .leaflet-control-zoom a{width:46px!important;height:46px!important;line-height:46px!important;font-size:24px!important}
+  .leaflet-control-layers-toggle{width:48px!important;height:48px!important;background-size:28px 28px!important}
+  .leaflet-control-scale{margin-bottom:4px!important}
+  .leaflet-control-attribution{font-size:10px!important;line-height:1.25!important}
+}
+@media (max-width:430px){
+  .atlas-topbar{min-height:80px!important;gap:6px!important}
+  .atlas-brand .mark{width:38px!important;height:38px!important;min-width:38px!important}
+  .atlas-brand .brand-main{font-size:17px!important}
+  .atlas-brand .brand-descriptor{display:block!important;font-size:10.8px!important;line-height:1.22!important;max-width:28ch!important}
+  #moreMenuBtn,#projectInfoQuickBtn{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important}
+  .research-ribbon{padding-left:8px!important;padding-right:8px!important}
+  .research-ribbon .research-banner-text{font-size:11px!important}
+  .mobile-dock-btn small{font-size:10.5px!important}
+}
+@media (max-width:360px){
+  .atlas-topbar{grid-template-columns:minmax(0,1fr) auto!important;padding-left:6px!important;padding-right:6px!important}
+  .atlas-brand{gap:6px!important}
+  .atlas-brand .mark{width:36px!important;height:36px!important;min-width:36px!important;font-size:14px!important}
+  .atlas-brand .brand-main{font-size:16px!important}
+  .atlas-brand .brand-descriptor{font-size:10.2px!important;line-height:1.18!important;max-width:25ch!important}
+  #moreMenuBtn,#projectInfoQuickBtn{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;font-size:18px!important}
+  .mobile-dock{left:max(4px,var(--joaju-safe-left))!important;right:max(4px,var(--joaju-safe-right))!important;gap:1px!important;padding:4px!important}
+  .mobile-dock-btn small{font-size:10px!important}
+  .mobile-dock-btn span{font-size:19px!important}
+}
+</style>
+
 </head><body><h1>${esc(current.title)}</h1><div class="meta">Minha Pesquisa · Atlas Interativo MS ${esc(ATLAS_VERSION)} · expediente ${esc(current.pesquisa_id)} · ${fmtDate(current.updated_at)}</div><div class="notice"><b>Natureza do documento.</b> Este relatório foi gerado a partir de um caderno privado do usuário. Itens, notas, interpretações e decisões registradas aqui não fazem parte automaticamente da base científica validada do Atlas.</div><h2>Identificação</h2><div class="grid"><b>Responsável</b><span>${esc(current.user_metadata.responsible||'Não informado')}</span><b>Instituição</b><span>${esc(current.user_metadata.institution||'Não informada')}</span><b>Território</b><span>${esc(current.user_metadata.territory||'Não informado')}</span><b>Objetivo</b><span>${esc(current.objective||'Não informado')}</span><b>Descrição</b><span>${esc(current.description||'')}</span><b>Rota de partida</b><span>${esc(current.base_route_name||'Nenhuma')}</span></div><h2>Itens salvos</h2>${items?`<table><thead><tr><th>Tipo</th><th>Elemento</th><th>ID territorial</th><th>Nota privada</th><th>Salvo em</th></tr></thead><tbody>${items}</tbody></table>`:'<p>Nenhum item salvo.</p>'}<h2>Notas e tarefas</h2>${notes?`<table><thead><tr><th>Estado</th><th>Nota</th><th>Data</th></tr></thead><tbody>${notes}</tbody></table>`:'<p>Nenhuma nota.</p>'}<h2>Estados do mapa</h2>${maps?`<ul>${maps}</ul>`:'<p>Nenhum estado do mapa salvo.</p>'}<h2>Autoavaliação PRICI</h2><p>${current.prici_snapshots.length} snapshot(s) anexado(s). Consulte os arquivos JSON do expediente para preservar todos os campos estruturados.</p><div class="warn"><b>Privacidade e backup.</b> O original deste expediente permanece sob controle do usuário no navegador. A impressão não substitui a exportação JSON como cópia de segurança completa.</div><div class="footer">Gerado localmente pelo módulo Minha Pesquisa do Atlas Interativo do Patrimônio e dos Itinerários Culturais de Mato Grosso do Sul. O Atlas não recebeu automaticamente os dados deste expediente.</div><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`);win.document.close();}
 async function importFile(ev){const f=ev.target.files?.[0];ev.target.value='';if(!f)return;try{const obj=JSON.parse(await f.text());let p=obj?.format==='atlas-ms-research'?obj.research:obj?.research||obj;if(!p||typeof p!=='object')throw new Error('Arquivo sem pesquisa reconhecível');p=normalizeProject(p);const exists=projects.some(x=>x.pesquisa_id===p.pesquisa_id);if(exists&&!confirm('Já existe uma pesquisa com este ID. Substituir a cópia local?')){p.pesquisa_id=uid('pesq');p.title=(p.title||'Pesquisa')+' · cópia importada';}p.updated_at=now();p.history.push({at:p.updated_at,action:'imported'});await putProject(p);current=p;await setMeta(CURRENT_KEY,p.pesquisa_id);await refreshProjects();render();toast('Pesquisa importada.');}catch(e){showError(e)}}
 async function storageEstimate(){const out=$('mrStorageResult');if(!out)return;try{if(!navigator.storage?.estimate)throw new Error('API de estimativa não disponível');const e=await navigator.storage.estimate();const used=e.usage||0,quota=e.quota||0;out.style.display='block';out.innerHTML=`Uso estimado pelo site: <strong>${(used/1024/1024).toFixed(2)} MB</strong> de ${(quota/1024/1024).toFixed(0)} MB disponíveis para esta origem. O valor inclui outros dados do site, não apenas Minha Pesquisa.`;}catch(e){out.style.display='block';out.textContent='O navegador não disponibiliza estimativa de armazenamento.';}}
@@ -5369,6 +5751,18 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
     if(openModal){const close=openModal.querySelector('[id*="close" i], [aria-label*="Fechar"], .modal-head .btn'); if(close) close.click(); return;}
     const docs=document.getElementById('docsDrawer'); if(docs?.classList.contains('open')) document.getElementById('closeDocsDrawerBtn')?.click();
   });
+})();
+</script>
+<script id="joaju-mobile-r9-round1-js">
+(()=>{
+ const isCloseButton=b=>{if(!b||b.tagName!=='BUTTON')return false;const id=(b.id||'').toLowerCase(),aria=(b.getAttribute('aria-label')||'').toLowerCase(),title=(b.getAttribute('title')||'').toLowerCase(),text=(b.textContent||'').trim().toLowerCase();return id.includes('close')||aria.includes('fechar')||title.includes('fechar')||text==='fechar'};
+ function normalizeCloseButtons(root=document){root.querySelectorAll?.('button').forEach(b=>{if(!isCloseButton(b))return;const text=(b.textContent||'').trim().toLowerCase();if(text==='fechar'||text==='fechar janela'||text==='fechar painel')b.textContent='×';if((b.textContent||'').trim()==='×'){if(!b.getAttribute('aria-label'))b.setAttribute('aria-label','Fechar');if(!b.getAttribute('title'))b.setAttribute('title','Fechar');b.classList.add('joaju-universal-close')}})}
+ function markScrollableDialogs(root=document){root.querySelectorAll?.('.modal-box').forEach(box=>box.setAttribute('data-mobile-scroll','true'))}
+ function syncViewportUnit(){document.documentElement.style.setProperty('--joaju-window-inner-height',window.innerHeight+'px')}
+ function init(){normalizeCloseButtons();markScrollableDialogs();syncViewportUnit()}
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+ new MutationObserver(mutations=>{for(const m of mutations)for(const n of m.addedNodes)if(n.nodeType===1){normalizeCloseButtons(n);markScrollableDialogs(n)}}).observe(document.documentElement,{childList:true,subtree:true});
+ window.addEventListener('resize',syncViewportUnit,{passive:true});window.visualViewport?.addEventListener('resize',syncViewportUnit,{passive:true});
 })();
 </script>
 </body></html>

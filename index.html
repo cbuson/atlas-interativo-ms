@@ -5986,4 +5986,98 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(wire,0),{once:true});else setTimeout(wire,0);
 })();
 </script>
+
+
+<style id="joaju-mobile-r15-basemap-control">
+@media (max-width:900px){
+  /* R15 · não usar o painel expandido nativo do Leaflet no telefone. */
+  .leaflet-control-layers{display:none!important}
+  .joaju-basemap-control.leaflet-control{margin:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+  .joaju-basemap-toggle{
+    width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;
+    display:grid!important;place-items:center!important;padding:0!important;border:1px solid rgba(22,73,58,.16)!important;
+    border-radius:14px!important;background:#fff!important;color:#145b48!important;
+    box-shadow:0 4px 14px rgba(18,45,36,.18)!important;cursor:pointer!important;
+  }
+  .joaju-basemap-toggle svg{display:block!important;width:29px!important;height:29px!important}
+  .joaju-basemap-sheet{
+    position:fixed!important;left:10px!important;right:10px!important;
+    bottom:calc(var(--joaju-mobile-dock-h,76px) + max(12px,env(safe-area-inset-bottom)))!important;
+    z-index:10050!important;display:none!important;max-height:min(54dvh,390px)!important;
+    overflow:hidden!important;border:1px solid #d7e2dc!important;border-radius:18px!important;
+    background:#fffdf9!important;box-shadow:0 18px 48px rgba(18,45,36,.30)!important;
+  }
+  .joaju-basemap-sheet.open{display:flex!important;flex-direction:column!important}
+  .joaju-basemap-sheet-head{
+    position:static!important;height:auto!important;min-height:52px!important;display:flex!important;align-items:center!important;
+    justify-content:space-between!important;gap:10px!important;padding:8px 10px 8px 14px!important;
+    background:#f3f8f5!important;border-bottom:1px solid #dbe5e0!important;border-radius:18px 18px 0 0!important;
+  }
+  .joaju-basemap-sheet-head strong{font-size:16px!important;line-height:1.2!important;color:#153e35!important}
+  .joaju-basemap-sheet-close{
+    width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;
+    display:grid!important;place-items:center!important;padding:0!important;border:1px solid #d4ddd8!important;
+    border-radius:12px!important;background:#fff!important;color:#153e35!important;font-size:28px!important;line-height:1!important;
+  }
+  .joaju-basemap-options{overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;padding:6px 10px 10px!important}
+  .joaju-basemap-option{
+    width:100%!important;min-height:48px!important;display:grid!important;grid-template-columns:24px minmax(0,1fr)!important;
+    align-items:center!important;gap:10px!important;padding:8px 10px!important;margin:3px 0!important;
+    border:0!important;border-radius:11px!important;background:#fff!important;color:#243c34!important;
+    font:inherit!important;font-size:15px!important;font-weight:650!important;text-align:left!important;
+  }
+  .joaju-basemap-option .dot{
+    width:20px!important;height:20px!important;border:2px solid #8a9892!important;border-radius:50%!important;
+    display:block!important;position:relative!important;background:#fff!important;
+  }
+  .joaju-basemap-option.active{background:#eaf5ef!important;color:#0e5d48!important}
+  .joaju-basemap-option.active .dot{border-color:#0f6d55!important}
+  .joaju-basemap-option.active .dot:after{content:""!important;position:absolute!important;inset:4px!important;border-radius:50%!important;background:#0f6d55!important}
+  body.joaju-basemap-open .atlas-topbar,
+  body.joaju-basemap-open .research-ribbon{visibility:visible!important;display:flex!important;opacity:1!important;transform:none!important}
+}
+</style>
+<script id="joaju-mobile-r15-basemap-js">
+(()=>{
+  const NAMES=[
+    ['osm','Ruas OpenStreetMap'],
+    ['satellite','Satélite Esri'],
+    ['satellite_labels','Satélite com nomes'],
+    ['topographic','Topográfico Esri'],
+    ['street','Ruas Esri'],
+    ['light','Mapa claro Esri']
+  ];
+  const ICON=`<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6 42 15 24 24 6 15Z" fill="#2b8a70" opacity=".34"/><path d="M24 14 42 23 24 32 6 23Z" fill="#1f725d" opacity=".62"/><path d="M24 22 42 31 24 40 6 31Z" fill="#145b48"/></svg>`;
+  let sheet=null,customControl=null;
+  function currentId(){
+    try{const hit=Object.entries(baseLayers||{}).find(([,layer])=>layer===activeBaseLayer);return hit?.[0]||'osm'}catch(_){return 'osm'}
+  }
+  function sync(){
+    if(!sheet)return;const id=currentId();
+    sheet.querySelectorAll('.joaju-basemap-option').forEach(b=>{const on=b.dataset.basemap===id;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))});
+  }
+  function close(){if(!sheet)return;sheet.classList.remove('open');sheet.setAttribute('aria-hidden','true');document.body.classList.remove('joaju-basemap-open')}
+  function open(){if(!sheet)return;sync();sheet.classList.add('open');sheet.setAttribute('aria-hidden','false');document.body.classList.add('joaju-basemap-open');sheet.querySelector('.joaju-basemap-option.active')?.focus({preventScroll:true})}
+  function buildSheet(){
+    if(sheet)return;sheet=document.createElement('section');sheet.className='joaju-basemap-sheet';sheet.setAttribute('aria-hidden','true');sheet.setAttribute('aria-label','Escolher mapa de fundo');
+    sheet.innerHTML=`<div class="joaju-basemap-sheet-head"><strong>Mapa de fundo</strong><button type="button" class="joaju-basemap-sheet-close" aria-label="Fechar mapas de fundo">×</button></div><div class="joaju-basemap-options"></div>`;
+    const list=sheet.querySelector('.joaju-basemap-options');
+    NAMES.forEach(([id,name])=>{const b=document.createElement('button');b.type='button';b.className='joaju-basemap-option';b.dataset.basemap=id;b.setAttribute('aria-pressed','false');b.innerHTML=`<span class="dot" aria-hidden="true"></span><span>${name}</span>`;b.addEventListener('click',()=>{try{setBaseMap(id);sync();setTimeout(()=>{try{map.invalidateSize(false)}catch(_){}},80)}catch(e){console.error('JOAJU basemap',e)}close()});list.appendChild(b)});
+    sheet.querySelector('.joaju-basemap-sheet-close').addEventListener('click',close);document.body.appendChild(sheet);
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sheet?.classList.contains('open'))close()});
+  }
+  function install(){
+    if(!window.matchMedia('(max-width:900px)').matches)return false;
+    if(typeof L==='undefined'||typeof map==='undefined'||!map)return false;
+    buildSheet();
+    try{if(baseLayerControl){map.removeControl(baseLayerControl);baseLayerControl=null}}catch(_){}
+    if(customControl)return true;
+    const C=L.Control.extend({options:{position:'topright'},onAdd(){const wrap=L.DomUtil.create('div','leaflet-control joaju-basemap-control');const b=L.DomUtil.create('button','joaju-basemap-toggle',wrap);b.type='button';b.innerHTML=ICON;b.title='Mapa de fundo';b.setAttribute('aria-label','Escolher mapa de fundo');L.DomEvent.disableClickPropagation(wrap);L.DomEvent.disableScrollPropagation(wrap);L.DomEvent.on(b,'click',e=>{L.DomEvent.stop(e);sheet.classList.contains('open')?close():open()});return wrap}});
+    customControl=new C();map.addControl(customControl);return true;
+  }
+  function boot(){let n=0;const t=setInterval(()=>{n++;if(install()||n>80)clearInterval(t)},100)}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+  window.addEventListener('resize',()=>{if(window.matchMedia('(max-width:900px)').matches){install()}else{close()}},{passive:true});
+})();
+</script>
 </body></html>

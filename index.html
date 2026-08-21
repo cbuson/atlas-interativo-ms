@@ -801,10 +801,10 @@ input,select,textarea{max-width:100%!important}img,video,canvas,iframe{max-width
 </div>
 <div class="atlas-status" id="atlasTopStatus" title="Estado do núcleo local"><span class="status-dot"></span><span>Núcleo local</span></div>
 <div class="header-actions" aria-label="Navegação principal">
-<button class="btn nav-btn" id="toggleLeft" type="button"><span aria-hidden="true">▦</span> Explorar</button>
-<button class="btn nav-btn" id="routesHeaderBtn" type="button"><span aria-hidden="true">⌁</span> Rotas</button>
-<button class="btn nav-btn" id="statisticsHeaderBtn" type="button"><span aria-hidden="true">▥</span> Estatísticas</button>
-<button class="btn nav-btn" id="toggleRight" type="button"><span aria-hidden="true">▤</span> Ficha</button>
+<button class="btn nav-btn topnav-labeled" id="toggleLeft" type="button" title="Explorar o Atlas" aria-label="Explorar o Atlas"><svg class="topnav-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg><span class="topnav-label">Explorar</span></button>
+<button class="btn nav-btn topnav-labeled" id="routesHeaderBtn" type="button" title="Rotas e itinerários" aria-label="Abrir rotas e itinerários"><svg class="topnav-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="17" r="2"/><circle cx="19" cy="7" r="2"/><path d="M7 17c5 0 3-8 8-8h2" fill="none"/></svg><span class="topnav-label">Rotas</span></button>
+<button class="btn nav-btn topnav-icon-only" id="statisticsHeaderBtn" type="button" title="Dados e estatísticas" aria-label="Abrir dados e estatísticas"><svg class="topnav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h4v10M10 20V4h4v16M16 20v-7h4v7" fill="none"/></svg></button>
+<button class="btn nav-btn topnav-icon-only" id="toggleRight" type="button" title="Ficha territorial" aria-label="Abrir ficha territorial"><svg class="topnav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z" fill="none"/><path d="M9 10h6M9 14h6M9 18h4" fill="none"/></svg></button>
 <div class="header-more" id="headerMore">
 <button aria-expanded="false" aria-haspopup="true" class="btn nav-btn joaju-help-menu-btn" id="moreMenuBtn" type="button" title="Ajuda e documentação" aria-label="Abrir ajuda e documentação"><span aria-hidden="true">?</span></button>
 <div aria-label="Documentação e ferramentas do JOAJU MS" class="header-more-menu" id="headerMoreMenu" role="menu">
@@ -5243,6 +5243,10 @@ function printReport(){syncIdentification();const a=current,x=summary(),win=wind
 
 
 <!-- JOAJU R6 · módulo Campo integrado à Minha Pesquisa -->
+
+
+
+
 </body></html>`);win.document.close();}
 function installEntryPoints(){const intro=q('.prici-route-intro-actions');if(intro&&!$('priciCreateAssessmentBtn')){const b=document.createElement('button');b.id='priciCreateAssessmentBtn';b.type='button';b.className='btn light small prici-autoeval-btn';b.textContent='Autoavaliação · apoio ao Manual';b.onclick=()=>open();intro.prepend(b);}const meth=$('methodologyBtn');if(meth&&!$('priciSelfAssessmentMenuBtn')){const b=document.createElement('button');b.id='priciSelfAssessmentMenuBtn';b.type='button';b.className='menu-action';b.setAttribute('role','menuitem');b.textContent='Apoio à autoavaliação PRICI';b.onclick=()=>open();meth.insertAdjacentElement('afterend',b);}const docs=q('#docsDrawer .docs-grid');if(docs&&!$('priciSelfAssessmentDocsCard')){const b=document.createElement('button');b.id='priciSelfAssessmentDocsCard';b.type='button';b.className='doc-card';b.innerHTML='<b>Autoavaliação PRICI</b><span>Apoio digital ao questionário do Manual OEI, com gestão local e privacidade</span>'; b.onclick=()=>{q('#docsDrawer')?.classList.remove('open');open();};docs.prepend(b);}decorateRouteCards();const list=$('individualRoutesList');if(list){new MutationObserver(decorateRouteCards).observe(list,{childList:true,subtree:true});}}
 function decorateRouteCards(){qa('#individualRoutesList .route-card').forEach(card=>{if(q('.prici-autoeval-btn',card))return;const id=card.id.replace(/^route-card-/,'');const actions=q('.route-card-actions',card);if(!actions||!id)return;const b=document.createElement('button');b.type='button';b.className='btn light small prici-autoeval-btn';b.textContent='Autoavaliar · Manual PRICI';b.onclick=()=>open(id);const anchor=qa('button,a',actions).find(x=>x.textContent.trim()==='Ficha + PRICI');if(anchor)anchor.insertAdjacentElement('afterend',b);else actions.prepend(b);});}
@@ -5583,13 +5587,17 @@ function printReport(){const win=window.open('','_blank');if(!win){toast('O nave
 }
 </style>
 
-</head><body><h1>${esc(current.title)}</h1><div class="meta">Minha Pesquisa · Atlas Interativo MS ${esc(ATLAS_VERSION)} · expediente ${esc(current.pesquisa_id)} · ${fmtDate(current.updated_at)}</div><div class="notice"><b>Natureza do documento.</b> Este relatório foi gerado a partir de um caderno privado do usuário. Itens, notas, interpretações e decisões registradas aqui não fazem parte automaticamente da base científica validada do Atlas.</div><h2>Identificação</h2><div class="grid"><b>Responsável</b><span>${esc(current.user_metadata.responsible||'Não informado')}</span><b>Instituição</b><span>${esc(current.user_metadata.institution||'Não informada')}</span><b>Território</b><span>${esc(current.user_metadata.territory||'Não informado')}</span><b>Objetivo</b><span>${esc(current.objective||'Não informado')}</span><b>Descrição</b><span>${esc(current.description||'')}</span><b>Rota de partida</b><span>${esc(current.base_route_name||'Nenhuma')}</span></div><h2>Itens salvos</h2>${items?`<table><thead><tr><th>Tipo</th><th>Elemento</th><th>ID territorial</th><th>Nota privada</th><th>Salvo em</th></tr></thead><tbody>${items}</tbody></table>`:'<p>Nenhum item salvo.</p>'}<h2>Notas e tarefas</h2>${notes?`<table><thead><tr><th>Estado</th><th>Nota</th><th>Data</th></tr></thead><tbody>${notes}</tbody></table>`:'<p>Nenhuma nota.</p>'}<h2>Estados do mapa</h2>${maps?`<ul>${maps}</ul>`:'<p>Nenhum estado do mapa salvo.</p>'}<h2>Autoavaliação PRICI</h2><p>${current.prici_snapshots.length} snapshot(s) anexado(s). Consulte os arquivos JSON do expediente para preservar todos os campos estruturados.</p><div class="warn"><b>Privacidade e backup.</b> O original deste expediente permanece sob controle do usuário no navegador. A impressão não substitui a exportação JSON como cópia de segurança completa.</div><div class="footer">Gerado localmente pelo módulo Minha Pesquisa do Atlas Interativo do Patrimônio e dos Itinerários Culturais de Mato Grosso do Sul. O Atlas não recebeu automaticamente os dados deste expediente.</div><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script></body></html>`);win.document.close();}
+</head><body><h1>${esc(current.title)}</h1><div class="meta">Minha Pesquisa · Atlas Interativo MS ${esc(ATLAS_VERSION)} · expediente ${esc(current.pesquisa_id)} · ${fmtDate(current.updated_at)}</div><div class="notice"><b>Natureza do documento.</b> Este relatório foi gerado a partir de um caderno privado do usuário. Itens, notas, interpretações e decisões registradas aqui não fazem parte automaticamente da base científica validada do Atlas.</div><h2>Identificação</h2><div class="grid"><b>Responsável</b><span>${esc(current.user_metadata.responsible||'Não informado')}</span><b>Instituição</b><span>${esc(current.user_metadata.institution||'Não informada')}</span><b>Território</b><span>${esc(current.user_metadata.territory||'Não informado')}</span><b>Objetivo</b><span>${esc(current.objective||'Não informado')}</span><b>Descrição</b><span>${esc(current.description||'')}</span><b>Rota de partida</b><span>${esc(current.base_route_name||'Nenhuma')}</span></div><h2>Itens salvos</h2>${items?`<table><thead><tr><th>Tipo</th><th>Elemento</th><th>ID territorial</th><th>Nota privada</th><th>Salvo em</th></tr></thead><tbody>${items}</tbody></table>`:'<p>Nenhum item salvo.</p>'}<h2>Notas e tarefas</h2>${notes?`<table><thead><tr><th>Estado</th><th>Nota</th><th>Data</th></tr></thead><tbody>${notes}</tbody></table>`:'<p>Nenhuma nota.</p>'}<h2>Estados do mapa</h2>${maps?`<ul>${maps}</ul>`:'<p>Nenhum estado do mapa salvo.</p>'}<h2>Autoavaliação PRICI</h2><p>${current.prici_snapshots.length} snapshot(s) anexado(s). Consulte os arquivos JSON do expediente para preservar todos os campos estruturados.</p><div class="warn"><b>Privacidade e backup.</b> O original deste expediente permanece sob controle do usuário no navegador. A impressão não substitui a exportação JSON como cópia de segurança completa.</div><div class="footer">Gerado localmente pelo módulo Minha Pesquisa do Atlas Interativo do Patrimônio e dos Itinerários Culturais de Mato Grosso do Sul. O Atlas não recebeu automaticamente os dados deste expediente.</div><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script>
+
+
+
+</body></html>`);win.document.close();}
 async function importFile(ev){const f=ev.target.files?.[0];ev.target.value='';if(!f)return;try{const obj=JSON.parse(await f.text());let p=obj?.format==='atlas-ms-research'?obj.research:obj?.research||obj;if(!p||typeof p!=='object')throw new Error('Arquivo sem pesquisa reconhecível');p=normalizeProject(p);const exists=projects.some(x=>x.pesquisa_id===p.pesquisa_id);if(exists&&!confirm('Já existe uma pesquisa com este ID. Substituir a cópia local?')){p.pesquisa_id=uid('pesq');p.title=(p.title||'Pesquisa')+' · cópia importada';}p.updated_at=now();p.history.push({at:p.updated_at,action:'imported'});await putProject(p);current=p;await setMeta(CURRENT_KEY,p.pesquisa_id);await refreshProjects();render();toast('Pesquisa importada.');}catch(e){showError(e)}}
 async function storageEstimate(){const out=$('mrStorageResult');if(!out)return;try{if(!navigator.storage?.estimate)throw new Error('API de estimativa não disponível');const e=await navigator.storage.estimate();const used=e.usage||0,quota=e.quota||0;out.style.display='block';out.innerHTML=`Uso estimado pelo site: <strong>${(used/1024/1024).toFixed(2)} MB</strong> de ${(quota/1024/1024).toFixed(0)} MB disponíveis para esta origem. O valor inclui outros dados do site, não apenas Minha Pesquisa.`;}catch(e){out.style.display='block';out.textContent='O navegador não disponibiliza estimativa de armazenamento.';}}
 async function requestPersist(){const out=$('mrStorageResult');if(!out)return;try{if(!navigator.storage?.persist)throw new Error('API não disponível');const before=await navigator.storage.persisted?.();const granted=before||await navigator.storage.persist();out.style.display='block';out.innerHTML=granted?'<strong>Armazenamento persistente concedido pelo navegador.</strong> Isso reduz o risco de remoção automática por pressão de espaço, mas não substitui backup JSON.':'O navegador não concedeu armazenamento persistente. Continue usando exportação JSON como backup.';}catch(e){out.style.display='block';out.textContent='Este navegador não oferece solicitação de armazenamento persistente.';}}
 
 function installEntryPoints(){
-  const more=$('headerMore');if(more&&!$('myResearchHeaderBtn')){const b=document.createElement('button');b.id='myResearchHeaderBtn';b.type='button';b.className='btn nav-btn my-research-header-btn';b.innerHTML='<span aria-hidden="true">▣</span> Pesquisa';b.title='Abrir Minha Pesquisa';b.addEventListener('click',open);more.insertAdjacentElement('beforebegin',b);}
+  const more=$('headerMore');if(more&&!$('myResearchHeaderBtn')){const b=document.createElement('button');b.id='myResearchHeaderBtn';b.type='button';b.className='btn nav-btn my-research-header-btn';b.classList.add('topnav-labeled');b.innerHTML='<svg class="topnav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5z" fill="none"/><path d="M8 8h8M8 12h8M8 16h5" fill="none"/></svg><span class="topnav-label">Pesquisa</span>';b.title='Abrir Minha Pesquisa';b.addEventListener('click',open);more.insertAdjacentElement('beforebegin',b);}
   const diag=$('diagnosticsBtn');if(diag&&!$('myResearchMenuBtn')){const b=document.createElement('button');b.id='myResearchMenuBtn';b.type='button';b.className='menu-action my-research-menu-action';b.setAttribute('role','menuitem');b.innerHTML='<strong>▣</strong> Minha Pesquisa';b.addEventListener('click',()=>{$('headerMore')?.classList.remove('open');open();});diag.insertAdjacentElement('beforebegin',b);}
   const docs=q('#docsDrawer .docs-grid');if(docs&&!$('myResearchDocsCard')){const b=document.createElement('button');b.id='myResearchDocsCard';b.type='button';b.className='doc-card';b.innerHTML='<b>▣ Minha Pesquisa</b><span>Caderno privado com itens, notas, backup e relatório</span>';b.addEventListener('click',()=>{$('docsDrawer')?.classList.remove('open');open();});docs.prepend(b);}
   const dock=$('mobileDock');if(dock&&!$('mobileResearchBtn')){const b=document.createElement('button');b.id='mobileResearchBtn';b.type='button';b.className='mobile-dock-btn';b.innerHTML='<span>▣</span><small>Pesquisa</small>';b.addEventListener('click',()=>{qa('.mobile-dock-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');$('docsDrawer')?.classList.remove('open');$('left')?.classList.remove('open');$('right')?.classList.remove('open');open();});const helpBtn=$('mobileHelpBtn');dock.insertBefore(b,helpBtn||null);}
@@ -6080,4 +6088,88 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
   window.addEventListener('resize',()=>{if(window.matchMedia('(max-width:900px)').matches){install()}else{close()}},{passive:true});
 })();
 </script>
+
+
+
+
+
+<style id="joaju-r16-desktop-regression-fix">
+/* R16 · restaura comportamento de desktop sem alterar a experiência mobile aprovada. */
+@media (min-width:901px){
+  /* Ajuda e autoria sempre visíveis na navegação de desktop. */
+  .header-actions{display:flex!important;align-items:center!important;flex-wrap:nowrap!important;gap:5px!important;min-width:0!important;overflow:visible!important}
+  .header-actions > .header-more,
+  .header-actions > #projectInfoQuickBtn{display:block!important;flex:0 0 auto!important}
+  #moreMenuBtn,#projectInfoQuickBtn{display:grid!important;place-items:center!important;min-width:38px!important;width:38px!important;height:38px!important;padding:0!important;font-size:18px!important}
+  /* Evita duplicação da ajuda e libera largura para os dois ícones essenciais. */
+  #openGuideBtn{display:none!important}
+  /* Em larguras de notebook, atualização continua disponível no menu/documentação sem expulsar ajuda/autoria da tela. */
+  @media (max-width:1600px){#captureAllBtn{display:none!important}}
+
+  /* No desktop, o seletor de fundos volta a ser o controle Leaflet normal. */
+  .joaju-basemap-sheet,.joaju-basemap-control{display:none!important}
+  .leaflet-control-layers{display:block!important}
+  .leaflet-control-layers .joaju-basemap-sheet-head{display:none!important}
+  .leaflet-control-layers-expanded{position:static!important;width:auto!important;max-width:none!important;max-height:none!important;overflow:visible!important;padding:6px 10px 6px 6px!important;border-radius:5px!important}
+  .leaflet-control-layers-list{padding:0!important;margin:0!important}
+}
+</style>
+<script id="joaju-r16-desktop-regression-js">
+(()=>{
+  function cleanDesktopLeaflet(){
+    if(!window.matchMedia('(min-width:901px)').matches)return;
+    document.body.classList.remove('joaju-basemap-open');
+    document.querySelectorAll('.joaju-basemap-sheet').forEach(x=>x.classList.remove('open'));
+    document.querySelectorAll('.leaflet-control-layers .joaju-basemap-sheet-head').forEach(x=>x.remove());
+    const ctl=document.querySelector('.leaflet-control-layers');
+    if(ctl){
+      ctl.classList.remove('leaflet-control-layers-expanded');
+      const toggle=ctl.querySelector('.leaflet-control-layers-toggle');
+      if(toggle){toggle.setAttribute('title','Mapas de fundo');toggle.setAttribute('aria-label','Escolher mapa de fundo')}
+    }
+    try{window.map?.invalidateSize?.(false)}catch(_){}
+  }
+  function boot(){cleanDesktopLeaflet();setTimeout(cleanDesktopLeaflet,250);setTimeout(cleanDesktopLeaflet,900)}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+  window.addEventListener('resize',()=>setTimeout(cleanDesktopLeaflet,80),{passive:true});
+})();
+</script>
+
+
+<style id="joaju-r18-desktop-icon-toolbar">
+/* R18 · barra superior de desktop mais compacta, coerente e acessível. */
+@media (min-width:901px){
+  .header-actions{gap:5px!important}
+  .header-actions .nav-btn,
+  .header-actions .guide-btn{
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:6px!important;
+    min-height:38px!important;height:38px!important;border-radius:10px!important;white-space:nowrap!important;
+  }
+  .header-actions .topnav-icon{
+    width:19px!important;height:19px!important;display:block!important;flex:0 0 19px!important;
+    stroke:currentColor!important;stroke-width:1.9!important;stroke-linecap:round!important;stroke-linejoin:round!important;
+    fill:none!important;
+  }
+  .header-actions .topnav-labeled{padding:0 10px!important}
+  .header-actions .topnav-icon-only,
+  #moreMenuBtn,#projectInfoQuickBtn{
+    width:40px!important;min-width:40px!important;max-width:40px!important;padding:0!important;flex:0 0 40px!important;
+  }
+  .header-actions .topnav-icon-only .topnav-icon{width:20px!important;height:20px!important;flex-basis:20px!important}
+  .header-actions .topnav-label{font-size:13px!important;font-weight:800!important;line-height:1!important}
+  #moreMenuBtn{font-size:21px!important}
+  #projectInfoQuickBtn{font-size:20px!important}
+  /* Em notebooks, Pesquisa também vira ícone para proteger ajuda e autoria sem esconder funções. */
+  @media (max-width:1360px){
+    #myResearchHeaderBtn{width:40px!important;min-width:40px!important;max-width:40px!important;padding:0!important;flex:0 0 40px!important}
+    #myResearchHeaderBtn .topnav-label{display:none!important}
+  }
+  /* Em larguras ainda menores, Rotas compacta antes de comprometer os ícones essenciais. */
+  @media (max-width:1180px){
+    #routesHeaderBtn{width:40px!important;min-width:40px!important;max-width:40px!important;padding:0!important;flex:0 0 40px!important}
+    #routesHeaderBtn .topnav-label{display:none!important}
+  }
+}
+</style>
+
 </body></html>

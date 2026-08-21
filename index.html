@@ -792,7 +792,7 @@ input,select,textarea{max-width:100%!important}img,video,canvas,iframe{max-width
 <body>
 <header class="atlas-topbar">
 <div class="brand atlas-brand">
-  <div class="mark" aria-hidden="true">MS</div>
+  <div class="mark joaju-brand-mark" aria-hidden="true"><img src="assets/icons/joaju-192.png" alt="" draggable="false"/></div>
   <div class="brand-copy">
     <div class="brand-kicker">Joaju, em guarani, é associado às ideias de união, de estar unido e de estar junto</div>
     <h1><span class="brand-main">JOAJU MS</span><span class="brand-descriptor">Atlas Integrado do Patrimônio e do Território de Mato Grosso do Sul</span></h1>
@@ -6784,5 +6784,73 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
   document.addEventListener('visibilitychange',()=>{if(!document.hidden&&mobile())repair()});
 })();
 </script>
+
+
+<style id="joaju-r27-leaflet-attribution-position">
+@media (max-width:900px){
+  /* Mantém atribuição e escala discretas no rodapé real do mapa,
+     imediatamente acima do dock, sem ocupar o centro da cartografia. */
+  #map .leaflet-bottom{
+    bottom:calc(var(--joaju-mobile-dock-h,72px) + max(8px,var(--joaju-safe-bottom,0px)) + 6px)!important;
+    pointer-events:none!important;
+  }
+  #map .leaflet-bottom.leaflet-right{
+    right:8px!important;
+    left:auto!important;
+  }
+  #map .leaflet-bottom.leaflet-left{
+    left:8px!important;
+    right:auto!important;
+  }
+  #map .leaflet-control-attribution{
+    margin:0!important;
+    padding:2px 5px!important;
+    max-width:min(70vw,360px)!important;
+    border-radius:7px!important;
+    background:rgba(255,255,255,.86)!important;
+    box-shadow:none!important;
+    font-size:10px!important;
+    line-height:1.2!important;
+    white-space:normal!important;
+    text-align:right!important;
+    pointer-events:auto!important;
+  }
+  #map .leaflet-control-scale{
+    margin:0!important;
+    pointer-events:none!important;
+  }
+  #map .leaflet-control-scale-line{
+    margin:0!important;
+    background:rgba(255,255,255,.82)!important;
+    font-size:10px!important;
+    line-height:1.15!important;
+  }
+}
+</style>
+
+
+<style id="joaju-r28-brand-logo">
+.atlas-brand .joaju-brand-mark{
+  padding:0!important;
+  overflow:hidden!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+.atlas-brand .joaju-brand-mark img{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  border-radius:inherit!important;
+}
+@media (max-width:900px){
+  .atlas-brand .joaju-brand-mark{
+    width:48px!important;
+    height:48px!important;
+    border-radius:13px!important;
+    flex:0 0 48px!important;
+  }
+}
+</style>
 
 </body></html>

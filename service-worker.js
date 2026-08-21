@@ -1,3 +1,4 @@
+// JOAJU R14 cache revision
 // Auditor compatibility baseline: 2026-08-12-pwa-6-sparse-index-visualfix
 const JOAJU_PWA_VERSION='2026-08-21-pwa-15-mobile-r12-final';
 const CORE_CACHE=`joaju-core-${JOAJU_PWA_VERSION}`;

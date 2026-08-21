@@ -5943,4 +5943,47 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 </script>
+
+<style id="joaju-r14-leaflet-render-fix">
+/* R14 · correção crítica de renderização Leaflet em mobile.
+   Regras responsivas globais não podem redimensionar canvas ou imagens georreferenciadas do mapa. */
+#map img,
+#map canvas,
+.leaflet-container img,
+.leaflet-container canvas{max-width:none!important;max-height:none!important}
+.leaflet-container .leaflet-tile{width:256px;height:256px}
+.leaflet-overlay-pane canvas,
+.leaflet-pane canvas{display:block!important}
+</style>
+<script id="joaju-r14-layer-runtime-diagnostics">
+(function(){
+  function wire(){
+    if(typeof map==='undefined'||!map||typeof configs==='undefined')return;
+    window.__JOAJU_LAYER_DIAGNOSTICS__=window.__JOAJU_LAYER_DIAGNOSTICS__||{};
+    const rec=(id,patch)=>{window.__JOAJU_LAYER_DIAGNOSTICS__[id]={...(window.__JOAJU_LAYER_DIAGNOSTICS__[id]||{}),...patch,at:new Date().toISOString()};};
+    const bindLayer=(id,layer)=>{
+      if(!layer||layer.__joajuR14DiagBound)return; layer.__joajuR14DiagBound=true;
+      if(layer.on){
+        layer.on('add',()=>rec(id,{added:true}));
+        layer.on('remove',()=>rec(id,{added:false}));
+        layer.on('loading',()=>rec(id,{loading:true,tileErrors:0}));
+        layer.on('load',()=>rec(id,{loading:false,loaded:true}));
+        layer.on('tileerror',e=>rec(id,{loading:false,loaded:false,tileErrors:(window.__JOAJU_LAYER_DIAGNOSTICS__[id]?.tileErrors||0)+1,lastError:String(e?.error?.message||e?.error||'tileerror')}));
+      }
+    };
+    const oldSet=window.setLayerData;
+    if(typeof oldSet==='function'&&!oldSet.__joajuR14Wrapped){
+      const wrapped=function(id,data,status){const out=oldSet.apply(this,arguments);try{bindLayer(id,layerState?.[id]?.leaflet);rec(id,{features:data?.features?.length||0,status:layerState?.[id]?.status||status||null});}catch(_){}return out};
+      wrapped.__joajuR14Wrapped=true;window.setLayerData=wrapped;
+    }
+    const oldEnsure=window.ensureLayerLoaded;
+    if(typeof oldEnsure==='function'&&!oldEnsure.__joajuR14Wrapped){
+      const wrapped=async function(id){try{const out=await oldEnsure.apply(this,arguments);try{bindLayer(id,layerState?.[id]?.leaflet);rec(id,{features:layerState?.[id]?.data?.features?.length||0,status:layerState?.[id]?.status||null});}catch(_){}return out}catch(e){rec(id,{error:String(e?.message||e)});throw e}};
+      wrapped.__joajuR14Wrapped=true;window.ensureLayerLoaded=wrapped;
+    }
+    for(const cfg of configs){try{if(layerState?.[cfg.id]?.leaflet)bindLayer(cfg.id,layerState[cfg.id].leaflet)}catch(_){}}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(wire,0),{once:true});else setTimeout(wire,0);
+})();
+</script>
 </body></html>

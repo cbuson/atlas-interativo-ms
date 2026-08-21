@@ -1349,6 +1349,21 @@ input,select,textarea{max-width:100%!important}img,video,canvas,iframe{max-width
 <article class="author"><h3>Carlos Busón Buesa</h3><p>Pesquisador responsável. Universidade Federal de Mato Grosso do Sul. Doutor em Comunicação e Educação em Entornos Digitais e geólogo. Atua em comunicação científica, educação digital, patrimônio, geodiversidade e itinerários culturais.</p><p><a class="source-link" href="https://orcid.org/0000-0002-1446-2252" rel="noopener" target="_blank">ORCID 0000 0002 1446 2252</a><br/>carlos.buson@ufms.br</p></article>
 <article class="author"><h3>Carlos Otávio Zamberlan</h3><p>Universidade Estadual de Mato Grosso do Sul. Programa de Pós Graduação em Desenvolvimento Regional e de Sistemas Produtivos. Doutor em Economia. Atua em desenvolvimento territorial, gestão, agronegócios e sistemas produtivos.</p><p><a class="source-link" href="https://orcid.org/0000-0001-9975-9612" rel="noopener" target="_blank">ORCID 0000 0001 9975 9612</a><br/>carlos.otavio@uems.br</p></article>
 <article class="author"><h3>Moisés Centenaro</h3><p>Universidade Estadual de Mato Grosso do Sul. Programa de Pós Graduação em Desenvolvimento Regional e de Sistemas Produtivos. Doutor em Administração. Atua em desenvolvimento regional, empreendedorismo, logística e cooperativismo.</p><p><a class="source-link" href="https://orcid.org/0000-0003-2299-9102" rel="noopener" target="_blank">ORCID 0000 0003 2299 9102</a><br/>m.centenaro@uems.br</p></article>
+
+<div class="joaju-institutional-footer" aria-label="Vinculação institucional">
+  <div class="joaju-institutional-separator" aria-hidden="true"></div>
+  <h3>Vinculação institucional</h3>
+  <p>JOAJU MS foi desenvolvido no contexto de pesquisa de pós-doutorado realizada na Universidade Estadual de Mato Grosso do Sul, vinculada ao Programa de Pós-Graduação em Desenvolvimento Regional e de Sistemas Produtivos, Unidade Universitária de Ponta Porã.</p>
+  <div class="joaju-institutional-logos">
+    <a href="https://www.uems.br/" target="_blank" rel="noopener noreferrer" aria-label="Universidade Estadual de Mato Grosso do Sul">
+      <img src="assets/institucional/uems.jpeg" alt="UEMS · Universidade Estadual de Mato Grosso do Sul">
+    </a>
+    <a href="https://www.uems.br/ppg/ppgdrs" target="_blank" rel="noopener noreferrer" aria-label="PPGDRS · Programa de Pós-Graduação em Desenvolvimento Regional e de Sistemas Produtivos">
+      <img src="assets/institucional/ppgdrs.jpg" alt="PPGDRS · Programa de Pós-Graduação em Desenvolvimento Regional e de Sistemas Produtivos">
+    </a>
+  </div>
+  <p class="joaju-institutional-note">Pesquisa de pós-doutorado · UEMS · PPGDRS · Ponta Porã, MS</p>
+</div>
 </div></div></div>
 <div aria-labelledby="methodologyTitle" aria-modal="true" class="modal" id="methodologyModal" role="dialog"><div class="modal-box refs methodology-shell"><div class="modal-head"><div><div class="workspace-kicker">Documentação metodológica</div><h2 id="methodologyTitle">Metodologia completa</h2><p class="muted small">Índices, malha, normalização, sensibilidade, governança e reprodutibilidade</p></div><button class="btn light" id="closeMethodology" type="button">×</button></div><iframe id="methodologyFullFrame" title="Metodologia completa do Atlas" class="methodology-frame"></iframe></div></div><div aria-labelledby="diagnosticsTitle" aria-modal="true" class="modal" id="diagnosticsModal" role="dialog"><div class="modal-box"><div class="modal-head"><div><h2 id="diagnosticsTitle">Diagnóstico interno</h2><p class="muted small">Verificação da interface, dos motores de cálculo e dos produtos territoriais publicados</p></div><button class="btn light" id="closeDiagnostics" type="button">×</button></div><div id="diagnosticsContent"><p class="muted">Os testes são executados ao abrir este diagnóstico. O painel separa capacidade de cálculo e produto territorial efetivamente publicado.</p></div></div></div><div aria-labelledby="googleMapTitle" aria-modal="true" class="modal" id="googleMapModal" role="dialog"><div class="modal-box" style="max-width:1100px"><div class="modal-head"><div><h2 id="googleMapTitle">Vista Google Maps</h2><p class="muted small">Carregada somente quando solicitada</p></div><button class="btn light" id="closeGoogleMap" type="button">×</button></div><div id="googleMapCanvas" style="height:70vh;border-radius:12px;background:#e7ece9;display:grid;place-items:center"><p class="muted">Adicione a chave em config.js para ativar esta vista</p></div><p class="tiny muted">A chave deve ser restrita ao domínio do GitHub Pages e somente à Maps JavaScript API.</p></div></div>
 <div aria-labelledby="referencesTitle" aria-modal="true" class="modal" id="referencesModal" role="dialog"><div class="modal-box refs"><div class="modal-head"><div><h2 id="referencesTitle">Fontes e referências</h2><p class="muted small">Inventário bibliográfico e documental integrado ao próprio atlas</p></div><button class="btn light" id="closeReferences" type="button">×</button></div>
@@ -6887,6 +6902,81 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
   }
   #map .leaflet-control-scale-line{
     margin:0!important;
+  }
+}
+</style>
+
+
+<style id="joaju-r30-institutional-footer">
+.joaju-institutional-footer{
+  margin-top:24px;
+  padding-top:4px;
+}
+.joaju-institutional-separator{
+  height:1px;
+  margin:8px 0 18px;
+  background:rgba(18,83,69,.16);
+}
+.joaju-institutional-footer h3{
+  margin:0 0 8px;
+  font-size:1rem;
+  color:var(--ink,#173f35);
+}
+.joaju-institutional-footer p{
+  margin:0 0 12px;
+  line-height:1.5;
+}
+.joaju-institutional-logos{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:8px 0 10px;
+}
+.joaju-institutional-logos a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px;
+  border-radius:8px;
+}
+.joaju-institutional-logos a:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:2px;
+}
+.joaju-institutional-logos img{
+  display:block;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+.joaju-institutional-logos a:first-child img{
+  max-width:82px;
+  max-height:52px;
+}
+.joaju-institutional-logos a:last-child img{
+  max-width:72px;
+  max-height:52px;
+}
+.joaju-institutional-note{
+  margin-top:4px!important;
+  font-size:.78rem;
+  color:var(--muted,#6b746f);
+}
+@media (max-width:900px){
+  .joaju-institutional-footer{
+    margin-top:20px;
+  }
+  .joaju-institutional-logos{
+    gap:12px;
+  }
+  .joaju-institutional-logos a:first-child img{
+    max-width:76px;
+    max-height:48px;
+  }
+  .joaju-institutional-logos a:last-child img{
+    max-width:68px;
+    max-height:48px;
   }
 }
 </style>

@@ -6201,4 +6201,139 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
 })();
 </script>
 
+
+
+<style id="joaju-r20-mobile-map-toolbar">
+/* R20 · barra móvel de mapa inspirada na solução funcional do ITA ARANDU.
+   Mantém a identidade verde do JOAJU visível e reúne ferramentas cartográficas em uma única faixa. */
+@media (max-width:900px){
+  .atlas-topbar{
+    position:sticky!important;
+    top:0!important;
+    z-index:4200!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+  .header-actions,
+  .header-actions > .header-more,
+  .header-actions > #projectInfoQuickBtn{
+    visibility:visible!important;
+    opacity:1!important;
+  }
+  #map{position:relative!important}
+  .joaju-mobile-map-toolbar{
+    position:absolute!important;
+    top:10px!important;
+    left:50%!important;
+    transform:translateX(-50%)!important;
+    z-index:1250!important;
+    display:flex!important;
+    align-items:center!important;
+    gap:4px!important;
+    max-width:calc(100% - 20px)!important;
+    padding:5px!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+    background:rgba(255,255,255,.96)!important;
+    border:1px solid rgba(22,75,60,.15)!important;
+    border-radius:16px!important;
+    box-shadow:0 4px 16px rgba(16,48,38,.18)!important;
+    backdrop-filter:blur(8px)!important;
+  }
+  .joaju-mobile-map-toolbar::-webkit-scrollbar{display:none!important}
+  .joaju-mobile-map-tool{
+    width:48px!important;
+    min-width:48px!important;
+    height:48px!important;
+    min-height:48px!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:12px!important;
+    display:grid!important;
+    place-items:center!important;
+    background:transparent!important;
+    color:#0d5262!important;
+    cursor:pointer!important;
+    font:800 27px/1 system-ui,-apple-system,"Segoe UI",sans-serif!important;
+  }
+  .joaju-mobile-map-tool:hover,
+  .joaju-mobile-map-tool:focus-visible,
+  .joaju-mobile-map-tool[aria-pressed="true"]{
+    background:#eaf5ef!important;
+    outline:none!important;
+    box-shadow:inset 0 0 0 2px #77af9d!important;
+  }
+  .joaju-mobile-map-tool svg{
+    width:27px!important;
+    height:27px!important;
+    display:block!important;
+    stroke:currentColor!important;
+    stroke-width:2!important;
+    fill:none!important;
+    stroke-linecap:round!important;
+    stroke-linejoin:round!important;
+  }
+  .joaju-mobile-map-tool.location svg{width:34px!important;height:34px!important}
+
+  /* Os controles continuam no DOM e conservam a lógica, mas a faixa móvel passa a ser a interface visível. */
+  #map > .leaflet-control-container .leaflet-top.leaflet-left .leaflet-control-zoom,
+  #map > .leaflet-control-container .joaju-location-control,
+  #map > .leaflet-control-container .joaju-basemap-control,
+  #joajuUnifiedLegendControl{display:none!important}
+
+  /* Painéis cartográficos abrem abaixo da faixa, sem encobrir a identidade do projeto. */
+  .joaju-basemap-sheet{z-index:4100!important}
+  .joaju-unified-legend-panel{
+    z-index:1260!important;
+    top:70px!important;
+    bottom:calc(var(--joaju-mobile-dock-h,72px) + var(--joaju-safe-bottom,0px) + 12px)!important;
+    max-height:none!important;
+  }
+}
+@media (max-width:360px){
+  .joaju-mobile-map-toolbar{gap:2px!important;padding:4px!important}
+  .joaju-mobile-map-tool{width:45px!important;min-width:45px!important;height:45px!important;min-height:45px!important}
+}
+</style>
+<script id="joaju-r20-mobile-map-toolbar-js">
+(()=>{
+  const ICON_FIT='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H4a1 1 0 0 0-1 1v4M16 3h4a1 1 0 0 1 1 1v4M8 21H4a1 1 0 0 1-1-1v-4M16 21h4a1 1 0 0 0 1-1v-4"/></svg>';
+  const ICON_LOCATION='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>';
+  const ICON_BASE='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4-8 4-8-4 8-4Z"/><path d="m4 11 8 4 8-4M4 15l8 4 8-4"/></svg>';
+  const ICON_LEGEND='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="18" r="1.2"/></svg>';
+  function tool(cls,label,html){const b=document.createElement('button');b.type='button';b.className='joaju-mobile-map-tool '+cls;b.title=label;b.setAttribute('aria-label',label);b.innerHTML=html;return b}
+  function build(){
+    if(!window.matchMedia('(max-width:900px)').matches)return;
+    const host=document.getElementById('map');if(!host||document.getElementById('joajuMobileMapToolbar'))return;
+    const bar=document.createElement('nav');bar.id='joajuMobileMapToolbar';bar.className='joaju-mobile-map-toolbar';bar.setAttribute('aria-label','Ferramentas do mapa');
+    const fit=tool('fit','Enquadrar Mato Grosso do Sul',ICON_FIT);
+    const plus=tool('zoom-in','Aumentar zoom','+');
+    const minus=tool('zoom-out','Diminuir zoom','−');
+    const loc=tool('location','Minha posição',ICON_LOCATION);
+    const base=tool('basemap','Mapa de fundo',ICON_BASE);
+    const legend=tool('legend','Legenda das camadas ativas',ICON_LEGEND);
+    fit.addEventListener('click',()=>{try{map.fitBounds(MS_BOUNDS)}catch(e){console.warn('JOAJU enquadrar MS',e)}});
+    plus.addEventListener('click',()=>{try{map.zoomIn()}catch(e){}});
+    minus.addEventListener('click',()=>{try{map.zoomOut()}catch(e){}});
+    loc.addEventListener('click',()=>{const b=document.querySelector('.joaju-location-btn');if(b)b.click()});
+    base.addEventListener('click',()=>{const b=document.querySelector('.joaju-basemap-toggle');if(b)b.click()});
+    legend.addEventListener('click',()=>{const b=document.getElementById('joajuUnifiedLegendBtn');if(b){b.click();legend.setAttribute('aria-pressed',String(document.getElementById('joajuUnifiedLegendPanel')?.classList.contains('open')))}});
+    bar.append(fit,plus,minus,loc,base,legend);host.appendChild(bar);
+  }
+  function sync(){
+    const mobile=window.matchMedia('(max-width:900px)').matches;
+    const bar=document.getElementById('joajuMobileMapToolbar');
+    if(mobile&&!bar)build();
+    if(bar)bar.style.display=mobile?'flex':'none';
+    try{map?.invalidateSize?.(false)}catch(_){}
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(sync,0),{once:true});else setTimeout(sync,0);
+  window.addEventListener('resize',()=>setTimeout(sync,80),{passive:true});
+  window.addEventListener('orientationchange',()=>setTimeout(sync,180),{passive:true});
+})();
+</script>
+
 </body></html>

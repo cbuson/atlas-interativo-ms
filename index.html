@@ -5818,4 +5818,72 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
  window.addEventListener('resize',syncViewportUnit,{passive:true});window.visualViewport?.addEventListener('resize',syncViewportUnit,{passive:true});
 })();
 </script>
+
+<style id="joaju-mobile-r12-final-override">
+@media (max-width:900px){
+  :root{--joaju-mobile-dock-h:70px;--joaju-mobile-panel-top:132px}
+  html,body{height:100%!important;min-height:100%!important;overflow:hidden!important}
+  #app{height:100dvh!important;min-height:0!important;overflow:hidden!important}
+  .panel#left,#right{top:var(--joaju-mobile-panel-top)!important;bottom:calc(var(--joaju-mobile-dock-h) + max(8px,env(safe-area-inset-bottom)))!important;max-height:none!important;overflow:hidden!important;overscroll-behavior:contain!important}
+  .panel#left>.panel-inner,#right>.panel-inner{box-sizing:border-box!important;height:100%!important;min-height:0!important;max-height:100%!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;touch-action:pan-y!important;padding-bottom:32px!important}
+  .modal{overflow:hidden!important;padding:8px!important;align-items:stretch!important}
+  .modal>.modal-box,.modal .modal-box{box-sizing:border-box!important;width:min(100%,calc(100vw - 16px))!important;height:auto!important;max-height:calc(100dvh - 16px)!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;touch-action:pan-y!important;padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
+  .modal-head,.atlas-help-head,.universal-ficha-head,.my-research-head,.mr-camera-head,.prici-self-head,.evl-head{position:sticky!important;top:0!important;z-index:40!important;background:var(--panel,#fffdf8)!important}
+  .my-research-modal .modal-box{overflow:hidden!important;padding-bottom:0!important}
+  .my-research-shell{height:calc(100dvh - 16px)!important;max-height:calc(100dvh - 16px)!important;min-height:0!important;display:flex!important;flex-direction:column!important;overflow:hidden!important}
+  .my-research-head{flex:0 0 auto!important}
+  .my-research-body{flex:1 1 auto!important;min-height:0!important;height:auto!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;padding-bottom:max(30px,env(safe-area-inset-bottom))!important}
+  .my-research-side,.my-research-main{height:auto!important;max-height:none!important;overflow:visible!important}
+  .statistics-workspace{overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;bottom:calc(var(--joaju-mobile-dock-h) + max(8px,env(safe-area-inset-bottom)))!important}
+  .leaflet-control{margin:0!important}
+  .leaflet-top.leaflet-left{top:10px!important;left:10px!important;display:flex!important;flex-direction:column!important;gap:8px!important}
+  .leaflet-top.leaflet-right{top:10px!important;right:10px!important;display:flex!important;flex-direction:column!important;gap:8px!important;align-items:flex-end!important}
+  .leaflet-control-zoom,.leaflet-control-layers{border:1px solid rgba(27,72,58,.16)!important;border-radius:11px!important;box-shadow:0 3px 12px rgba(16,48,38,.16)!important;background:#fff!important}
+  .leaflet-control-zoom{overflow:hidden!important}
+  .leaflet-control-zoom a{width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;line-height:40px!important;font-size:22px!important;font-weight:500!important;color:#15382e!important;background:#fff!important;border:0!important}
+  .leaflet-control-zoom a+a{border-top:1px solid #dce5e0!important}
+  .leaflet-control-layers-toggle{width:42px!important;height:42px!important;min-width:42px!important;min-height:42px!important;background-color:#fff!important;background-position:center!important;background-repeat:no-repeat!important;background-size:26px 26px!important;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 7 42 16 24 25 6 16Z' fill='%23185b49' opacity='.30'/%3E%3Cpath d='M24 14 42 23 24 32 6 23Z' fill='%23185b49' opacity='.55'/%3E%3Cpath d='M24 21 42 30 24 39 6 30Z' fill='%23185b49'/%3E%3C/svg%3E")!important}
+  .leaflet-control-layers-expanded{position:fixed!important;top:calc(var(--joaju-mobile-panel-top) + 8px)!important;right:10px!important;width:min(260px,calc(100vw - 32px))!important;max-width:calc(100vw - 32px)!important;max-height:calc(100dvh - var(--joaju-mobile-panel-top) - var(--joaju-mobile-dock-h) - 28px)!important;overflow-y:auto!important;overflow-x:hidden!important;padding:10px 12px!important;border-radius:12px!important;z-index:2500!important;-webkit-overflow-scrolling:touch!important}
+  .leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none!important}
+  .leaflet-control-layers-list{font-size:14px!important;line-height:1.25!important;margin:0!important}
+  .leaflet-control-layers-base label,.leaflet-control-layers-overlays label{display:flex!important;align-items:center!important;gap:8px!important;min-height:38px!important;margin:0!important;padding:5px 2px!important;white-space:normal!important;color:#263b33!important}
+  .leaflet-control-layers input{width:18px!important;height:18px!important;flex:0 0 18px!important;margin:0!important}
+  .leaflet-control-layers-separator{margin:6px 0!important}
+  .joaju-location-control{margin-top:0!important;background:transparent!important;box-shadow:none!important;border:0!important;overflow:visible!important}
+  .joaju-location-btn{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;border-radius:50%!important;padding:0!important;border:2px solid #fff!important;box-shadow:0 3px 12px rgba(16,48,38,.20)!important;background:#0b6d8f!important;display:grid!important;place-items:center!important;overflow:hidden!important}
+  .joaju-location-btn svg{display:block!important;width:42px!important;height:42px!important;visibility:visible!important;opacity:1!important}
+  .leaflet-popup-content-wrapper{border-radius:12px!important;box-shadow:0 4px 16px rgba(16,48,38,.18)!important}
+  .leaflet-popup-content{font-size:13px!important;line-height:1.35!important;margin:10px 12px!important;max-width:64vw!important}
+  .leaflet-popup-close-button{width:32px!important;height:32px!important;font-size:22px!important;line-height:30px!important}
+  .leaflet-bottom.leaflet-left{left:8px!important;bottom:calc(var(--joaju-mobile-dock-h) + 8px)!important}
+  .leaflet-bottom.leaflet-right{right:8px!important;bottom:calc(var(--joaju-mobile-dock-h) + 8px)!important}
+  .leaflet-control-scale-line{font-size:10px!important;line-height:1.05!important;background:rgba(255,255,255,.88)!important}
+  .leaflet-control-attribution{font-size:9px!important;line-height:1.15!important;padding:2px 4px!important;max-width:58vw!important;white-space:normal!important;background:rgba(255,255,255,.82)!important;border-radius:5px 0 0 0!important}
+  .mobile-dock{z-index:2600!important;min-height:64px!important;height:64px!important;overflow:visible!important}
+  .mobile-dock-btn{min-height:54px!important}
+}
+@media (max-width:430px){
+  :root{--joaju-mobile-panel-top:132px}
+  .panel#left,#right{left:6px!important;right:6px!important;width:auto!important;max-width:none!important}
+  .leaflet-control-layers-expanded{right:8px!important;width:min(248px,calc(100vw - 24px))!important;max-width:calc(100vw - 24px)!important}
+  .leaflet-popup-content{max-width:60vw!important}
+}
+@media (orientation:landscape) and (max-width:900px){
+  :root{--joaju-mobile-panel-top:104px;--joaju-mobile-dock-h:62px}
+  .mobile-dock{height:58px!important;min-height:58px!important}
+  .leaflet-control-layers-expanded{max-height:calc(100dvh - var(--joaju-mobile-panel-top) - 74px)!important}
+}
+</style>
+<script id="joaju-mobile-r12-final-js">
+(()=>{
+  function compactLeaflet(){try{window.map?.attributionControl?.setPrefix(false)}catch(_){}try{window.mrFieldMap?.attributionControl?.setPrefix(false)}catch(_){}}
+  function repairMap(){clearTimeout(repairMap.t);repairMap.t=setTimeout(()=>{try{window.map?.invalidateSize?.({pan:false,debounceMoveend:true})}catch(_){}try{window.mrFieldMap?.invalidateSize?.({pan:false,debounceMoveend:true})}catch(_){}compactLeaflet()},90)}
+  function init(){compactLeaflet();repairMap()}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+  window.addEventListener('resize',repairMap,{passive:true});window.addEventListener('orientationchange',repairMap,{passive:true});window.visualViewport?.addEventListener('resize',repairMap,{passive:true});
+  document.addEventListener('click',e=>{if(e.target.closest('.mobile-dock-btn,.panel-close-btn,.joaju-location-btn,.leaflet-control-layers-toggle,.icon-close-btn,.universal-ficha-close'))repairMap()},{passive:true});
+  new MutationObserver(compactLeaflet).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
 </body></html>

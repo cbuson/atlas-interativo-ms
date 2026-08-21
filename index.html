@@ -4505,11 +4505,30 @@ document.getElementById('satelliteHeaderBtn').onclick=()=>setBaseMap('satellite_
 document.getElementById('layersTabBtn').onclick=()=>switchLeftTab('layers');document.getElementById('routesTabBtn').onclick=()=>{switchLeftTab('routes');ensureRoutesPanelLoaded();};document.getElementById('togglePriciLayerBtn').onclick=togglePriciRouteLayer;document.getElementById('loadAllRoutesBtn').onclick=()=>toggleAllIndividualRoutes(true);document.getElementById('hideAllRoutesBtn').onclick=()=>toggleAllIndividualRoutes(false);document.getElementById('clearRouteSearchBtn').onclick=()=>{document.getElementById('routeSearchInput').value='';renderIndividualRoutes();};document.getElementById('routeSearchInput').addEventListener('input',renderIndividualRoutes);document.getElementById('genericLayerFile').addEventListener('change',handlePendingExternalImport);
 document.getElementById('importSchoolBtn').onclick=importSchools;document.getElementById('downloadSchoolBtn').onclick=downloadSchoolsOfficial;document.getElementById('importLocalityBtn').onclick=()=>genericImport('localityFile','localidades_ibge_completas','localities');document.getElementById('captureLocalityBtn').onclick=()=>captureLayer('localidades_ibge_completas');document.getElementById('importGeositeBtn').onclick=()=>genericImport('geositeFile','dados_usuario','geosites');document.getElementById('importGenericBtn').onclick=importGenericLayer;document.getElementById('exportKmlBtn').onclick=exportKml;document.getElementById('exportGeojsonBtn').onclick=exportGeojsonPackage;
 document.getElementById('calculateAptitudeBtn').onclick=calculateAptitude;document.getElementById('calculateAllIndicesBtn').onclick=()=>confirmAndCalculateAllTerritorialIndices().catch(e=>log(`Atualização integral interrompida  ${e.message||e}`));document.getElementById('clearCacheBtn').onclick=async()=>{if(confirm('Apagar todas as capturas guardadas neste navegador')){await dbClear();location.reload();}};
-for(const [btn,modal] of [['projectBtn','projectModal'],['referencesBtn','referencesModal'],['methodologyBtn','methodologyModal']])document.getElementById(btn).onclick=()=>document.getElementById(modal).classList.add('open');
-document.getElementById('projectInfoQuickBtn')?.addEventListener('click',()=>document.getElementById('projectModal')?.classList.add('open'));
+function joajuStableOpenModal(modalId){
+  const modal=document.getElementById(modalId);
+  if(!modal)return;
+  const box=modal.querySelector('.modal-box');
+  if(box){box.scrollTop=0;box.scrollLeft=0}
+  modal.setAttribute('aria-hidden','false');
+  modal.classList.add('open');
+  requestAnimationFrame(()=>{if(box){box.scrollTop=0;box.scrollLeft=0}});
+}
+function joajuStableCloseModal(modalId){
+  const modal=document.getElementById(modalId);
+  if(!modal)return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+  requestAnimationFrame(()=>{try{map?.invalidateSize?.(false)}catch(_){}});
+}
+for(const [btn,modal] of [['projectBtn','projectModal'],['referencesBtn','referencesModal'],['methodologyBtn','methodologyModal']])
+  document.getElementById(btn).onclick=()=>joajuStableOpenModal(modal);
+document.getElementById('projectInfoQuickBtn')?.addEventListener('click',()=>joajuStableOpenModal('projectModal'));
 const diagnosticsButton=document.getElementById('diagnosticsBtn');if(diagnosticsButton)diagnosticsButton.onclick=()=>runDiagnostics();
-for(const [btn,modal] of [['closeProject','projectModal'],['closeReferences','referencesModal'],['closeMethodology','methodologyModal'],['closeDiagnostics','diagnosticsModal'],['closeGoogleMap','googleMapModal']])document.getElementById(btn).onclick=()=>document.getElementById(modal).classList.remove('open');
-for(const modal of ['projectModal','referencesModal','methodologyModal','diagnosticsModal','googleMapModal'])document.getElementById(modal).onclick=e=>{if(e.target.id===modal)e.currentTarget.classList.remove('open')};
+for(const [btn,modal] of [['closeProject','projectModal'],['closeReferences','referencesModal'],['closeMethodology','methodologyModal'],['closeDiagnostics','diagnosticsModal'],['closeGoogleMap','googleMapModal']])
+  document.getElementById(btn).onclick=()=>joajuStableCloseModal(modal);
+for(const modal of ['projectModal','referencesModal','methodologyModal','diagnosticsModal','googleMapModal'])
+  document.getElementById(modal).onclick=e=>{if(e.target.id===modal)joajuStableCloseModal(modal)};
 document.addEventListener('keydown',e=>{if(e.key==='Escape')for(const modal of ['projectModal','referencesModal','methodologyModal','diagnosticsModal','googleMapModal'])document.getElementById(modal).classList.remove('open')});
 function isCompactUX(){return window.innerWidth<=900||window.matchMedia('(pointer:coarse)').matches;}
 function syncResponsivePanels(){
@@ -4654,12 +4673,22 @@ window.addEventListener('DOMContentLoaded',()=>{
     else mapB?.classList.add('active');
   }
   backdrop?.addEventListener('click',closeOverlays);
-  document.getElementById('closeRightPanelBtn')?.addEventListener('click',()=>{right?.classList.remove('open');syncOverlayState();});
+  document.getElementById('closeRightPanelBtn')?.addEventListener('click',()=>{
+    const app=document.getElementById('app');
+    if(compact()){
+      right?.classList.remove('open');
+    }else{
+      app?.classList.add('right-collapsed');
+      right?.classList.remove('open');
+    }
+    syncOverlayState();
+    requestAnimationFrame(()=>{try{map?.invalidateSize?.(false)}catch(_){}});
+  });
   document.getElementById('mobileMapBtn')?.addEventListener('click',closeOverlays);
   document.getElementById('mobileLayersBtn')?.addEventListener('click',()=>{docs?.classList.remove('open');right?.classList.remove('open');switchLeftTab('layers');left?.classList.add('open');syncOverlayState();});
   document.getElementById('mobileRoutesBtn')?.addEventListener('click',()=>{docs?.classList.remove('open');right?.classList.remove('open');switchLeftTab('routes');left?.classList.add('open');syncOverlayState();});
   document.getElementById('mobileInfoBtn')?.addEventListener('click',()=>{if(!selectedFeature&&!selectedLayerFichaId)showAtlasFicha();docs?.classList.remove('open');left?.classList.remove('open');right?.classList.add('open');syncOverlayState();});
-  document.getElementById('mobileHelpBtn')?.addEventListener('click',()=>{left?.classList.remove('open');right?.classList.remove('open');docs?.classList.remove('open');document.getElementById('guideModal')?.classList.add('open');syncOverlayState();});
+  document.getElementById('mobileHelpBtn')?.addEventListener('click',()=>{left?.classList.remove('open');right?.classList.remove('open');docs?.classList.remove('open');joajuStableOpenModal('guideModal');syncOverlayState();});
   document.getElementById('closeDocsDrawerBtn')?.addEventListener('click',()=>{docs?.classList.remove('open');syncOverlayState();});
   document.querySelectorAll('[data-open-modal]').forEach(b=>b.addEventListener('click',()=>{docs?.classList.remove('open');document.getElementById(b.dataset.openModal)?.click();syncOverlayState();}));
 
@@ -4668,9 +4697,9 @@ window.addEventListener('DOMContentLoaded',()=>{
 
   document.getElementById('researchMoreBtn')?.addEventListener('click',()=>{const rb=document.getElementById('researchBanner');const open=!rb.classList.contains('expanded');rb.classList.toggle('expanded',open);document.getElementById('researchMoreBtn').textContent=open?'Recolher':'Ler contexto';document.getElementById('researchMoreBtn').setAttribute('aria-expanded',String(open));setTimeout(()=>typeof syncResponsivePanels==='function'&&syncResponsivePanels(),20);});
 
-  function openGuide(){document.getElementById('guideModal')?.classList.add('open');}
+  function openGuide(){joajuStableOpenModal('guideModal');}
   document.getElementById('openGuideBtn')?.addEventListener('click',openGuide);
-  document.getElementById('closeGuide')?.addEventListener('click',()=>document.getElementById('guideModal')?.classList.remove('open'));
+  document.getElementById('closeGuide')?.addEventListener('click',()=>joajuStableCloseModal('guideModal'));
   document.getElementById('guideStartBtn')?.addEventListener('click',()=>{document.getElementById('guideModal')?.classList.remove('open');closeOverlays();try{localStorage.setItem('atlas_guide_seen','1')}catch(e){}});
   document.getElementById('guideModal')?.addEventListener('click',e=>{if(e.target.id==='guideModal')e.currentTarget.classList.remove('open');});
 
@@ -5380,7 +5409,16 @@ function ensureModal(){if($('myResearchModal'))return;const m=document.createEle
 }
 let myResearchReturnFocus=null;
 function open(){ensureModal();myResearchReturnFocus=document.activeElement;$('myResearchModal').classList.add('open');$('myResearchModal').setAttribute('aria-hidden','false');render();setTimeout(()=>$('myResearchCloseBtn')?.focus(),0);}
-function close(){$('myResearchModal')?.classList.remove('open');$('myResearchModal')?.setAttribute('aria-hidden','true');if(myResearchReturnFocus?.focus)myResearchReturnFocus.focus();myResearchReturnFocus=null;}
+function close(){
+  $('myResearchModal')?.classList.remove('open');
+  $('myResearchModal')?.setAttribute('aria-hidden','true');
+  if(myResearchReturnFocus?.focus)myResearchReturnFocus.focus();
+  myResearchReturnFocus=null;
+  requestAnimationFrame(()=>{
+    try{window.JOAJU_MOBILE_STATE?.goMap?.({preserveFocus:true})}catch(_){}
+    try{map?.invalidateSize?.(false)}catch(_){}
+  });
+}
 function updateStatus(text){const e=$('myResearchStatus');if(e)e.textContent=text;}
 function showPending(text){const e=$('myResearchPending');if(e){e.textContent=text;e.style.display='block';}}
 function toast(msg){const e=$('myResearchToast');if(!e)return;e.textContent=msg;e.classList.add('show');clearTimeout(e._timer);e._timer=setTimeout(()=>e.classList.remove('show'),2600);}
@@ -6333,6 +6371,417 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(sync,0),{once:true});else setTimeout(sync,0);
   window.addEventListener('resize',()=>setTimeout(sync,80),{passive:true});
   window.addEventListener('orientationchange',()=>setTimeout(sync,180),{passive:true});
+})();
+</script>
+
+
+<style id="joaju-r25-modal-stability">
+@media (max-width:900px){
+  #projectModal,
+  #guideModal{
+    top:var(--joaju-r25-topbar-h,80px)!important;
+    bottom:calc(var(--joaju-mobile-dock-h,72px) + max(8px,env(safe-area-inset-bottom)))!important;
+    left:0!important;
+    right:0!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:6px!important;
+    align-items:stretch!important;
+    overflow:hidden!important;
+  }
+  #projectModal>.modal-box,
+  #guideModal>.modal-box{
+    width:100%!important;
+    max-width:none!important;
+    height:100%!important;
+    max-height:100%!important;
+    min-height:0!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    border-radius:16px!important;
+  }
+  #projectModal .modal-head,
+  #guideModal .modal-head{
+    position:sticky!important;
+    top:0!important;
+    z-index:5!important;
+    background:var(--panel,#fffdf8)!important;
+  }
+  #closeProject,
+  #closeGuide{
+    flex:0 0 48px!important;
+    width:48px!important;
+    height:48px!important;
+    min-width:48px!important;
+    min-height:48px!important;
+    display:grid!important;
+    place-items:center!important;
+    padding:0!important;
+    font-size:28px!important;
+    line-height:1!important;
+  }
+}
+</style>
+<script id="joaju-r25-modal-stability-js">
+(()=>{
+  function syncTopbarHeight(){
+    const top=document.querySelector('.atlas-topbar');
+    document.documentElement.style.setProperty('--joaju-r25-topbar-h',(top?.offsetHeight||80)+'px');
+  }
+  syncTopbarHeight();
+  window.addEventListener('resize',syncTopbarHeight,{passive:true});
+  window.addEventListener('orientationchange',()=>setTimeout(syncTopbarHeight,120),{passive:true});
+})();
+</script>
+
+
+<style id="joaju-r26-mobile-state-css">
+@media (max-width:900px){
+  html,body{
+    width:100%!important;
+    height:100dvh!important;
+    min-height:100dvh!important;
+    overflow:hidden!important;
+    overscroll-behavior:none!important;
+  }
+  body{
+    display:grid!important;
+    grid-template-rows:auto auto minmax(0,1fr)!important;
+  }
+  .atlas-topbar{
+    position:relative!important;
+    top:auto!important;
+    z-index:4200!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+  .research-ribbon{
+    position:relative!important;
+    z-index:4100!important;
+    display:block!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+  #app{
+    min-height:0!important;
+    height:auto!important;
+    overflow:hidden!important;
+  }
+
+  /* Painéis de navegação ficam sempre entre a faixa científica e o dock. */
+  .panel#left,
+  #right,
+  #guideModal,
+  #projectModal,
+  #myResearchModal{
+    top:var(--joaju-r26-content-top,118px)!important;
+    bottom:calc(var(--joaju-mobile-dock-h,72px) + max(8px,var(--joaju-safe-bottom,0px)))!important;
+    max-height:none!important;
+  }
+
+  .panel#left,
+  #right{
+    overflow:hidden!important;
+  }
+
+  #guideModal,
+  #projectModal,
+  #myResearchModal{
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    height:auto!important;
+    min-height:0!important;
+    padding:6px!important;
+    align-items:stretch!important;
+    overflow:hidden!important;
+    z-index:2750!important;
+  }
+
+  #guideModal>.modal-box,
+  #projectModal>.modal-box,
+  #myResearchModal>.modal-box{
+    width:100%!important;
+    max-width:none!important;
+    height:100%!important;
+    max-height:100%!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    border-radius:16px!important;
+  }
+
+  #guideModal>.modal-box,
+  #projectModal>.modal-box{
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+  }
+
+  #guideModal .modal-head,
+  #projectModal .modal-head,
+  #myResearchModal .my-research-head{
+    position:sticky!important;
+    top:0!important;
+    z-index:30!important;
+    background:var(--panel,#fffdf8)!important;
+  }
+
+  #myResearchModal .my-research-shell{
+    height:100%!important;
+    min-height:0!important;
+    max-height:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  #myResearchModal .my-research-body{
+    flex:1 1 auto!important;
+    min-height:0!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+  }
+  #myResearchModal .my-research-main{
+    overflow:visible!important;
+  }
+
+  #closeProject,
+  #closeGuide,
+  #myResearchCloseBtn,
+  #closeRightPanelBtn{
+    display:grid!important;
+    place-items:center!important;
+    width:48px!important;
+    min-width:48px!important;
+    height:48px!important;
+    min-height:48px!important;
+    padding:0!important;
+    font-size:28px!important;
+    line-height:1!important;
+  }
+
+  .mobile-dock{
+    z-index:3000!important;
+    visibility:visible!important;
+    opacity:1!important;
+    transform:none!important;
+  }
+
+  /* A barra branca é parte permanente da vista Mapa. */
+  body[data-joaju-mobile-view="map"] #joajuMobileMapToolbar{
+    display:flex!important;
+    visibility:visible!important;
+    opacity:1!important;
+  }
+  body:not([data-joaju-mobile-view="map"]) #joajuMobileMapToolbar{
+    visibility:hidden!important;
+    pointer-events:none!important;
+  }
+}
+</style>
+
+<script id="joaju-r26-mobile-state-js">
+(()=>{
+  const mobile=()=>window.matchMedia('(max-width:900px)').matches;
+  const $=id=>document.getElementById(id);
+
+  function shellTop(){
+    const top=document.querySelector('.atlas-topbar')?.offsetHeight||0;
+    const ribbon=$('researchBanner')?.offsetHeight||0;
+    const value=Math.max(0,top+ribbon);
+    document.documentElement.style.setProperty('--joaju-r26-content-top',value+'px');
+    return value;
+  }
+
+  function closeSimplePanels(){
+    $('left')?.classList.remove('open');
+    $('right')?.classList.remove('open');
+    $('docsDrawer')?.classList.remove('open');
+    $('panelBackdrop')?.classList.remove('open');
+  }
+
+  function closeModal(id){
+    const m=$(id);
+    if(!m)return;
+    m.classList.remove('open');
+    m.setAttribute('aria-hidden','true');
+  }
+
+  function closeTransient(){
+    closeSimplePanels();
+    closeModal('guideModal');
+    closeModal('projectModal');
+    closeModal('referencesModal');
+    closeModal('methodologyModal');
+    closeModal('diagnosticsModal');
+    closeModal('googleMapModal');
+    const research=$('myResearchModal');
+    if(research?.classList.contains('open')){
+      research.classList.remove('open');
+      research.setAttribute('aria-hidden','true');
+    }
+  }
+
+  function active(id){
+    document.querySelectorAll('#mobileDock .mobile-dock-btn').forEach(b=>b.classList.toggle('active',b.id===id));
+  }
+
+  function repair(){
+    shellTop();
+    requestAnimationFrame(()=>{
+      try{map?.invalidateSize?.(false)}catch(_){}
+      try{window.JOAJU_MOBILE_MAP_TOOLBAR?.sync?.()}catch(_){}
+    });
+  }
+
+  function setView(view,buttonId){
+    document.body.dataset.joajuMobileView=view;
+    if(buttonId)active(buttonId);
+    repair();
+  }
+
+  function goMap(opts={}){
+    if(!mobile())return;
+    closeTransient();
+    setView('map','mobileMapBtn');
+    if(!opts.preserveFocus){
+      try{$('mobileMapBtn')?.focus({preventScroll:true})}catch(_){}
+    }
+  }
+
+  function goLayers(){
+    if(!mobile())return;
+    closeTransient();
+    try{switchLeftTab('layers')}catch(_){}
+    $('left')?.classList.add('open');
+    $('panelBackdrop')?.classList.add('open');
+    setView('layers','mobileLayersBtn');
+  }
+
+  function goRoutes(){
+    if(!mobile())return;
+    closeTransient();
+    try{switchLeftTab('routes')}catch(_){}
+    $('left')?.classList.add('open');
+    $('panelBackdrop')?.classList.add('open');
+    setView('routes','mobileRoutesBtn');
+  }
+
+  function goFicha(){
+    if(!mobile())return;
+    closeTransient();
+    try{if(!selectedFeature&&!selectedLayerFichaId)showAtlasFicha()}catch(_){}
+    $('right')?.classList.add('open');
+    $('panelBackdrop')?.classList.add('open');
+    setView('ficha','mobileInfoBtn');
+  }
+
+  function goPesquisa(){
+    if(!mobile())return;
+    closeTransient();
+    try{window.ATLAS_MINHA_PESQUISA?.open?.()}catch(e){console.error('JOAJU Pesquisa',e)}
+    setView('pesquisa','mobileResearchBtn');
+  }
+
+  function openProject(){
+    if(!mobile())return false;
+    closeTransient();
+    const m=$('projectModal');
+    if(!m)return false;
+    const box=m.querySelector('.modal-box');
+    if(box){box.scrollTop=0;box.scrollLeft=0}
+    m.setAttribute('aria-hidden','false');
+    m.classList.add('open');
+    setView('project',null);
+    return true;
+  }
+
+  function openGuide(){
+    if(!mobile())return false;
+    closeTransient();
+    const m=$('guideModal');
+    if(!m)return false;
+    const box=m.querySelector('.modal-box');
+    if(box){box.scrollTop=0;box.scrollLeft=0}
+    m.setAttribute('aria-hidden','false');
+    m.classList.add('open');
+    setView('guide',null);
+    return true;
+  }
+
+  function closeProjectOrGuide(id){
+    closeModal(id);
+    goMap({preserveFocus:true});
+  }
+
+  window.JOAJU_MOBILE_STATE={goMap,goLayers,goRoutes,goFicha,goPesquisa,openProject,openGuide,repair};
+
+  /* Captura antes dos listeners históricos para existir uma única transição por clique. */
+  document.addEventListener('click',e=>{
+    if(!mobile())return;
+    const b=e.target.closest('button');
+    if(!b)return;
+
+    if(b.id==='mobileMapBtn'){
+      e.preventDefault();e.stopImmediatePropagation();goMap();return;
+    }
+    if(b.id==='mobileLayersBtn'){
+      e.preventDefault();e.stopImmediatePropagation();goLayers();return;
+    }
+    if(b.id==='mobileRoutesBtn'){
+      e.preventDefault();e.stopImmediatePropagation();goRoutes();return;
+    }
+    if(b.id==='mobileInfoBtn'){
+      e.preventDefault();e.stopImmediatePropagation();goFicha();return;
+    }
+    if(b.id==='mobileResearchBtn'){
+      e.preventDefault();e.stopImmediatePropagation();goPesquisa();return;
+    }
+    if(b.id==='projectInfoQuickBtn'){
+      e.preventDefault();e.stopImmediatePropagation();openProject();return;
+    }
+    if(b.id==='openGuideBtn'||b.id==='atlasHelpMenuBtn'){
+      e.preventDefault();e.stopImmediatePropagation();openGuide();return;
+    }
+    if(b.id==='closeProject'){
+      e.preventDefault();e.stopImmediatePropagation();closeProjectOrGuide('projectModal');return;
+    }
+    if(b.id==='closeGuide'){
+      e.preventDefault();e.stopImmediatePropagation();closeProjectOrGuide('guideModal');return;
+    }
+    if(b.id==='myResearchCloseBtn'){
+      e.preventDefault();e.stopImmediatePropagation();
+      try{window.ATLAS_MINHA_PESQUISA?.close?.()}catch(_){closeModal('myResearchModal');goMap({preserveFocus:true})}
+      return;
+    }
+    if(b.id==='closeRightPanelBtn'){
+      e.preventDefault();e.stopImmediatePropagation();$('right')?.classList.remove('open');goMap({preserveFocus:true});return;
+    }
+    if(b.classList.contains('workspace-close-btn')){
+      requestAnimationFrame(()=>goMap({preserveFocus:true}));
+    }
+  },true);
+
+  function boot(){
+    if(!mobile())return;
+    shellTop();
+    document.body.dataset.joajuMobileView='map';
+    active('mobileMapBtn');
+    repair();
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
+  else boot();
+
+  window.addEventListener('resize',()=>{if(mobile())repair()},{passive:true});
+  window.addEventListener('orientationchange',()=>setTimeout(()=>{if(mobile())repair()},140),{passive:true});
+  window.addEventListener('pageshow',()=>{if(mobile())repair()},{passive:true});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden&&mobile())repair()});
 })();
 </script>
 

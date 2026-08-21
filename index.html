@@ -5886,4 +5886,61 @@ window.JOAJU_PWA={open,cacheOffline,isStandalone,version:'1.0.3'};
 })();
 </script>
 
+
+<style id="joaju-mobile-r13-basemap-fix">
+@media (max-width:900px){
+  /* R13 · seletor de mapa de fundo compacto e independente dos estilos históricos */
+  .leaflet-control-layers{font-size:15px!important;color:#19382f!important}
+  .leaflet-control-layers-toggle{
+    width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;
+    border-radius:12px!important;background-color:#fff!important;background-position:center!important;
+    background-repeat:no-repeat!important;background-size:27px 27px!important;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 7 42 16 24 25 6 16Z' fill='%23185b49' opacity='.30'/%3E%3Cpath d='M24 14 42 23 24 32 6 23Z' fill='%23185b49' opacity='.58'/%3E%3Cpath d='M24 21 42 30 24 39 6 30Z' fill='%23185b49'/%3E%3C/svg%3E")!important;
+  }
+  .leaflet-control-layers-expanded{
+    position:fixed!important;top:auto!important;right:10px!important;left:10px!important;
+    bottom:calc(var(--joaju-mobile-dock-h,70px) + max(12px,env(safe-area-inset-bottom)))!important;
+    width:auto!important;max-width:none!important;max-height:min(58dvh,430px)!important;
+    overflow:auto!important;padding:0!important;border-radius:18px!important;
+    border:1px solid #d7e1dc!important;background:#fffdf8!important;
+    box-shadow:0 14px 42px rgba(18,45,36,.28)!important;z-index:2750!important;
+  }
+  .leaflet-control-layers-expanded .leaflet-control-layers-list{display:block!important;margin:0!important;padding:58px 14px 14px!important;font-size:15px!important;line-height:1.25!important}
+  .leaflet-control-layers-base,.leaflet-control-layers-overlays{display:grid!important;gap:4px!important}
+  .leaflet-control-layers-base label,.leaflet-control-layers-overlays label{
+    display:grid!important;grid-template-columns:28px minmax(0,1fr)!important;align-items:center!important;
+    gap:10px!important;min-height:46px!important;margin:0!important;padding:7px 8px!important;
+    border-radius:11px!important;background:#fff!important;color:#203c33!important;
+    font-size:15px!important;font-weight:650!important;line-height:1.22!important;white-space:normal!important;
+  }
+  .leaflet-control-layers-base label:has(input:checked),.leaflet-control-layers-overlays label:has(input:checked){background:#eaf5ef!important;color:#0e5d48!important}
+  .leaflet-control-layers input{width:20px!important;height:20px!important;margin:0!important;accent-color:#0f6d55!important}
+  .joaju-basemap-sheet-head{position:absolute!important;left:0!important;right:0!important;top:0!important;height:50px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;padding:8px 10px 8px 14px!important;background:#f5faf7!important;border-bottom:1px solid #dbe5e0!important;border-radius:18px 18px 0 0!important;z-index:3!important}
+  .joaju-basemap-sheet-head strong{font-size:16px!important;color:#153e35!important}
+  .joaju-basemap-sheet-close{width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;border:1px solid #d4ddd8!important;border-radius:11px!important;background:#fff!important;color:#153e35!important;font-size:26px!important;line-height:1!important;display:grid!important;place-items:center!important;padding:0!important}
+  /* posição sempre usa SVG inline, sem dependência de arquivo externo */
+  .joaju-location-btn svg{display:block!important;width:42px!important;height:42px!important;visibility:visible!important;opacity:1!important}
+}
+</style>
+<script id="joaju-mobile-r13-basemap-js">
+(()=>{
+  function decorateBasemapControl(){
+    const ctl=document.querySelector('.leaflet-control-layers');
+    if(!ctl)return;
+    const list=ctl.querySelector('.leaflet-control-layers-list');
+    if(list&&!ctl.querySelector('.joaju-basemap-sheet-head')){
+      const head=document.createElement('div');head.className='joaju-basemap-sheet-head';
+      head.innerHTML='<strong>Mapa de fundo</strong><button type="button" class="joaju-basemap-sheet-close" aria-label="Fechar mapas de fundo" title="Fechar">×</button>';
+      ctl.insertBefore(head,list);
+      head.querySelector('button').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();try{baseLayerControl?.collapse?.()}catch(_){ctl.classList.remove('leaflet-control-layers-expanded')}});
+    }
+    const toggle=ctl.querySelector('.leaflet-control-layers-toggle');
+    if(toggle){toggle.setAttribute('aria-label','Escolher mapa de fundo');toggle.setAttribute('title','Mapa de fundo')}
+  }
+  function init(){decorateBasemapControl();
+    const observer=new MutationObserver(()=>decorateBasemapControl());observer.observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class']});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
 </body></html>

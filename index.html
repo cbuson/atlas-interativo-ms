@@ -735,6 +735,59 @@ input,select,textarea{max-width:100%!important}img,video,canvas,iframe{max-width
 }
 </style>
 
+
+<style id="joaju-mobile-r11-scroll-leaflet">
+@media (max-width:900px){
+  html,body{height:100%;height:100dvh;overflow:hidden!important;overscroll-behavior:none}
+  body{min-height:100dvh!important}
+  #app{min-height:0!important;overflow:hidden!important}
+  .panel#left,#right{overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;touch-action:pan-y!important;scrollbar-gutter:auto!important;max-height:none!important}
+  .panel#left .panel-inner,#right .panel-inner{min-height:min-content!important;padding-bottom:28px!important}
+  .modal{overflow:hidden!important;align-items:stretch!important}
+  .modal-box,.guide-box,.atlas-general-help-box,.universal-ficha-box,.pwa-modal .modal-box,.my-research-modal .modal-box,.mr-camera-modal .modal-box{max-height:calc(100dvh - 16px)!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;touch-action:pan-y!important;padding-bottom:max(28px,env(safe-area-inset-bottom))!important}
+  .my-research-shell{height:auto!important;max-height:none!important;min-height:100%!important;overflow:visible!important}
+  .my-research-body{height:auto!important;max-height:none!important;overflow:visible!important;display:block!important}
+  .my-research-main{height:auto!important;max-height:none!important;overflow:visible!important;padding-bottom:32px!important}
+  .my-research-side{max-height:none!important;overflow:visible!important}
+  .statistics-workspace{overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-y:contain!important;padding-bottom:calc(var(--joaju-mobile-dock-h,72px) + 20px)!important}
+  .modal-head,.my-research-head,.atlas-help-head,.universal-ficha-head,.mr-camera-head{position:sticky!important;top:0!important;z-index:12!important;background:var(--panel,#fffdf8)!important}
+  .icon-close-btn,.panel-close-btn,.universal-ficha-close,.legend-close{min-width:46px!important;min-height:46px!important;width:46px!important;height:46px!important;display:grid!important;place-items:center!important;font-size:28px!important;line-height:1!important;flex:none!important}
+  .mobile-dock-btn span{display:grid!important;place-items:center!important;min-height:22px!important;color:currentColor!important;opacity:1!important;font-family:system-ui,-apple-system,"Segoe UI",sans-serif!important;font-weight:800!important}
+  .mobile-dock-btn small{display:block!important;color:currentColor!important;opacity:1!important;font-weight:800!important}
+  .leaflet-control{margin:0!important}
+  .leaflet-top.leaflet-left{top:10px!important;left:10px!important;display:grid!important;gap:10px!important}
+  .leaflet-top.leaflet-right{top:10px!important;right:10px!important;display:grid!important;gap:10px!important}
+  .leaflet-control-zoom,.leaflet-control-layers{border:0!important;border-radius:12px!important;overflow:hidden!important;box-shadow:0 3px 14px rgba(18,45,36,.22)!important;background:#fff!important}
+  .leaflet-control-zoom a{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;line-height:44px!important;font-size:25px!important;font-weight:500!important;border:0!important;color:#10251e!important;background:#fff!important}
+  .leaflet-control-zoom a+a{border-top:1px solid #d8dfdb!important}
+  .leaflet-control-layers-toggle{width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;background-size:25px 25px!important;background-position:center!important;background-color:#fff!important}
+  .joaju-location-control{margin-top:0!important}
+  .joaju-location-btn{width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;border-radius:50%!important;border:2px solid #fff!important;box-shadow:0 3px 14px rgba(18,45,36,.25)!important}
+  .joaju-location-btn svg{width:42px!important;height:42px!important;display:block!important}
+  .leaflet-popup-content-wrapper{border-radius:14px!important;box-shadow:0 5px 20px rgba(18,45,36,.24)!important}
+  .leaflet-popup-content{font-size:14px!important;line-height:1.4!important;margin:14px 16px!important;min-width:0!important;max-width:72vw!important}
+  .leaflet-popup-close-button{width:36px!important;height:36px!important;font-size:24px!important;line-height:34px!important;color:#56665f!important}
+  .leaflet-control-scale-line{font-size:11px!important;line-height:1.1!important;background:rgba(255,255,255,.86)!important}
+  .leaflet-control-attribution{font-size:9px!important;line-height:1.18!important;padding:2px 5px!important;max-width:68vw!important;white-space:normal!important;background:rgba(255,255,255,.82)!important}
+  .leaflet-bottom.leaflet-left{left:8px!important;bottom:calc(var(--joaju-mobile-dock-h,72px) + 10px)!important}
+  .leaflet-bottom.leaflet-right{right:8px!important;bottom:calc(var(--joaju-mobile-dock-h,72px) + 10px)!important}
+}
+@media (max-width:430px){
+  .panel#left,#right{top:var(--atlas-panel-top,132px)!important;bottom:calc(var(--joaju-mobile-dock-h,72px) + 8px)!important}
+  .leaflet-popup-content{max-width:68vw!important}
+}
+</style>
+<script id="joaju-mobile-r11-map-resize">
+(()=>{
+  let timer=0;
+  function repairMap(){clearTimeout(timer);timer=setTimeout(()=>{try{if(window.map&&typeof window.map.invalidateSize==='function')window.map.invalidateSize({pan:false,debounceMoveend:true});}catch(e){}},120)}
+  window.addEventListener('resize',repairMap,{passive:true});
+  window.addEventListener('orientationchange',repairMap,{passive:true});
+  document.addEventListener('click',e=>{if(e.target.closest('.mobile-dock-btn,.panel-close-btn,.icon-close-btn,.universal-ficha-close,.left-tab-btn,.workspace-mode-btn'))repairMap();},{passive:true});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)repairMap();});
+  setTimeout(repairMap,600);
+})();
+</script>
 </head>
 <body>
 <header class="atlas-topbar">

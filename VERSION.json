@@ -61,8 +61,11 @@
     "offline_territorial_pack": "opcional · aproximadamente 50 MB",
     "offline_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
     "remote_layers_offline": false,
-    "cache_revision": "2026-08-12-pwa-6-sparse-index-visualfix",
+    "cache_revision": "2026-08-22-pwa-31-prici-latest-base",
     "update_strategy": "Service Worker updateViaCache=none, skipWaiting/controllerchange com recarga e dados precalculados network-first com fallback offline"
   },
-  "ui_patch": "PATCH 17 · coerência visual dos índices esparsos e auditoria célula a célula"
+  "ui_patch": "PATCH 17 · coerência visual dos índices esparsos e auditoria célula a célula",
+  "integration_patch": "PRICI-recursos-rotas sobre base latest 2026-08-22",
+  "patch": "PRICI-R2",
+  "build": "2026-08-22-prici-r2"
 }

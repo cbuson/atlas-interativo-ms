@@ -1,0 +1,7 @@
+{
+  "integration_count": 1,
+  "raw_fragment_after_template": true,
+  "insert_after_last_real_close": true,
+  "inline_script_count": 32,
+  "js_errors": []
+}

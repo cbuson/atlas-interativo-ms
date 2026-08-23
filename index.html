@@ -5506,6 +5506,70 @@ function printReport(){syncIdentification();const a=current,x=summary(),win=wind
 
 
 
+
+<!-- JOAJU R31 · correção isolada do scroll táctil da legenda móvel -->
+<style id="joaju-r31-legend-mobile-scroll-fix">
+@media (max-width:900px){
+  #joajuUnifiedLegendPanel{
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    touch-action:pan-y!important;
+    pointer-events:auto!important;
+    min-height:0!important;
+    contain:layout paint!important;
+  }
+  #joajuUnifiedLegendList{
+    min-height:0!important;
+    touch-action:pan-y!important;
+    pointer-events:auto!important;
+  }
+  #joajuUnifiedLegendPanel .joaju-legend-layer,
+  #joajuUnifiedLegendPanel .joaju-legend-body{
+    touch-action:pan-y!important;
+  }
+  #joajuUnifiedLegendPanel input[type="range"]{
+    touch-action:pan-x!important;
+  }
+}
+</style>
+<script id="joaju-r31-legend-mobile-scroll-fix-js">
+(()=>{
+  function protectLegendScroll(){
+    const panel=document.getElementById('joajuUnifiedLegendPanel');
+    if(!panel||panel.dataset.joajuScrollProtected==='1')return;
+    panel.dataset.joajuScrollProtected='1';
+
+    /* A legenda vive dentro de #map. Leaflet pode receber os gestos do painel
+       e interpretá-los como arrasto/zoom do mapa. Isolamos os eventos sem
+       impedir o scroll nativo vertical do próprio painel. */
+    try{
+      if(window.L?.DomEvent){
+        L.DomEvent.disableClickPropagation(panel);
+        L.DomEvent.disableScrollPropagation(panel);
+      }
+    }catch(_){}
+
+    ['touchstart','touchmove','touchend','pointerdown','pointermove','pointerup','wheel']
+      .forEach(type=>{
+        panel.addEventListener(type,e=>e.stopPropagation(),{passive:true});
+      });
+  }
+
+  function boot(){
+    protectLegendScroll();
+    const mapHost=document.getElementById('map');
+    if(mapHost){
+      new MutationObserver(protectLegendScroll).observe(mapHost,{childList:true,subtree:true});
+    }
+  }
+
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});
+  else boot();
+})();
+</script>
+
 </body></html>`);win.document.close();}
 function installEntryPoints(){const intro=q('.prici-route-intro-actions');if(intro&&!$('priciCreateAssessmentBtn')){const b=document.createElement('button');b.id='priciCreateAssessmentBtn';b.type='button';b.className='btn light small prici-autoeval-btn';b.textContent='Autoavaliação · apoio ao Manual';b.onclick=()=>open();intro.prepend(b);}const meth=$('methodologyBtn');if(meth&&!$('priciSelfAssessmentMenuBtn')){const b=document.createElement('button');b.id='priciSelfAssessmentMenuBtn';b.type='button';b.className='menu-action';b.setAttribute('role','menuitem');b.textContent='Apoio à autoavaliação PRICI';b.onclick=()=>open();meth.insertAdjacentElement('afterend',b);}const docs=q('#docsDrawer .docs-grid');if(docs&&!$('priciSelfAssessmentDocsCard')){const b=document.createElement('button');b.id='priciSelfAssessmentDocsCard';b.type='button';b.className='doc-card';b.innerHTML='<b>Autoavaliação PRICI</b><span>Apoio digital ao questionário do Manual OEI, com gestão local e privacidade</span>'; b.onclick=()=>{q('#docsDrawer')?.classList.remove('open');open();};docs.prepend(b);}decorateRouteCards();const list=$('individualRoutesList');if(list){new MutationObserver(decorateRouteCards).observe(list,{childList:true,subtree:true});}}
 function decorateRouteCards(){qa('#individualRoutesList .route-card').forEach(card=>{if(q('.prici-autoeval-btn',card))return;const id=card.id.replace(/^route-card-/,'');const actions=q('.route-card-actions',card);if(!actions||!id)return;const b=document.createElement('button');b.type='button';b.className='btn light small prici-autoeval-btn';b.textContent='Autoavaliar · Manual PRICI';b.onclick=()=>open(id);const anchor=qa('button,a',actions).find(x=>x.textContent.trim()==='Ficha + PRICI');if(anchor)anchor.insertAdjacentElement('afterend',b);else actions.prepend(b);});}

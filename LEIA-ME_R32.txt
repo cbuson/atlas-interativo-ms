@@ -1,0 +1,40 @@
+JOAJU MS · R32 · correção limpa da legenda móvel
+
+Origem do erro visual mostrado na captura
+O parche R31 foi inserido procurando a primeira ocorrência de </body>.
+O index.html contém textos HTML completos dentro de template literals de
+JavaScript usados para gerar relatórios. A primeira ocorrência de </body>
+estava dentro de um desses templates, não no fim real do documento.
+Ao inserir ali um novo bloco <script>, o navegador encerrou prematuramente
+o script externo e passou a mostrar o restante do JavaScript como texto na
+página.
+
+R32
+Esta versão volta ao index.html original do ZIP enviado pelo usuário.
+Não adiciona nenhum bloco script ao fim do documento.
+
+A correção da legenda é feita diretamente nos componentes existentes
+R19 e R20
+
+1. overflow vertical explícito
+2. touch-action pan-y
+3. overscroll-behavior contain
+4. isolamento de touch, pointer e wheel em relação ao mapa Leaflet
+5. slider de opacidade preservado com gesto horizontal
+
+Arquivo a substituir
+index.html
+
+Teste recomendado
+1. Substituir somente index.html.
+2. Fazer commit e aguardar GitHub Pages.
+3. No celular, recarregar a página.
+4. Ativar quatro ou mais camadas.
+5. Abrir Legenda.
+6. Deslizar verticalmente dentro da legenda.
+7. Confirmar que o mapa não se move.
+8. Confirmar que o slider de opacidade continua funcionando.
+
+Se o navegador mostrar a versão antiga por cache
+fechar a aba e abrir novamente o endereço. A navegação da PWA utiliza
+estratégia network first, portanto online deve obter o index atualizado.

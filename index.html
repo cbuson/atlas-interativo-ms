@@ -5563,6 +5563,86 @@ window.ATLAS_EVIDENCE_VALIDATION_LIMITS={version:EVL_VERSION,open:evlOpen,close:
 }
 </style>
 
+<style id="joaju-r38-prici-mobile-compact-header">
+/* R38 · cabeçalho compacto e origem metodológica colapsável no mobile */
+#priciSelfAssessmentModal .prici-origin-strip{
+  position:relative;
+}
+#priciSelfAssessmentModal .prici-origin-toggle{
+  display:none;
+}
+@media(max-width:900px){
+  #priciSelfAssessmentModal .prici-self-head{
+    padding:12px 14px!important;
+  }
+  #priciSelfAssessmentModal .prici-self-head h2{
+    margin:0 44px 2px 0!important;
+    font-size:20px!important;
+    line-height:1.18!important;
+  }
+  #priciSelfAssessmentModal .prici-self-head p{
+    margin:2px 44px 0 0!important;
+    font-size:13px!important;
+    line-height:1.35!important;
+  }
+  #priciSelfAssessmentModal .prici-origin-strip{
+    padding:0!important;
+    border-bottom:1px solid #e8d9a8!important;
+    background:#fff8df!important;
+  }
+  #priciSelfAssessmentModal .prici-origin-toggle{
+    display:flex!important;
+    width:100%;
+    min-height:44px;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:10px 14px;
+    border:0;
+    background:transparent;
+    color:#5f4b16;
+    font-size:14px!important;
+    font-weight:800;
+    text-align:left;
+    cursor:pointer;
+  }
+  #priciSelfAssessmentModal .prici-origin-toggle::after{
+    content:'▾';
+    flex:0 0 auto;
+    font-size:16px;
+    transition:transform .15s ease;
+  }
+  #priciSelfAssessmentModal .prici-origin-strip[data-open="true"] .prici-origin-toggle::after{
+    transform:rotate(180deg);
+  }
+  #priciSelfAssessmentModal .prici-origin-content{
+    display:none;
+    padding:0 14px 12px 14px;
+    font-size:14px!important;
+    line-height:1.45!important;
+    color:#65551f;
+  }
+  #priciSelfAssessmentModal .prici-origin-strip[data-open="true"] .prici-origin-content{
+    display:block;
+  }
+  #priciSelfAssessmentModal .prici-self-nav{
+    padding-top:6px!important;
+    padding-bottom:6px!important;
+  }
+  #priciSelfAssessmentModal .prici-self-nav .prici-step{
+    min-width:44px!important;
+    min-height:44px!important;
+    padding:8px 10px!important;
+  }
+}
+</style>
+
+<style id="joaju-r38-prici-desktop-origin">
+@media(min-width:901px){
+  #priciSelfAssessmentModal .prici-origin-content{display:block!important}
+}
+</style>
+
 <style id="joaju-r33-cobertura-documental-prici">
 .prici-doc-coverage{margin-top:16px;border:1px solid #cddbd4;border-radius:14px;padding:14px;background:#fbfdfc}
 .prici-doc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
@@ -5628,8 +5708,21 @@ function helpHtml(){return `<div class="prici-help-head"><div><div class="worksp
 </div>`;}
 function openHelp(){const p=$('priciSelfHelpPanel');if(p){p.innerHTML=helpHtml();p.classList.add('open');p.setAttribute('aria-hidden','false');$('priciSelfHelpCloseBtn').onclick=closeHelp;setTimeout(()=>$('priciSelfHelpCloseBtn')?.focus(),0);}}
 function closeHelp(){const p=$('priciSelfHelpPanel');if(p){p.classList.remove('open');p.setAttribute('aria-hidden','true');}}
-function modal(){let m=$('priciSelfAssessmentModal');if(m)return m;m=document.createElement('div');m.id='priciSelfAssessmentModal';m.className='modal prici-self-modal';m.setAttribute('aria-hidden','true');m.innerHTML=`<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="priciSelfTitle"><div class="prici-self-head"><div><div class="workspace-kicker">Apoio digital ao Manual PRICI/OEI</div><h2 id="priciSelfTitle">Autoavaliação e preparação do itinerário</h2><p>Interface independente de apoio ao questionário do Manual · evidências · lacunas · plano de ação · gestão local</p></div><div class="prici-self-head-actions"><button class="prici-help-btn" id="priciSelfHelpBtn" type="button" title="Como funciona esta ferramenta" aria-label="Ajuda: como funciona esta ferramenta">?</button><button class="btn" id="priciSelfCloseBtn" type="button">×</button></div></div><div class="prici-origin-strip"><strong>Origem do questionário</strong> · Manual de Rutas e Itinerarios Culturales para Iberoamérica · PRICI / OEI. <span>O Atlas apenas oferece uma interface digital de apoio. Consulte o Manual oficial para critérios, definições e indicadores.</span></div><div class="prici-self-body"><nav class="prici-self-nav" aria-label="Seções da ficha"><button data-prici-tab="identificacao"><span class="nav-num">1</span><span>Identificação</span></button><button data-prici-tab="criterios"><span class="nav-num">2</span><span>Autoavaliação</span></button><button data-prici-tab="indicadores"><span class="nav-num">3</span><span>Indicadores</span></button><button data-prici-tab="lacunas"><span class="nav-num">4</span><span>Lacunas e plano</span></button><button data-prici-tab="resumo"><span class="nav-num">5</span><span>Resumo e relatório</span></button><div class="prici-self-savebox"><label for="priciSavedSelect">Avaliações salvas neste navegador</label><select id="priciSavedSelect"><option value="">Nenhuma</option></select><button class="btn light small" id="priciLoadSavedBtn" type="button">Abrir avaliação</button><button class="btn light small" id="priciDeleteSavedBtn" type="button">Excluir selecionada</button><button class="btn light small prici-nav-help" id="priciSelfNavHelpBtn" type="button">? Como funciona</button></div></nav><main class="prici-self-main"><div class="prici-self-toolbar"><button class="btn light small" id="priciNewBtn" type="button">Nova ficha</button><button class="btn light small" id="priciSaveBtn" type="button">Salvar neste navegador</button><button class="btn light small" id="priciExportJsonBtn" type="button">Exportar JSON</button><button class="btn light small" id="priciExportCsvBtn" type="button">Exportar CSV</button><button class="btn light small" id="priciImportBtn" type="button">Importar JSON</button><button class="btn primary small" id="priciPrintBtn" type="button">Imprimir / salvar PDF</button><input id="priciImportFile" type="file" accept="application/json,.json" hidden></div><section class="prici-self-section" data-section="identificacao"></section><section class="prici-self-section" data-section="criterios"></section><section class="prici-self-section" data-section="indicadores"></section><section class="prici-self-section" data-section="lacunas"></section><section class="prici-self-section" data-section="resumo"></section></main></div></div><aside class="prici-help-panel" id="priciSelfHelpPanel" role="dialog" aria-modal="true" aria-label="Ajuda da autoavaliação PRICI" aria-hidden="true"></aside>`;document.body.appendChild(m);bindModal(m);return m;}
+function modal(){let m=$('priciSelfAssessmentModal');if(m)return m;m=document.createElement('div');m.id='priciSelfAssessmentModal';m.className='modal prici-self-modal';m.setAttribute('aria-hidden','true');m.innerHTML=`<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="priciSelfTitle"><div class="prici-self-head"><div><div class="workspace-kicker">Apoio digital ao Manual PRICI/OEI</div><h2 id="priciSelfTitle">Autoavaliação e preparação do itinerário</h2><p>Interface independente de apoio ao questionário do Manual · evidências · lacunas · plano de ação · gestão local</p></div><div class="prici-self-head-actions"><button class="prici-help-btn" id="priciSelfHelpBtn" type="button" title="Como funciona esta ferramenta" aria-label="Ajuda: como funciona esta ferramenta">?</button><button class="btn" id="priciSelfCloseBtn" type="button">×</button></div></div><div class="prici-origin-strip" data-open="false">
+  <button type="button" class="prici-origin-toggle" aria-expanded="false">Origem do questionário</button>
+  <div class="prici-origin-content"><strong>Origem do questionário</strong> · Manual de Rutas e Itinerarios Culturales para Iberoamérica · PRICI / OEI. <span>O Atlas apenas oferece uma interface digital de apoio. Consulte o Manual oficial para critérios, definições e indicadores.</span></div>
+</div>
+<div class="prici-self-body"><nav class="prici-self-nav" aria-label="Seções da ficha"><button data-prici-tab="identificacao"><span class="nav-num">1</span><span>Identificação</span></button><button data-prici-tab="criterios"><span class="nav-num">2</span><span>Autoavaliação</span></button><button data-prici-tab="indicadores"><span class="nav-num">3</span><span>Indicadores</span></button><button data-prici-tab="lacunas"><span class="nav-num">4</span><span>Lacunas e plano</span></button><button data-prici-tab="resumo"><span class="nav-num">5</span><span>Resumo e relatório</span></button><div class="prici-self-savebox"><label for="priciSavedSelect">Avaliações salvas neste navegador</label><select id="priciSavedSelect"><option value="">Nenhuma</option></select><button class="btn light small" id="priciLoadSavedBtn" type="button">Abrir avaliação</button><button class="btn light small" id="priciDeleteSavedBtn" type="button">Excluir selecionada</button><button class="btn light small prici-nav-help" id="priciSelfNavHelpBtn" type="button">? Como funciona</button></div></nav><main class="prici-self-main"><div class="prici-self-toolbar"><button class="btn light small" id="priciNewBtn" type="button">Nova ficha</button><button class="btn light small" id="priciSaveBtn" type="button">Salvar neste navegador</button><button class="btn light small" id="priciExportJsonBtn" type="button">Exportar JSON</button><button class="btn light small" id="priciExportCsvBtn" type="button">Exportar CSV</button><button class="btn light small" id="priciImportBtn" type="button">Importar JSON</button><button class="btn primary small" id="priciPrintBtn" type="button">Imprimir / salvar PDF</button><input id="priciImportFile" type="file" accept="application/json,.json" hidden></div><section class="prici-self-section" data-section="identificacao"></section><section class="prici-self-section" data-section="criterios"></section><section class="prici-self-section" data-section="indicadores"></section><section class="prici-self-section" data-section="lacunas"></section><section class="prici-self-section" data-section="resumo"></section></main></div></div><aside class="prici-help-panel" id="priciSelfHelpPanel" role="dialog" aria-modal="true" aria-label="Ajuda da autoavaliação PRICI" aria-hidden="true"></aside>`;document.body.appendChild(m);bindModal(m);return m;}
 function bindModal(m){$('priciSelfCloseBtn').onclick=close;$('priciSelfHelpBtn').onclick=openHelp;$('priciSelfNavHelpBtn').onclick=openHelp;qa('[data-prici-tab]',m).forEach(b=>b.onclick=()=>setTab(b.dataset.priciTab));$('priciNewBtn').onclick=()=>{if(confirm('Criar uma nova ficha? Alterações não salvas serão descartadas.')){current=newAssessment();renderAll();setTab('identificacao');}};$('priciSaveBtn').onclick=()=>{syncIdentification();putStore(current);alert('Avaliação salva somente neste navegador. Para uma cópia portátil ou de segurança, use Exportar JSON.');};$('priciExportJsonBtn').onclick=exportJSON;$('priciExportCsvBtn').onclick=exportCSV;$('priciImportBtn').onclick=()=>$('priciImportFile').click();$('priciImportFile').onchange=importJSON;$('priciPrintBtn').onclick=printReport;$('priciLoadSavedBtn').onclick=loadSaved;
+const originToggle=document.querySelector('#priciSelfAssessmentModal .prici-origin-toggle');
+if(originToggle){
+  originToggle.onclick=()=>{
+    const strip=originToggle.closest('.prici-origin-strip');
+    const open=strip?.getAttribute('data-open')==='true';
+    strip?.setAttribute('data-open',open?'false':'true');
+    originToggle.setAttribute('aria-expanded',open?'false':'true');
+  };
+}
 $('priciSavedSelect').onchange=()=>{
   const b=$('priciLoadSavedBtn');
   if(b)b.disabled=!$('priciSavedSelect').value;

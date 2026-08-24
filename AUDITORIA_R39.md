@@ -1,39 +1,37 @@
-# JOAJU MS · R39 · hierarquia móvel do módulo PRICI
+# JOAJU MS · R39 · PRICI mobile compacto real
 
-## Objetivo
+## Diagnóstico da captura
 
-Recuperar área útil no celular sem reduzir a tipografia.
+O grande espaço branco no topo não era conteúdo vazio da origem metodológica.
 
-## Mudanças
+Uma regra global existente no site aplicava fundo branco com `!important` ao `.prici-self-head`, enquanto o módulo PRICI mantinha texto branco. O cabeçalho continuava ocupando altura, mas parecia vazio.
 
-1. `Arquivo e dados` passa a ser um bloco colapsável fechado por padrão no mobile.
-2. As ações Nova ficha, salvar, importar, exportar e PDF ficam disponíveis sob demanda.
-3. A navegação 1–5 permanece sempre acessível acima do conteúdo.
-4. `Origem do questionário` continua disponível no início, mas desaparece automaticamente quando o usuário começa a rolar o conteúdo.
-5. Ao voltar ao topo, a faixa de origem reaparece fechada.
-6. Em desktop, a toolbar continua visível como antes.
+## Correção
 
-## Preservado
+No celular
 
-- R38 origem metodológica colapsável
-- R37 fontes e rastreabilidade
-- R36 tipografia
-- R35 scroll
-- R34 modal
-- Cobertura documental
-- PRICI, Pesquisa, IndexedDB, rotas, camadas e índices
+- cabeçalho PRICI volta a ser verde e fica reduzido a aproximadamente 58 px
+- mostra apenas o título curto
+- ajuda e fechar permanecem acessíveis
+- subtítulo e kicker são ocultados para poupar altura
+- Origem do questionário continua colapsável
+- etapas 1 a 5 ficam compactas e persistentes
+- Arquivo e dados fica fechado por padrão
+- os seis botões aparecem somente quando o usuário abre Arquivo e dados
+- a caixa lateral de avaliações salvas fica oculta na navegação móvel para não competir com as etapas
 
-## Verificação
+No desktop a estrutura normal permanece.
+
+## Verificações
 
 {
   "r39_css": true,
-  "file_toggle": true,
-  "toolbar_collapsed_default": true,
-  "origin_auto_hides_on_scroll": true,
-  "r38_preserved": true,
-  "r37_preserved": true,
+  "compact_green_header": true,
+  "file_tools_collapsible": true,
+  "origin_collapsible_preserved": true,
   "coverage_preserved": true,
-  "js_syntax_ok": true,
+  "r37_sources_preserved": true,
+  "js_ok": true,
   "inline_scripts": 32
 }
 

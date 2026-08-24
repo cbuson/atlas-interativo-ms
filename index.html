@@ -609,7 +609,7 @@ body{min-height:100dvh!important;padding-left:var(--joaju-safe-left)!important;p
 .modal-head>div,.my-research-head>div,.mr-camera-head>div,.evl-head>div,.prici-self-head>div{min-width:0!important}.modal-head h2,.my-research-head h2,.mr-camera-head h2,.evl-head h2,.prici-self-head h2{overflow-wrap:anywhere}
 .modal [id*="close" i],.modal [aria-label*="Fechar"],.icon-close-btn,.panel-close-btn,.workspace-close-btn,.stats-close{flex:0 0 48px!important;width:48px!important;height:48px!important;min-width:48px!important;min-height:48px!important;padding:0!important;display:grid!important;place-items:center!important;font-size:30px!important;line-height:1!important;border-radius:14px!important;touch-action:manipulation}
 .my-research-modal .modal-box{height:calc(100dvh - var(--joaju-safe-top) - var(--joaju-safe-bottom) - 10px)!important;overflow:hidden!important}.my-research-shell{height:100%!important;max-height:none!important;display:flex!important;flex-direction:column!important;min-height:0!important}.my-research-head{flex:0 0 auto!important}.my-research-body{flex:1 1 auto!important;min-height:0!important;max-height:none!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;padding-bottom:calc(20px + var(--joaju-safe-bottom))!important}.my-research-main{min-width:0!important;overflow:visible!important;padding-bottom:18px!important}
-.atlas-general-help-box,.refs,.methodology-shell,.evl-modal-box,.prici-self-modal .modal-box,.mr-camera-box{max-height:calc(100dvh - var(--joaju-safe-top) - var(--joaju-safe-bottom) - 10px)!important}.atlas-help-layout,.atlas-help-content,.prici-self-body,.prici-self-main,.mr-camera-box{min-height:0!important}.atlas-help-content,.prici-self-main{overflow-y:visible!important}
+.atlas-general-help-box,.refs,.methodology-shell,.evl-modal-box,.prici-self-modal .modal-box,.mr-camera-box{max-height:calc(100dvh - var(--joaju-safe-top) - var(--joaju-safe-bottom) - 10px)!important}.atlas-help-layout,.atlas-help-content,.prici-self-body,.prici-self-main,.mr-camera-box{min-height:0!important}.atlas-help-content{overflow-y:visible!important}
 input,select,textarea{max-width:100%!important}img,video,canvas,iframe{max-width:100%}
 .leaflet-bottom{bottom:calc(var(--joaju-mobile-dock-h) + var(--joaju-safe-bottom) + 2px)!important}.leaflet-control-attribution{max-width:calc(100vw - 24px)!important;white-space:normal!important}
 }
@@ -3458,7 +3458,7 @@ function individualRouteCard(f){
   const nivel=Math.max(0,Math.min(100,Number(pp.maturidade_atlas_nivel_visual)||0));
   const priciColor=window.ATLAS_PRICI?.corGraduada?window.ATLAS_PRICI.corGraduada(nivel):'#3B8A72';
   const priciMini=pp.prici_autoavaliacao_status?`<div class="prici-route-mini"><div class="prici-route-mini-head"><b>${esc(maturidade)}</b><span>Autoavaliação PRICI · ${esc(pp.prici_autoavaliacao_status)}</span></div><div class="prici-route-mini-bar"><span style="width:${nivel}%;background:${esc(priciColor)}"></span></div><div class="prici-route-mini-note">Graduação = maturidade científica interna do Atlas. Não é pontuação PRICI.</div></div>`:'';
-  return `<div class="route-card" id="route-card-${esc(id)}"><div class="route-card-top"><input type="checkbox" ${checked} title="Ativar ou ocultar esta rota" onchange="toggleIndividualRoute('${esc(id)}',this.checked)"><div><div class="route-card-name"><span class="route-color" style="background:${esc(color)}"></span>${esc(routeNameOf(f))}</div><div class="route-card-meta">${esc(meta)}</div></div><span class="badge ${checked?'ok':'wait'}">${checked?'ativa':'oculta'}</span></div>${priciMini}<div class="route-card-actions"><button type="button" class="btn light small" onclick="zoomIndividualRoute('${esc(id)}')">Aproximar</button><button type="button" class="btn light small" onclick="showIndividualRouteInfo('${esc(id)}')">Ficha + PRICI</button>${roadRouteIsVisible(id)?`<button type="button" class="btn light small" onclick="hideIndividualRoadRoute('${esc(id)}')">Ocultar via</button><button type="button" class="btn light small" onclick="showIndividualRoadRoute('${esc(id)}',true)">Atualizar via</button><button type="button" class="btn light small" onclick="exportIndividualRoadRoute('${esc(id)}')">GeoJSON via</button>`:`<button type="button" class="btn light small" onclick="showIndividualRoadRoute('${esc(id)}')">Via rodoviária</button>`}<a class="btn light small" href="#" onclick="document.getElementById('methodologyBtn').click();return false">PRICI</a><button type="button" class="btn light small" onclick="exportIndividualRoute('${esc(id)}')">GeoJSON base</button></div></div>`;
+  return `<div class="route-card" id="route-card-${esc(id)}"><div class="route-card-top"><input type="checkbox" ${checked} title="Ativar ou ocultar esta rota" onchange="toggleIndividualRoute('${esc(id)}',this.checked)"><div><div class="route-card-name"><span class="route-color" style="background:${esc(color)}"></span>${esc(routeNameOf(f))}</div><div class="route-card-meta">${esc(meta)}</div></div><span class="badge ${checked?'ok':'wait'}">${checked?'ativa':'oculta'}</span></div>${priciMini}<div class="route-card-actions"><button type="button" class="btn light small" onclick="zoomIndividualRoute('${esc(id)}')">Aproximar</button><button type="button" class="btn light small" onclick="showIndividualRouteInfo('${esc(id)}')">Ficha + PRICI</button><button type="button" class="btn light small" onclick="window.ATLAS_PRICI_AUTOAVALIACAO?.openRoute?.('${esc(id)}')">Autoavaliar / cobertura</button>${roadRouteIsVisible(id)?`<button type="button" class="btn light small" onclick="hideIndividualRoadRoute('${esc(id)}')">Ocultar via</button><button type="button" class="btn light small" onclick="showIndividualRoadRoute('${esc(id)}',true)">Atualizar via</button><button type="button" class="btn light small" onclick="exportIndividualRoadRoute('${esc(id)}')">GeoJSON via</button>`:`<button type="button" class="btn light small" onclick="showIndividualRoadRoute('${esc(id)}')">Via rodoviária</button>`}<a class="btn light small" href="#" onclick="document.getElementById('methodologyBtn').click();return false">PRICI</a><button type="button" class="btn light small" onclick="exportIndividualRoute('${esc(id)}')">GeoJSON base</button></div></div>`;
 }
 function renderIndividualRoutes(){
   const list=document.getElementById('individualRoutesList');if(!list)return;const q=(document.getElementById('routeSearchInput')?.value||'').trim().toLocaleLowerCase('pt-BR');const rows=routeDataset().filter(f=>!q||JSON.stringify(f.properties||{}).toLocaleLowerCase('pt-BR').includes(q));list.innerHTML=rows.length?rows.map(individualRouteCard).join(''):'<div class="route-empty">Nenhuma rota corresponde à busca.</div>';updateRouteCountLabel(rows.length);
@@ -5257,6 +5257,55 @@ window.ATLAS_EVIDENCE_VALIDATION_LIMITS={version:EVL_VERSION,open:evlOpen,close:
 
 
 <!-- ATLAS PRICI AUTOAVALIACAO 1.0 START -->
+
+<style id="joaju-r34-prici-modal-visibility-fix">
+/* R34 · defesa contra overlay PRICI sem caixa visível */
+#priciSelfAssessmentModal.open{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  visibility:visible!important;
+  opacity:1!important;
+}
+#priciSelfAssessmentModal.open > .modal-box{
+  display:block!important;
+  position:relative!important;
+  z-index:2!important;
+  visibility:visible!important;
+  opacity:1!important;
+  background:#fffdf8!important;
+  color:#24372f!important;
+  width:min(1220px,calc(100vw - 32px))!important;
+  max-width:1220px!important;
+  max-height:calc(100dvh - 32px)!important;
+  overflow:hidden!important;
+  margin:auto!important;
+}
+#priciSelfAssessmentModal.open > .prici-help-panel{
+  z-index:3!important;
+}
+@media(max-width:900px){
+  #priciSelfAssessmentModal.open{
+    align-items:stretch!important;
+    padding:5px!important;
+  }
+  #priciSelfAssessmentModal.open > .modal-box{
+    width:100%!important;
+    max-width:none!important;
+    max-height:calc(100dvh - 10px)!important;
+    overflow:hidden!important;
+  }
+  #priciSelfAssessmentModal .prici-self-body{
+    min-height:0!important;
+  }
+  #priciSelfAssessmentModal .prici-self-main{
+    overflow-y:auto!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+  }
+}
+</style>
+
 <style id="atlas-prici-autoavaliacao-css">
 
 /* Ficha PRICI de Autoavaliação e Preparação do Itinerário · Atlas 1.0 */
@@ -5288,10 +5337,253 @@ window.ATLAS_EVIDENCE_VALIDATION_LIMITS={version:EVL_VERSION,open:evlOpen,close:
 @media(max-width:900px){.prici-origin-strip{padding:6px 11px;font-size:9px}.prici-help-panel{inset:6px;bottom:70px;border-radius:14px}.prici-help-head{padding:12px}.prici-help-head h2{font-size:16px}.prici-help-body{padding:12px 12px 24px}.prici-help-grid{grid-template-columns:1fr}.prici-help-btn{width:34px;height:34px;font-size:18px}.prici-self-head-actions .btn{min-height:34px}}
 
 </style>
+
+<style id="joaju-r35-prici-scroll-fix">
+#priciSelfAssessmentModal.open > .modal-box{
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+}
+#priciSelfAssessmentModal .prici-self-head,
+#priciSelfAssessmentModal .prici-origin-strip{
+  flex:0 0 auto!important;
+}
+#priciSelfAssessmentModal .prici-self-body{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:hidden!important;
+}
+#priciSelfAssessmentModal .prici-self-nav{
+  min-height:0!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+}
+#priciSelfAssessmentModal .prici-self-main{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior:contain!important;
+  -webkit-overflow-scrolling:touch!important;
+  touch-action:pan-y!important;
+}
+#priciLoadSavedBtn:disabled{
+  opacity:.48!important;
+  cursor:not-allowed!important;
+}
+@media(max-width:900px){
+  #priciSelfAssessmentModal .prici-self-body{
+    display:flex!important;
+    flex-direction:column!important;
+  }
+  #priciSelfAssessmentModal .prici-self-nav{
+    flex:0 0 auto!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+  }
+  #priciSelfAssessmentModal .prici-self-main{
+    flex:1 1 auto!important;
+    max-height:none!important;
+    overflow-y:auto!important;
+  }
+}
+</style>
+
+<style id="joaju-r36-prici-typography">
+/* R36 · legibilidade tipográfica do módulo PRICI */
+#priciSelfAssessmentModal{
+  --prici-text:15px;
+  --prici-small:13.5px;
+  --prici-label:13px;
+}
+#priciSelfAssessmentModal .modal-box{
+  font-size:var(--prici-text)!important;
+}
+#priciSelfAssessmentModal .prici-self-head h2{
+  font-size:24px!important;
+  line-height:1.2!important;
+}
+#priciSelfAssessmentModal .prici-self-head p,
+#priciSelfAssessmentModal .prici-origin-strip,
+#priciSelfAssessmentModal .prici-note,
+#priciSelfAssessmentModal .prici-info,
+#priciSelfAssessmentModal .prici-self-main p,
+#priciSelfAssessmentModal .prici-self-main li,
+#priciSelfAssessmentModal .prici-self-main td,
+#priciSelfAssessmentModal .prici-self-main th{
+  font-size:var(--prici-small)!important;
+  line-height:1.5!important;
+}
+#priciSelfAssessmentModal .prici-self-nav button,
+#priciSelfAssessmentModal .prici-self-nav select,
+#priciSelfAssessmentModal .prici-self-nav .prici-saved-title,
+#priciSelfAssessmentModal .prici-self-main button,
+#priciSelfAssessmentModal .prici-self-main select,
+#priciSelfAssessmentModal .prici-self-main input,
+#priciSelfAssessmentModal .prici-self-main textarea{
+  font-size:14px!important;
+  line-height:1.35!important;
+}
+#priciSelfAssessmentModal .prici-self-main input,
+#priciSelfAssessmentModal .prici-self-main select,
+#priciSelfAssessmentModal .prici-self-main textarea{
+  min-height:42px!important;
+}
+#priciSelfAssessmentModal .prici-item,
+#priciSelfAssessmentModal .prici-item .prici-question,
+#priciSelfAssessmentModal .prici-item label,
+#priciSelfAssessmentModal .prici-item summary{
+  font-size:14px!important;
+  line-height:1.48!important;
+}
+#priciSelfAssessmentModal .prici-code,
+#priciSelfAssessmentModal .prici-kicker,
+#priciSelfAssessmentModal .prici-label,
+#priciSelfAssessmentModal .prici-dim-label,
+#priciSelfAssessmentModal .prici-summary-table th{
+  font-size:12.5px!important;
+  letter-spacing:.01em!important;
+}
+#priciSelfAssessmentModal .prici-metric strong,
+#priciSelfAssessmentModal .prici-coverage-total strong{
+  font-size:20px!important;
+}
+#priciSelfAssessmentModal .prici-coverage-title{
+  font-size:18px!important;
+}
+#priciSelfAssessmentModal .prici-coverage-row,
+#priciSelfAssessmentModal .prici-coverage-row strong,
+#priciSelfAssessmentModal .prici-coverage-row span{
+  font-size:13.5px!important;
+}
+@media(max-width:900px){
+  #priciSelfAssessmentModal{
+    --prici-text:16px;
+    --prici-small:14.5px;
+    --prici-label:14px;
+  }
+  #priciSelfAssessmentModal .prici-self-head h2{
+    font-size:21px!important;
+  }
+  #priciSelfAssessmentModal .prici-self-nav button,
+  #priciSelfAssessmentModal .prici-self-main button,
+  #priciSelfAssessmentModal .prici-self-main select,
+  #priciSelfAssessmentModal .prici-self-main input,
+  #priciSelfAssessmentModal .prici-self-main textarea{
+    font-size:16px!important;
+  }
+  #priciSelfAssessmentModal .prici-item,
+  #priciSelfAssessmentModal .prici-item .prici-question,
+  #priciSelfAssessmentModal .prici-item label,
+  #priciSelfAssessmentModal .prici-item summary{
+    font-size:15px!important;
+  }
+}
+</style>
+
+<style id="joaju-r37-source-traceability">
+#priciSelfAssessmentModal .prici-source-block{
+  margin-top:12px;
+  padding:14px;
+  border:1px solid #d8e5df;
+  border-radius:12px;
+  background:#fbfdfc;
+}
+#priciSelfAssessmentModal .prici-source-block h5{
+  margin:0 0 8px;
+  font-size:14px;
+  color:#173f34;
+}
+#priciSelfAssessmentModal .prici-source-list{
+  display:grid;
+  gap:8px;
+}
+#priciSelfAssessmentModal .prici-source-item{
+  padding:10px 12px;
+  border:1px solid #dde7e2;
+  border-radius:10px;
+  background:#fff;
+}
+#priciSelfAssessmentModal .prici-source-item strong{
+  display:block;
+  margin-bottom:3px;
+  font-size:13.5px;
+  line-height:1.4;
+}
+#priciSelfAssessmentModal .prici-source-item a{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  font-size:13px;
+  line-height:1.45;
+}
+#priciSelfAssessmentModal .prici-source-meta{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:7px;
+}
+#priciSelfAssessmentModal .prici-source-chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:28px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#edf5f1;
+  border:1px solid #d4e4dd;
+  font-size:12px;
+  font-weight:700;
+  color:#315b4f;
+}
+#priciSelfAssessmentModal .prici-source-scope{
+  margin-top:10px;
+  padding:11px 12px;
+  border-left:4px solid #ad7b25;
+  border-radius:8px;
+  background:#fff7e6;
+  font-size:13.5px;
+  line-height:1.5;
+}
+#priciSelfAssessmentModal .prici-trace-grid{
+  display:grid;
+  grid-template-columns:minmax(150px,.34fr) 1fr;
+  gap:6px 12px;
+  margin-top:10px;
+  font-size:13px;
+}
+#priciSelfAssessmentModal .prici-trace-grid b{
+  color:#31554a;
+}
+@media(max-width:700px){
+  #priciSelfAssessmentModal .prici-trace-grid{
+    grid-template-columns:1fr;
+    gap:3px;
+  }
+}
+</style>
+
+<style id="joaju-r33-cobertura-documental-prici">
+.prici-doc-coverage{margin-top:16px;border:1px solid #cddbd4;border-radius:14px;padding:14px;background:#fbfdfc}
+.prici-doc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.prici-doc-head h4{margin:2px 0 3px;color:#174f40;font-size:15px}
+.prici-doc-head p{margin:0;color:#66766f;font-size:12px;line-height:1.4}
+.prici-doc-gap-badge{min-width:86px;text-align:center;border:1px solid #d9c99f;background:#fff8e7;border-radius:11px;padding:8px 10px}
+.prici-doc-gap-badge b{display:block;font-size:19px;color:#7a5b19}.prici-doc-gap-badge span{font-size:10px;color:#6d6249}
+.prici-doc-explain{font-size:12px;line-height:1.55;color:#4e6159;margin:12px 0}
+.prici-doc-dims{display:grid;gap:11px}.prici-doc-row-head{display:flex;justify-content:space-between;gap:10px;font-size:11px;margin-bottom:5px}.prici-doc-row-head span{color:#64736d;text-align:right}
+.prici-doc-track{height:14px;background:#edf1ef;border-radius:999px;overflow:hidden;display:flex}
+.prici-doc-track span{height:100%;display:block}.prici-doc-track .doc,.prici-doc-legend i.doc{background:#4f8a68}.prici-doc-track .partial,.prici-doc-legend i.partial{background:#c8a44a}.prici-doc-track .without,.prici-doc-legend i.without{background:#b8764f}.prici-doc-track .verify,.prici-doc-legend i.verify{background:#8a9290}
+.prici-doc-legend{display:flex;gap:10px 14px;flex-wrap:wrap;margin-top:11px;font-size:10.5px;color:#53645d}.prici-doc-legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px}
+.prici-doc-rule{margin-top:12px;padding:10px 11px;border-radius:10px;background:#eef4f0;display:grid;gap:3px;font-size:11px}.prici-doc-rule strong{color:#174f40}.prici-doc-rule span{color:#607169;line-height:1.45}
+.prici-doc-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:11px}
+@media(max-width:600px){.prici-doc-coverage{padding:12px}.prici-doc-row-head{align-items:flex-start}.prici-doc-row-head span{max-width:48%}.prici-doc-actions .btn{flex:1 1 150px;min-height:42px}}
+</style>
+
 <script id="atlas-prici-autoavaliacao-js">
 (function(){
 'use strict';
-const MODEL={"schema_version":"ATLAS_PRICI_AUTOAVALIACAO_1.0","atlas_version":"1.8.0-dev","manual_reference":{"title":"Manual de Rutas e Itinerarios Culturales para Iberoamérica","program":"Programa de Rutas e Itinerarios Culturales Iberoamericanos (PRICI)","publisher":"Organização de Estados Ibero-Americanos para a Educação, a Ciência e a Cultura (OEI)","year":2026,"manual_url":"https://oei.int/oficinas/secretaria-general/publicaciones/programa-de-rutas-e-itinerarios-culturales-iberoamericanos-prici-informe-de-sistematizacion-de-los-resultados-de-la-encuesta-a-los-paises-iberoamericanos/","manual_pdf_url":"https://oei.int/wp-content/uploads/2026/05/manual-rutas-e-itinerarios-culturales-para-iberoamerica-final-v18-mayo-2025.pdf","official_structure":{"dimensions":4,"categories":14,"criteria":63,"impact_indicators":34,"priority_indicators":14}},"adaptation_notice":"A folha de autoavaliação e o questionário de referência pertencem ao Manual de Rutas e Itinerarios Culturales para Iberoamérica, elaborado no âmbito do PRICI/OEI. O Atlas não reivindica autoria do questionário. Esta incorporação oferece somente uma interface digital independente de apoio à gestão, organização de evidências, identificação de lacunas e acompanhamento do itinerário. Os rótulos operacionais exibidos no Atlas funcionam como guia de trabalho e não substituem a redação, as definições, os indicadores nem as orientações do Manual oficial, que deve ser consultado para qualquer uso formal ou interpretação metodológica.","response_options":[{"value":"sim","label":"Sim","formal_yes":true},{"value":"nao","label":"Não","formal_yes":false},{"value":"parcial","label":"Parcial / em desenvolvimento","formal_yes":false},{"value":"nao_aplica","label":"Não se aplica","formal_yes":null},{"value":"nao_sei","label":"Não sei / requer verificação","formal_yes":null}],"categories":[{"dim":"D1","dimension":"Gestão sustentável do itinerário cultural","id":"1.1","name":"Planejamento e gestão do itinerário cultural","criteria":[{"id":"A01","text":"Existe entidade gestora claramente identificada para coordenar o itinerário."},{"id":"A02","text":"Existe rede de membros ou atores com critérios de participação definidos."},{"id":"A03","text":"Funções, responsabilidades e mecanismos de decisão estão documentados."},{"id":"A04","text":"Existe plano de gestão ou plano de ação atualizado."},{"id":"A05","text":"O tema e os objetivos do itinerário estão fundamentados por pesquisa ou documentação."},{"id":"A06","text":"Existe estratégia financeira ou orçamento para manutenção das atividades."},{"id":"A07","text":"Existe rotina de monitoramento, revisão e melhoria da gestão."},{"id":"A08","text":"Existem acordos ou mecanismos de coordenação interinstitucional."}]},{"dim":"D1","dimension":"Gestão sustentável do itinerário cultural","id":"1.2","name":"Qualidade da infraestrutura","criteria":[{"id":"A09","text":"A infraestrutura necessária ao itinerário foi inventariada."},{"id":"A10","text":"Condições de acesso, manutenção e funcionamento são verificadas periodicamente."},{"id":"A11","text":"Existe sinalização, orientação e interpretação adequadas onde aplicável."},{"id":"A12","text":"Equipamentos de acolhimento e apoio são suficientes para o uso previsto."},{"id":"A13","text":"A infraestrutura física e digital considera necessidades de acessibilidade."}]},{"dim":"D1","dimension":"Gestão sustentável do itinerário cultural","id":"1.3","name":"Saúde e segurança","criteria":[{"id":"A14","text":"Riscos e situações de emergência foram identificados."},{"id":"A15","text":"Existem protocolos ou informações de segurança para gestores e usuários."},{"id":"A16","text":"Serviços de saúde, emergência e apoio relevantes estão mapeados."},{"id":"A17","text":"Incidentes e problemas de segurança são registrados e revistos."}]},{"dim":"D1","dimension":"Gestão sustentável do itinerário cultural","id":"1.4","name":"Informação e promoção","criteria":[{"id":"A18","text":"As informações públicas sobre o itinerário são atualizadas e verificáveis."},{"id":"A19","text":"Existe identidade e narrativa de comunicação coerentes com o patrimônio relacionado."},{"id":"A20","text":"A promoção evita afirmar acessos, autorizações ou condições que não foram verificadas."},{"id":"A21","text":"Existem canais digitais ou analógicos acessíveis para informação."},{"id":"A22","text":"Existe mecanismo para receber dúvidas, críticas e retorno dos usuários."}]},{"dim":"D2","dimension":"Sustentabilidade econômica","id":"2.1","name":"Contribuição à economia local","criteria":[{"id":"A23","text":"Empreendimentos e produtores locais participam das atividades quando pertinente."},{"id":"A24","text":"Compras e contratações locais são favorecidas quando possível."},{"id":"A25","text":"O itinerário contribui para formação, emprego ou oportunidades econômicas locais."},{"id":"A26","text":"Benefícios e custos econômicos são considerados e discutidos com atores locais."},{"id":"A27","text":"Existem dados ou método para acompanhar efeitos econômicos do itinerário."}]},{"dim":"D2","dimension":"Sustentabilidade econômica","id":"2.2","name":"Sazonalidade","criteria":[{"id":"A28","text":"A sazonalidade da visitação e das atividades é conhecida."},{"id":"A29","text":"Existem medidas para distribuir atividades e benefícios ao longo do ano quando pertinente."},{"id":"A30","text":"Picos de demanda e períodos de baixa atividade são considerados no planejamento."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.1","name":"Preservação do patrimônio cultural","criteria":[{"id":"A31","text":"Bens e práticas patrimoniais relacionados ao itinerário foram inventariados."},{"id":"A32","text":"O estado de conservação ou salvaguarda é conhecido ou acompanhado."},{"id":"A33","text":"A narrativa do itinerário está sustentada por pesquisa e fontes identificáveis."},{"id":"A34","text":"Patrimônio imaterial e conhecimentos vivos são tratados com salvaguardas adequadas."},{"id":"A35","text":"A interpretação promove compreensão e educação patrimonial."},{"id":"A36","text":"O uso cultural ou turístico evita comprometer integridade, autenticidade ou direitos."},{"id":"A37","text":"Pressões e impactos do itinerário sobre o patrimônio são monitorados."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.2","name":"Acessibilidade","criteria":[{"id":"A38","text":"Barreiras físicas para pessoas com deficiência ou mobilidade reduzida foram avaliadas."},{"id":"A39","text":"Existem alternativas ou adaptações para ampliar o acesso quando possível."},{"id":"A40","text":"Mobilidade e transporte entre os pontos do itinerário foram avaliados."},{"id":"A41","text":"A informação considera diversidade linguística ou comunicacional quando pertinente."},{"id":"A42","text":"Existe plano de melhoria contínua da acessibilidade."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.3","name":"Implicação da comunidade local","criteria":[{"id":"A43","text":"Comunidades e grupos locais relacionados ao itinerário foram identificados."},{"id":"A44","text":"As comunidades participam do planejamento quando são afetadas ou detentoras de patrimônio."},{"id":"A45","text":"Existem mecanismos de consulta, escuta e decisão compartilhada quando necessários."},{"id":"A46","text":"Benefícios, oportunidades e responsabilidades locais são discutidos de forma transparente."},{"id":"A47","text":"Existe canal para correção, reclamação ou revisão de decisões."},{"id":"A48","text":"Em contextos indígenas ou tradicionais, protocolos e consentimento aplicáveis são respeitados e registrados."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.4","name":"Igualdade de gênero","criteria":[{"id":"A49","text":"A governança e as atividades consideram participação equitativa entre gêneros."},{"id":"A50","text":"Medidas de segurança e inclusão evitam discriminação e barreiras de gênero."},{"id":"A51","text":"Quando existem dados adequados, participação e impactos podem ser analisados de forma desagregada."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.5","name":"Intercâmbios culturais","criteria":[{"id":"A52","text":"O itinerário promove cooperação entre territórios, instituições ou comunidades."},{"id":"A53","text":"Existem atividades de intercâmbio cultural, educativo ou científico."},{"id":"A54","text":"Redes e parcerias permitem compartilhar conhecimento e boas práticas."},{"id":"A55","text":"Resultados dos intercâmbios são documentados e retroalimentam a gestão."}]},{"dim":"D4","dimension":"Sustentabilidade ambiental","id":"4.1","name":"Uso eficiente dos recursos","criteria":[{"id":"A56","text":"Existem medidas para reduzir, reutilizar ou reciclar resíduos."},{"id":"A57","text":"O uso de água é conhecido e medidas de economia são promovidas quando pertinentes."},{"id":"A58","text":"O uso de energia considera eficiência e fontes renováveis quando possível."}]},{"dim":"D4","dimension":"Sustentabilidade ambiental","id":"4.2","name":"Mudança climática e resiliência","criteria":[{"id":"A59","text":"Riscos associados ao clima e a eventos extremos foram considerados."},{"id":"A60","text":"Existem medidas de adaptação, contingência e continuidade."},{"id":"A61","text":"Mobilidade e atividades buscam reduzir impactos climáticos quando possível."}]},{"dim":"D4","dimension":"Sustentabilidade ambiental","id":"4.3","name":"Proteção das paisagens e da biodiversidade","criteria":[{"id":"A62","text":"Áreas protegidas, habitats e valores paisagísticos relacionados são identificados e considerados na gestão."},{"id":"A63","text":"Pressões, capacidade de carga, aglomeração e impactos sobre biodiversidade ou paisagem são monitorados quando pertinente."}]}],"digital_support":{"nature":"Interface digital independente de apoio ao questionário de autoavaliação do Manual PRICI/OEI","questionnaire_authorship":"Manual de Rutas e Itinerarios Culturales para Iberoamérica / PRICI / OEI","atlas_role":"Organização digital, gestão local de respostas, evidências, lacunas, plano de ação, importação, exportação e impressão","not_official_app":true,"manual_prevails":true,"local_storage_key":"atlas_prici_autoavaliacoes_v1_0","data_transmission":"O módulo não transmite os campos digitados para GitHub, Atlas, OEI ou PRICI","storage_encryption":"localStorage do navegador não é um cofre criptográfico; evitar dados pessoais ou sensíveis desnecessários"}};
+const MODEL={"schema_version":"ATLAS_PRICI_AUTOAVALIACAO_1.0","atlas_version":"1.8.0-dev","manual_reference":{"title":"Manual de rutas e itinerarios culturales para Iberoamérica e indicadores asociados: avanzando hacia la creación de un modelo de rutas e itinerarios culturales para Iberoamérica","short_title":"Manual de rutas e itinerarios culturales para Iberoamérica","program":"Programa de Rutas e Itinerarios Culturales Iberoamericanos (PRICI)","publisher":"Organização de Estados Ibero-Americanos para a Educação, a Ciência e a Cultura (OEI)","year":2026,"credits_note":"Publicação OEI em colaboração com AECID e com apoio do Instituto Europeu de Itinerários Culturais","publication_page_verified":"2026-08-24","manual_url":"https://oei.int/oficinas/secretaria-general/publicaciones/programa-de-rutas-e-itinerarios-culturales-iberoamericanos-prici-informe-de-sistematizacion-de-los-resultados-de-la-encuesta-a-los-paises-iberoamericanos/","manual_pdf_url":"https://oei.int/wp-content/uploads/2026/05/manual-rutas-e-itinerarios-culturales-para-iberoamerica-final-v18-mayo-2025.pdf","official_structure":{"dimensions":4,"categories":14,"criteria":63,"impact_indicators":34,"priority_indicators":14}},"adaptation_notice":"A folha de autoavaliação e o questionário de referência pertencem ao Manual de Rutas e Itinerarios Culturales para Iberoamérica, elaborado no âmbito do PRICI/OEI. O Atlas não reivindica autoria do questionário. Esta incorporação oferece somente uma interface digital independente de apoio à gestão, organização de evidências, identificação de lacunas e acompanhamento do itinerário. Os rótulos operacionais exibidos no Atlas funcionam como guia de trabalho e não substituem a redação, as definições, os indicadores nem as orientações do Manual oficial, que deve ser consultado para qualquer uso formal ou interpretação metodológica.","response_options":[{"value":"sim","label":"Sim","formal_yes":true},{"value":"nao","label":"Não","formal_yes":false},{"value":"parcial","label":"Parcial / em desenvolvimento","formal_yes":false},{"value":"nao_aplica","label":"Não se aplica","formal_yes":null},{"value":"nao_sei","label":"Não sei / requer verificação","formal_yes":null}],"categories":[{"dim":"D1","dimension":"Gestão sustentável do itinerário cultural","id":"1.1","name":"Planejamento e gestão do itinerário cultural","criteria":[{"id":"A01","text":"Existe entidade gestora claramente identificada para coordenar o itinerário."},{"id":"A02","text":"Existe rede de membros ou atores com critérios de participação definidos."},{"id":"A03","text":"Funções, responsabilidades e mecanismos de decisão estão documentados."},{"id":"A04","text":"Existe plano de gestão ou plano de ação atualizado."},{"id":"A05","text":"O tema e os objetivos do itinerário estão fundamentados por pesquisa ou documentação."},{"id":"A06","text":"Existe estratégia financeira ou orçamento para manutenção das atividades."},{"id":"A07","text":"Existe rotina de monitoramento, revisão e melhoria da gestão."},{"id":"A08","text":"Existem acordos ou mecanismos de coordenação interinstitucional."}]},{"dim":"D1","dimension":"Gestão sustentável do itinerário cultural","id":"1.2","name":"Qualidade da infraestrutura","criteria":[{"id":"A09","text":"A infraestrutura necessária ao itinerário foi inventariada."},{"id":"A10","text":"Condições de acesso, manutenção e funcionamento são verificadas periodicamente."},{"id":"A11","text":"Existe sinalização, orientação e interpretação adequadas onde aplicável."},{"id":"A12","text":"Equipamentos de acolhimento e apoio são suficientes para o uso previsto."},{"id":"A13","text":"A infraestrutura física e digital considera necessidades de acessibilidade."}]},{"dim":"D1","dimension":"Gestão sustentável do itinerário cultural","id":"1.3","name":"Saúde e segurança","criteria":[{"id":"A14","text":"Riscos e situações de emergência foram identificados."},{"id":"A15","text":"Existem protocolos ou informações de segurança para gestores e usuários."},{"id":"A16","text":"Serviços de saúde, emergência e apoio relevantes estão mapeados."},{"id":"A17","text":"Incidentes e problemas de segurança são registrados e revistos."}]},{"dim":"D1","dimension":"Gestão sustentável do itinerário cultural","id":"1.4","name":"Informação e promoção","criteria":[{"id":"A18","text":"As informações públicas sobre o itinerário são atualizadas e verificáveis."},{"id":"A19","text":"Existe identidade e narrativa de comunicação coerentes com o patrimônio relacionado."},{"id":"A20","text":"A promoção evita afirmar acessos, autorizações ou condições que não foram verificadas."},{"id":"A21","text":"Existem canais digitais ou analógicos acessíveis para informação."},{"id":"A22","text":"Existe mecanismo para receber dúvidas, críticas e retorno dos usuários."}]},{"dim":"D2","dimension":"Sustentabilidade econômica","id":"2.1","name":"Contribuição à economia local","criteria":[{"id":"A23","text":"Empreendimentos e produtores locais participam das atividades quando pertinente."},{"id":"A24","text":"Compras e contratações locais são favorecidas quando possível."},{"id":"A25","text":"O itinerário contribui para formação, emprego ou oportunidades econômicas locais."},{"id":"A26","text":"Benefícios e custos econômicos são considerados e discutidos com atores locais."},{"id":"A27","text":"Existem dados ou método para acompanhar efeitos econômicos do itinerário."}]},{"dim":"D2","dimension":"Sustentabilidade econômica","id":"2.2","name":"Sazonalidade","criteria":[{"id":"A28","text":"A sazonalidade da visitação e das atividades é conhecida."},{"id":"A29","text":"Existem medidas para distribuir atividades e benefícios ao longo do ano quando pertinente."},{"id":"A30","text":"Picos de demanda e períodos de baixa atividade são considerados no planejamento."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.1","name":"Preservação do patrimônio cultural","criteria":[{"id":"A31","text":"Bens e práticas patrimoniais relacionados ao itinerário foram inventariados."},{"id":"A32","text":"O estado de conservação ou salvaguarda é conhecido ou acompanhado."},{"id":"A33","text":"A narrativa do itinerário está sustentada por pesquisa e fontes identificáveis."},{"id":"A34","text":"Patrimônio imaterial e conhecimentos vivos são tratados com salvaguardas adequadas."},{"id":"A35","text":"A interpretação promove compreensão e educação patrimonial."},{"id":"A36","text":"O uso cultural ou turístico evita comprometer integridade, autenticidade ou direitos."},{"id":"A37","text":"Pressões e impactos do itinerário sobre o patrimônio são monitorados."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.2","name":"Acessibilidade","criteria":[{"id":"A38","text":"Barreiras físicas para pessoas com deficiência ou mobilidade reduzida foram avaliadas."},{"id":"A39","text":"Existem alternativas ou adaptações para ampliar o acesso quando possível."},{"id":"A40","text":"Mobilidade e transporte entre os pontos do itinerário foram avaliados."},{"id":"A41","text":"A informação considera diversidade linguística ou comunicacional quando pertinente."},{"id":"A42","text":"Existe plano de melhoria contínua da acessibilidade."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.3","name":"Implicação da comunidade local","criteria":[{"id":"A43","text":"Comunidades e grupos locais relacionados ao itinerário foram identificados."},{"id":"A44","text":"As comunidades participam do planejamento quando são afetadas ou detentoras de patrimônio."},{"id":"A45","text":"Existem mecanismos de consulta, escuta e decisão compartilhada quando necessários."},{"id":"A46","text":"Benefícios, oportunidades e responsabilidades locais são discutidos de forma transparente."},{"id":"A47","text":"Existe canal para correção, reclamação ou revisão de decisões."},{"id":"A48","text":"Em contextos indígenas ou tradicionais, protocolos e consentimento aplicáveis são respeitados e registrados."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.4","name":"Igualdade de gênero","criteria":[{"id":"A49","text":"A governança e as atividades consideram participação equitativa entre gêneros."},{"id":"A50","text":"Medidas de segurança e inclusão evitam discriminação e barreiras de gênero."},{"id":"A51","text":"Quando existem dados adequados, participação e impactos podem ser analisados de forma desagregada."}]},{"dim":"D3","dimension":"Sustentabilidade sociocultural","id":"3.5","name":"Intercâmbios culturais","criteria":[{"id":"A52","text":"O itinerário promove cooperação entre territórios, instituições ou comunidades."},{"id":"A53","text":"Existem atividades de intercâmbio cultural, educativo ou científico."},{"id":"A54","text":"Redes e parcerias permitem compartilhar conhecimento e boas práticas."},{"id":"A55","text":"Resultados dos intercâmbios são documentados e retroalimentam a gestão."}]},{"dim":"D4","dimension":"Sustentabilidade ambiental","id":"4.1","name":"Uso eficiente dos recursos","criteria":[{"id":"A56","text":"Existem medidas para reduzir, reutilizar ou reciclar resíduos."},{"id":"A57","text":"O uso de água é conhecido e medidas de economia são promovidas quando pertinentes."},{"id":"A58","text":"O uso de energia considera eficiência e fontes renováveis quando possível."}]},{"dim":"D4","dimension":"Sustentabilidade ambiental","id":"4.2","name":"Mudança climática e resiliência","criteria":[{"id":"A59","text":"Riscos associados ao clima e a eventos extremos foram considerados."},{"id":"A60","text":"Existem medidas de adaptação, contingência e continuidade."},{"id":"A61","text":"Mobilidade e atividades buscam reduzir impactos climáticos quando possível."}]},{"dim":"D4","dimension":"Sustentabilidade ambiental","id":"4.3","name":"Proteção das paisagens e da biodiversidade","criteria":[{"id":"A62","text":"Áreas protegidas, habitats e valores paisagísticos relacionados são identificados e considerados na gestão."},{"id":"A63","text":"Pressões, capacidade de carga, aglomeração e impactos sobre biodiversidade ou paisagem são monitorados quando pertinente."}]}],"digital_support":{"nature":"Interface digital independente de apoio ao questionário de autoavaliação do Manual PRICI/OEI","questionnaire_authorship":"Manual de Rutas e Itinerarios Culturales para Iberoamérica / PRICI / OEI","atlas_role":"Organização digital, gestão local de respostas, evidências, lacunas, plano de ação, importação, exportação e impressão","not_official_app":true,"manual_prevails":true,"local_storage_key":"atlas_prici_autoavaliacoes_v1_0","data_transmission":"O módulo não transmite os campos digitados para GitHub, Atlas, OEI ou PRICI","storage_encryption":"localStorage do navegador não é um cofre criptográfico; evitar dados pessoais ou sensíveis desnecessários"}};
 const VERSION='ATLAS_PRICI_AUTOAVALIACAO_1.0';
 const STORAGE_KEY='atlas_prici_autoavaliacoes_v1_0';
 const MANUAL=MODEL.manual_reference;
@@ -5337,15 +5629,106 @@ function helpHtml(){return `<div class="prici-help-head"><div><div class="worksp
 function openHelp(){const p=$('priciSelfHelpPanel');if(p){p.innerHTML=helpHtml();p.classList.add('open');p.setAttribute('aria-hidden','false');$('priciSelfHelpCloseBtn').onclick=closeHelp;setTimeout(()=>$('priciSelfHelpCloseBtn')?.focus(),0);}}
 function closeHelp(){const p=$('priciSelfHelpPanel');if(p){p.classList.remove('open');p.setAttribute('aria-hidden','true');}}
 function modal(){let m=$('priciSelfAssessmentModal');if(m)return m;m=document.createElement('div');m.id='priciSelfAssessmentModal';m.className='modal prici-self-modal';m.setAttribute('aria-hidden','true');m.innerHTML=`<div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="priciSelfTitle"><div class="prici-self-head"><div><div class="workspace-kicker">Apoio digital ao Manual PRICI/OEI</div><h2 id="priciSelfTitle">Autoavaliação e preparação do itinerário</h2><p>Interface independente de apoio ao questionário do Manual · evidências · lacunas · plano de ação · gestão local</p></div><div class="prici-self-head-actions"><button class="prici-help-btn" id="priciSelfHelpBtn" type="button" title="Como funciona esta ferramenta" aria-label="Ajuda: como funciona esta ferramenta">?</button><button class="btn" id="priciSelfCloseBtn" type="button">×</button></div></div><div class="prici-origin-strip"><strong>Origem do questionário</strong> · Manual de Rutas e Itinerarios Culturales para Iberoamérica · PRICI / OEI. <span>O Atlas apenas oferece uma interface digital de apoio. Consulte o Manual oficial para critérios, definições e indicadores.</span></div><div class="prici-self-body"><nav class="prici-self-nav" aria-label="Seções da ficha"><button data-prici-tab="identificacao"><span class="nav-num">1</span><span>Identificação</span></button><button data-prici-tab="criterios"><span class="nav-num">2</span><span>Autoavaliação</span></button><button data-prici-tab="indicadores"><span class="nav-num">3</span><span>Indicadores</span></button><button data-prici-tab="lacunas"><span class="nav-num">4</span><span>Lacunas e plano</span></button><button data-prici-tab="resumo"><span class="nav-num">5</span><span>Resumo e relatório</span></button><div class="prici-self-savebox"><label for="priciSavedSelect">Avaliações salvas neste navegador</label><select id="priciSavedSelect"><option value="">Nenhuma</option></select><button class="btn light small" id="priciLoadSavedBtn" type="button">Abrir avaliação</button><button class="btn light small" id="priciDeleteSavedBtn" type="button">Excluir selecionada</button><button class="btn light small prici-nav-help" id="priciSelfNavHelpBtn" type="button">? Como funciona</button></div></nav><main class="prici-self-main"><div class="prici-self-toolbar"><button class="btn light small" id="priciNewBtn" type="button">Nova ficha</button><button class="btn light small" id="priciSaveBtn" type="button">Salvar neste navegador</button><button class="btn light small" id="priciExportJsonBtn" type="button">Exportar JSON</button><button class="btn light small" id="priciExportCsvBtn" type="button">Exportar CSV</button><button class="btn light small" id="priciImportBtn" type="button">Importar JSON</button><button class="btn primary small" id="priciPrintBtn" type="button">Imprimir / salvar PDF</button><input id="priciImportFile" type="file" accept="application/json,.json" hidden></div><section class="prici-self-section" data-section="identificacao"></section><section class="prici-self-section" data-section="criterios"></section><section class="prici-self-section" data-section="indicadores"></section><section class="prici-self-section" data-section="lacunas"></section><section class="prici-self-section" data-section="resumo"></section></main></div></div><aside class="prici-help-panel" id="priciSelfHelpPanel" role="dialog" aria-modal="true" aria-label="Ajuda da autoavaliação PRICI" aria-hidden="true"></aside>`;document.body.appendChild(m);bindModal(m);return m;}
-function bindModal(m){$('priciSelfCloseBtn').onclick=close;$('priciSelfHelpBtn').onclick=openHelp;$('priciSelfNavHelpBtn').onclick=openHelp;qa('[data-prici-tab]',m).forEach(b=>b.onclick=()=>setTab(b.dataset.priciTab));$('priciNewBtn').onclick=()=>{if(confirm('Criar uma nova ficha? Alterações não salvas serão descartadas.')){current=newAssessment();renderAll();setTab('identificacao');}};$('priciSaveBtn').onclick=()=>{syncIdentification();putStore(current);alert('Avaliação salva somente neste navegador. Para uma cópia portátil ou de segurança, use Exportar JSON.');};$('priciExportJsonBtn').onclick=exportJSON;$('priciExportCsvBtn').onclick=exportCSV;$('priciImportBtn').onclick=()=>$('priciImportFile').click();$('priciImportFile').onchange=importJSON;$('priciPrintBtn').onclick=printReport;$('priciLoadSavedBtn').onclick=loadSaved;$('priciDeleteSavedBtn').onclick=()=>{const id=$('priciSavedSelect').value;if(id&&confirm('Excluir esta avaliação salva neste navegador?'))deleteStore(id);};m.addEventListener('click',e=>{if(e.target===m)close();});}
-function open(routeIdValue=null){const m=modal();if(routeIdValue){current=newAssessment(routeIdValue);}else if(!current)current=newAssessment();renderAll();m.classList.add('open');m.setAttribute('aria-hidden','false');setTab('identificacao');refreshSavedSelect();}
+function bindModal(m){$('priciSelfCloseBtn').onclick=close;$('priciSelfHelpBtn').onclick=openHelp;$('priciSelfNavHelpBtn').onclick=openHelp;qa('[data-prici-tab]',m).forEach(b=>b.onclick=()=>setTab(b.dataset.priciTab));$('priciNewBtn').onclick=()=>{if(confirm('Criar uma nova ficha? Alterações não salvas serão descartadas.')){current=newAssessment();renderAll();setTab('identificacao');}};$('priciSaveBtn').onclick=()=>{syncIdentification();putStore(current);alert('Avaliação salva somente neste navegador. Para uma cópia portátil ou de segurança, use Exportar JSON.');};$('priciExportJsonBtn').onclick=exportJSON;$('priciExportCsvBtn').onclick=exportCSV;$('priciImportBtn').onclick=()=>$('priciImportFile').click();$('priciImportFile').onchange=importJSON;$('priciPrintBtn').onclick=printReport;$('priciLoadSavedBtn').onclick=loadSaved;
+$('priciSavedSelect').onchange=()=>{
+  const b=$('priciLoadSavedBtn');
+  if(b)b.disabled=!$('priciSavedSelect').value;
+};$('priciDeleteSavedBtn').onclick=()=>{const id=$('priciSavedSelect').value;if(id&&confirm('Excluir esta avaliação salva neste navegador?'))deleteStore(id);};m.addEventListener('click',e=>{if(e.target===m)close();});}
+function open(routeIdValue=null){
+  const m=modal();
+  const box=m.querySelector(':scope > .modal-box')||m.querySelector('.modal-box');
+  if(box&&box.parentElement!==m)m.insertBefore(box,m.firstChild);
+  if(routeIdValue){current=newAssessment(routeIdValue);}else if(!current)current=newAssessment();
+  renderAll();
+  m.classList.add('open');
+  m.setAttribute('aria-hidden','false');
+  if(box){
+    box.style.display='block';
+    box.style.visibility='visible';
+    box.style.opacity='1';
+  }
+  setTab('identificacao');
+  refreshSavedSelect();
+}
 function close(){const m=$('priciSelfAssessmentModal');if(m){m.classList.remove('open');m.setAttribute('aria-hidden','true');}}
 function setTab(tab){activeTab=tab;qa('[data-prici-tab]').forEach(b=>b.classList.toggle('active',b.dataset.priciTab===tab));qa('.prici-self-section').forEach(s=>s.classList.toggle('active',s.dataset.section===tab));if(tab==='lacunas')renderGaps();if(tab==='resumo')renderSummary();}
 function renderAll(){renderIdentification();renderCriteria();renderIndicators();renderGaps();renderSummary();refreshSavedSelect();}
 function routeOptions(){return `<option value="">Novo itinerário / sem rota de referência</option>`+routeRows().map(f=>`<option value="${esc(routeId(f))}" ${current?.source_route_id===routeId(f)?'selected':''}>${esc(routeName(f))}</option>`).join('');}
 function renderIdentification(){const s=q('[data-section="identificacao"]');if(!s)return;const i=current.identification||{};s.innerHTML=`<h3 class="prici-self-title">Identificação e escopo</h3><p class="prici-self-sub">Parta de uma das 32 propostas do Atlas ou crie um itinerário próprio. O questionário de referência é o do Manual PRICI/OEI. O Atlas apenas organiza digitalmente o processo e nunca converte dados territoriais em respostas automáticas.</p><div class="prici-self-notice ok"><strong>Origem metodológica</strong> · a folha de autoavaliação e o questionário pertencem ao <em>Manual de Rutas e Itinerarios Culturales para Iberoamérica</em>, PRICI/OEI. Esta interface é somente um apoio independente para gestores. <a href="${esc(MANUAL.manual_pdf_url)}" target="_blank" rel="noopener">Consultar o Manual oficial</a>.</div><div class="prici-self-notice info"><strong>Privacidade por desenho</strong> · os campos preenchidos não são enviados pelo módulo ao GitHub, aos autores do Atlas, à OEI ou ao PRICI. “Salvar neste navegador” usa <code>localStorage</code> neste dispositivo/perfil. Para backup, mudança de computador ou compartilhamento, use <strong>Exportar JSON</strong>. <button class="prici-inline-help" id="priciInlineHelpBtn" type="button">? Entenda armazenamento e uso</button></div><div class="prici-source-route"><div><label class="field-label" for="priciSourceRoute">Rota de referência do Atlas</label><select id="priciSourceRoute">${routeOptions()}</select></div><button class="btn light small" id="priciLoadRouteBtn" type="button">Usar como base</button></div><div class="prici-self-formgrid" style="margin-top:12px"><div><label>Nome do itinerário</label><input id="pf_name" value="${esc(i.name)}"></div><div><label>Fase atual</label><select id="pf_phase">${['Não atribuída','Ideia / início','Em estruturação','Desenho e plano de ação','Implementação','Operação e monitoramento'].map(x=>`<option ${i.phase===x?'selected':''}>${esc(x)}</option>`).join('')}</select></div><div><label>Tema / eixo articulador</label><input id="pf_theme" value="${esc(i.theme)}"></div><div><label>Território / região</label><input id="pf_territory" value="${esc(i.territory)}"></div><div class="wide"><label>Municípios / localidades</label><input id="pf_municipalities" value="${esc(i.municipalities)}"></div><div><label>Entidade gestora</label><input id="pf_manager_entity" value="${esc(i.manager_entity)}" placeholder="Não preencher se ainda não existir"></div><div><label>Instituição responsável / referência</label><input id="pf_responsible_institution" value="${esc(i.responsible_institution)}"></div><div><label>Contato de trabalho</label><input id="pf_contact" value="${esc(i.contact)}"></div><div><label>Atores / membros da rede</label><input id="pf_stakeholders" value="${esc(i.stakeholders)}"></div><div class="wide"><label>Comunidades relacionadas</label><input id="pf_communities" value="${esc(i.communities)}"></div><div class="wide"><label>Descrição</label><textarea id="pf_description">${esc(i.description)}</textarea></div><div class="wide"><label>Observações gerais</label><textarea id="pf_notes">${esc(i.notes)}</textarea></div></div><div id="priciAtlasEvidenceBox"></div>`;$('priciInlineHelpBtn').onclick=openHelp;$('priciLoadRouteBtn').onclick=()=>{syncIdentification();const id=$('priciSourceRoute').value;if(id){applyRoute(current,id);renderIdentification();renderSummary();}else{current.source_route_id=null;current.atlas_evidence_snapshot={};renderIdentification();}};renderEvidence();}
 function syncIdentification(){if(!current)return;const i=current.identification||(current.identification={});for(const k of ['name','theme','territory','municipalities','manager_entity','responsible_institution','contact','stakeholders','communities','description','notes']){const el=$(`pf_${k}`);if(el)i[k]=el.value;}const phase=$('pf_phase');if(phase)i.phase=phase.value;current.updated_at=now();}
-function renderEvidence(){const box=$('priciAtlasEvidenceBox');if(!box)return;const e=current.atlas_evidence_snapshot||{};if(!current.source_route_id){box.innerHTML='<div class="prici-self-notice">Nenhuma rota do Atlas foi usada como referência. A ficha pode ser preenchida integralmente para um itinerário próprio.</div>';return;}const rows=[['Rota de referência',e.route_name],['Natureza no Atlas',e.type],['Situação institucional',e.institutional_status],['Maturidade de pesquisa',e.maturity],['Municípios',e.municipalities],['Fonte',e.source],['Bases documentais',e.documentary_bases],['Comunidades relacionadas',e.community_reference],['Participação comunitária',e.participation_status],['Consentimento',e.consent_status],['Validação de campo',e.field_validation],['Próximo passo',e.validation_next],['Trace ID',e.trace_id]].filter(x=>x[1]);box.innerHTML=`<div class="prici-evidence-card"><h4>Sugestões de evidência já conhecidas pelo Atlas</h4><div class="prici-evidence-grid">${rows.map(x=>`<b>${esc(x[0])}</b><span>${esc(x[1])}</span>`).join('')}</div><div class="prici-evidence-warning">Estas informações servem para orientar a busca de evidência. O Atlas não marca nenhum requisito como cumprido automaticamente. Participação, consentimento, governança e validação de campo dependem de confirmação específica.</div></div>`;}
+function splitSourceLabels(v){
+  return String(v||'').split(/\s*;\s*/).map(x=>x.trim()).filter(Boolean);
+}
+function splitSourceUrls(v){
+  return String(v||'').split(/\s*\|\s*/).map(x=>x.trim()).filter(Boolean);
+}
+function sourceLinksHtml(e){
+  const labels=splitSourceLabels(e.documentary_bases);
+  const urls=splitSourceUrls(e.documentary_urls);
+  const n=Math.max(labels.length,urls.length);
+  if(!n)return '<div class="prici-self-notice">Nenhuma fonte documental associada foi registrada para esta proposta.</div>';
+  const rows=[];
+  for(let i=0;i<n;i++){
+    const label=labels[i]||`Fonte documental ${i+1}`;
+    const url=urls[i]||'';
+    rows.push(`<div class="prici-source-item"><strong>${esc(label)}</strong>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(url)}</a>`:'<span class="prici-self-muted">URL não registrada nesta versão.</span>'}</div>`);
+  }
+  return `<div class="prici-source-list">${rows.join('')}</div>`;
+}
+function renderEvidence(){
+  const box=$('priciAtlasEvidenceBox');if(!box)return;
+  const e=current.atlas_evidence_snapshot||{};
+  if(!current.source_route_id){
+    box.innerHTML='<div class="prici-self-notice">Nenhuma rota do Atlas foi usada como referência. A ficha pode ser preenchida integralmente para um itinerário próprio.</div>';
+    return;
+  }
+  const docUrls=splitSourceUrls(e.documentary_urls);
+  const rows=[
+    ['Rota de referência',e.route_name],
+    ['Natureza no Atlas',e.type],
+    ['Situação institucional',e.institutional_status],
+    ['Maturidade de pesquisa',e.maturity],
+    ['Municípios',e.municipalities],
+    ['Proveniência da síntese',e.source],
+    ['Comunidades relacionadas',e.community_reference],
+    ['Participação comunitária',e.participation_status],
+    ['Consentimento',e.consent_status],
+    ['Validação documental',e.documentary_validation],
+    ['Validação espacial',e.spatial_validation],
+    ['Validação institucional',e.institutional_validation],
+    ['Validação de campo',e.field_validation],
+    ['Validação comunitária',e.community_validation],
+    ['Próximo passo',e.validation_next]
+  ].filter(x=>x[1]);
+
+  const primary=e.source_url
+    ? `<div class="prici-source-block"><h5>Fonte principal associada à síntese</h5><div class="prici-source-item"><a href="${esc(e.source_url)}" target="_blank" rel="noopener noreferrer">${esc(e.source_url)}</a></div></div>`
+    : '';
+
+  const traceRows=[
+    ['Trace ID',e.trace_id],
+    ['Trace ID de governança',e.governance_trace_id],
+    ['Captura da evidência',e.captured_at]
+  ].filter(x=>x[1]);
+
+  box.innerHTML=`<div class="prici-evidence-card">
+    <h4>Fontes e evidências já conhecidas pelo Atlas</h4>
+    <div class="prici-evidence-grid">${rows.map(x=>`<b>${esc(x[0])}</b><span>${esc(x[1])}</span>`).join('')}</div>
+    ${primary}
+    <div class="prici-source-block">
+      <h5>Fontes documentais associadas</h5>
+      ${sourceLinksHtml(e)}
+      <div class="prici-source-meta">
+        <span class="prici-source-chip">${docUrls.length} URL${docUrls.length===1?'':'s'} registrada${docUrls.length===1?'':'s'}</span>
+        <span class="prici-source-chip">consulta externa</span>
+        <span class="prici-source-chip">não certifica a rota</span>
+      </div>
+    </div>
+    <div class="prici-source-scope"><strong>Alcance probatório.</strong> As fontes documentais podem sustentar a existência de bens, práticas, lugares, antecedentes ou relações temáticas. Elas não comprovam automaticamente participação comunitária, consentimento, governança, viabilidade logística, validação de campo, reconhecimento institucional ou certificação PRICI.</div>
+    ${traceRows.length?`<div class="prici-trace-grid">${traceRows.map(x=>`<b>${esc(x[0])}</b><span>${esc(x[1])}</span>`).join('')}</div>`:''}
+    <div class="prici-evidence-warning">A proveniência da síntese é apresentada separadamente das fontes que sustentam a evidência. O Atlas não marca nenhum requisito como cumprido automaticamente.</div>
+  </div>`;
+}
 function renderProgress(){const dims=[['D1','Gestão'],['D2','Economia'],['D3','Sociocultural'],['D4','Ambiental']];return `<div class="prici-progress-grid">${dims.map(([d,n])=>{const x=dimensionSummary(d);return `<div class="prici-progress-card"><b>${pctText(x.pct)}</b><span>${n} · ${x.sim} sim · ${x.parcial} parcial · ${x.nao} não</span><div class="mini"><i style="width:${Number.isFinite(x.pct)?x.pct:0}%"></i></div></div>`;}).join('')}</div><div class="prici-self-notice"><strong>Leitura auxiliar.</strong> O percentual considera apenas respostas binárias <strong>Sim + Não</strong>, em coerência com a lógica simples descrita no Manual. “Parcial”, “Não se aplica” e “Não sei” são estados auxiliares de gestão do Atlas e ficam fora do denominador. O resultado não é nota, validação, certificação ou reconhecimento PRICI/OEI.</div>`;}
 function renderCriteria(){const s=q('[data-section="criterios"]');if(!s)return;s.innerHTML=`<h3 class="prici-self-title">Apoio digital ao questionário de autoavaliação</h3><p class="prici-self-sub">A referência metodológica é a folha de autoavaliação do Manual PRICI/OEI, organizada em 4 dimensões e 14 categorias. Os rótulos operacionais do Atlas ajudam o gestor a trabalhar item por item, mas não substituem a redação oficial. Para qualquer uso formal, consulte o Manual.</p><div class="prici-self-notice ok"><strong>Questionário e critérios · fonte OEI/PRICI.</strong> <a href="${esc(MANUAL.manual_url)}" target="_blank" rel="noopener">Página oficial</a> · <a href="${esc(MANUAL.manual_pdf_url)}" target="_blank" rel="noopener">PDF do Manual</a>. Os estados “Parcial”, “Não se aplica” e “Não sei” são facilidades de gestão desta interface, não categorias adicionais do questionário oficial.</div>${renderProgress()}${MODEL.categories.map(cat=>{const cs=categorySummary(cat);return `<details class="prici-category" open><summary><span class="prici-cat-name">${esc(cat.id)} · ${esc(cat.name)}</span><span class="prici-cat-meta">${cat.criteria.length} itens · ${cs.sim} sim · ${cs.parcial} parcial · ${cs.nao} não</span></summary><div class="prici-category-body">${cat.criteria.map(x=>criterionHTML(x)).join('')}</div></details>`;}).join('')}`;qa('.prici-criterion select[data-criterion-status]',s).forEach(sel=>sel.onchange=criterionChanged);qa('.prici-detail-toggle',s).forEach(b=>b.onclick=()=>b.closest('.prici-criterion')?.classList.toggle('expanded'));qa('[data-criterion-field]',s).forEach(el=>el.oninput=criterionFieldChanged);}
 function criterionHTML(x){const r=current.criteria[x.id]||{status:'nao_sei'};return `<div class="prici-criterion prici-status-${esc(r.status)}" data-criterion-id="${x.id}"><div class="prici-criterion-head"><div class="prici-criterion-id">${x.id}</div><div class="prici-criterion-text">${esc(x.text)}</div><div class="prici-criterion-status"><select data-criterion-status="${x.id}">${MODEL.response_options.map(o=>`<option value="${o.value}" ${r.status===o.value?'selected':''}>${esc(o.label)}</option>`).join('')}</select></div></div><button class="prici-detail-toggle" type="button">Evidência e próxima ação ▾</button><div class="prici-criterion-detail"><div class="wide"><label>Evidência disponível</label><textarea data-criterion-field="evidence">${esc(r.evidence)}</textarea></div><div><label>Fonte / documento</label><input data-criterion-field="source" value="${esc(r.source)}"></div><div><label>Responsável / verificador</label><input data-criterion-field="responsible" value="${esc(r.responsible)}"></div><div class="wide"><label>Próxima ação</label><input data-criterion-field="next_action" value="${esc(r.next_action)}"></div></div></div>`;}
@@ -5357,9 +5740,122 @@ function indicatorRowsHTML(){if(!current.indicators?.length)return '<div class="
 function bindIndicators(){qa('[data-indicator-index]').forEach(row=>{const i=Number(row.dataset.indicatorIndex);qa('[data-if]',row).forEach(el=>el.oninput=el.onchange=()=>{current.indicators[i][el.dataset.if]=el.value;current.updated_at=now();});q('[data-remove-indicator]',row).onclick=()=>{current.indicators.splice(i,1);renderIndicators();};});}
 function gaps(){const out=[];for(const cat of MODEL.categories)for(const x of cat.criteria){const r=current.criteria[x.id]||{};if(['nao','parcial','nao_sei'].includes(r.status))out.push({cat,x,r});}return out;}
 function renderGaps(){const s=q('[data-section="lacunas"]');if(!s)return;const gs=gaps();s.innerHTML=`<h3 class="prici-self-title">Lacunas e plano de ação</h3><p class="prici-self-sub">Lista automática dos itens marcados como Não, Parcial ou Não sei. Priorize as ações sem confundir ausência de evidência com ausência do fenômeno.</p><div class="prici-summary-grid"><div class="prici-summary-metric"><b>${gs.length}</b><span>itens a tratar</span></div><div class="prici-summary-metric"><b>${summary().nao}</b><span>não atendidos</span></div><div class="prici-summary-metric"><b>${summary().parcial}</b><span>parciais</span></div><div class="prici-summary-metric"><b>${summary().nao_sei}</b><span>requerem verificação</span></div></div><div class="prici-gap-list">${gs.length?gs.map(g=>`<article class="prici-gap"><div class="prici-gap-top"><b>${g.x.id} · ${esc(g.cat.name)}</b><span>${esc(statusLabel(g.r.status))}</span></div><p>${esc(g.x.text)}</p><div class="prici-gap-action"><strong>Próxima ação</strong> · ${esc(g.r.next_action||'Ainda não definida')}${g.r.responsible?` · <strong>Responsável</strong> · ${esc(g.r.responsible)}`:''}</div></article>`).join(''):'<div class="prici-self-notice ok">Não há itens marcados como Não, Parcial ou Não sei. Revise evidências e aplicabilidade antes de interpretar este resultado.</div>'}</div>`;}
-function renderSummary(){const s=q('[data-section="resumo"]');if(!s)return;syncIdentification();const x=summary(),dims=[['D1','Gestão sustentável'],['D2','Sustentabilidade econômica'],['D3','Sustentabilidade sociocultural'],['D4','Sustentabilidade ambiental']];s.innerHTML=`<h3 class="prici-self-title">Resumo da autoavaliação</h3><p class="prici-self-sub">Síntese para discussão pelo grupo de trabalho. O resultado orienta prioridades e não representa certificação.</p><div class="prici-summary-grid"><div class="prici-summary-metric"><b>${x.sim}</b><span>Sim</span></div><div class="prici-summary-metric"><b>${x.parcial}</b><span>Parcial</span></div><div class="prici-summary-metric"><b>${x.nao}</b><span>Não</span></div><div class="prici-summary-metric"><b>${x.nao_sei}</b><span>Requer verificação</span></div></div><div class="prici-self-notice"><strong>Percentual auxiliar de respostas Sim</strong> · ${pctText(x.pct)}. Denominador = Sim + Não. Estados auxiliares Parcial, Não se aplica e Não sei ficam fora do denominador. Este valor não é pontuação, validação ou certificação PRICI.</div><table class="prici-dim-table"><thead><tr><th>Dimensão</th><th>Sim</th><th>Parcial</th><th>Não</th><th>Verificar</th><th>% Sim</th></tr></thead><tbody>${dims.map(([d,n])=>{const v=dimensionSummary(d);return `<tr><td>${esc(n)}</td><td>${v.sim}</td><td>${v.parcial}</td><td>${v.nao}</td><td>${v.nao_sei}</td><td>${pctText(v.pct)}</td></tr>`;}).join('')}</tbody></table><div class="prici-self-notice info" style="margin-top:14px"><strong>Próximo uso recomendado</strong> · revisar as lacunas com a entidade gestora e os membros pertinentes, anexar evidências, atribuir responsáveis e definir periodicidade de monitoramento. Quando houver comunidades ou detentores de direitos coletivos relacionados, a ficha não substitui participação, consulta ou consentimento aplicável.</div><div class="prici-self-notice bad"><strong>Declaração de origem e função</strong> · o questionário e a folha de autoavaliação de referência pertencem ao Manual PRICI/OEI. O Atlas oferece somente uma interface digital independente de apoio à organização e gestão do processo. Consulte o Manual oficial. Esta interface não constitui avaliação, validação, reconhecimento ou certificação pela OEI ou pelo PRICI.</div>`;}
-function refreshSavedSelect(){const sel=$('priciSavedSelect');if(!sel)return;const s=stores(),rows=Object.values(s).sort((a,b)=>String(b.updated_at).localeCompare(String(a.updated_at)));sel.innerHTML='<option value="">Selecione</option>'+rows.map(a=>`<option value="${esc(a.assessment_id)}">${esc(a.identification?.name||'Sem nome')} · ${new Date(a.updated_at).toLocaleDateString('pt-BR')}</option>`).join('');}
-function loadSaved(){const id=$('priciSavedSelect')?.value;if(!id)return;const a=stores()[id];if(a){current=a;renderAll();setTab('identificacao');}}
+
+function documentaryCoverage(a=current){
+  const out={};
+  for(const dim of ['D1','D2','D3','D4']){
+    const cats=MODEL.categories.filter(c=>c.dim===dim);
+    const ids=cats.flatMap(c=>c.criteria.map(x=>x.id));
+    const count={documentado:0,parcial:0,sem_evidencia:0,verificar:0,nao_aplica:0,total:ids.length};
+    for(const id of ids){
+      const r=a?.criteria?.[id]||{status:'nao_sei'};
+      const st=r.status||'nao_sei';
+      const hasEvidence=Boolean(String(r.evidence||'').trim()||String(r.source||'').trim());
+      if(st==='nao_aplica'){count.nao_aplica++;continue;}
+      if(st==='nao_sei'){count.verificar++;continue;}
+      if(st==='parcial'){count.parcial++;continue;}
+      if((st==='sim'||st==='nao')&&hasEvidence){count.documentado++;continue;}
+      if(st==='sim'||st==='nao'){count.sem_evidencia++;continue;}
+      count.verificar++;
+    }
+    out[dim]=count;
+  }
+  return out;
+}
+function documentaryCoverageBar(v){
+  const den=Math.max(1,v.total-v.nao_aplica);
+  const pct=n=>Math.max(0,Math.min(100,100*n/den));
+  return `<div class="prici-doc-track" role="img" aria-label="Cobertura documental: ${v.documentado} documentados, ${v.parcial} parciais, ${v.sem_evidencia} respostas sem evidência e ${v.verificar} itens a verificar">
+    <span class="doc" style="width:${pct(v.documentado)}%"></span>
+    <span class="partial" style="width:${pct(v.parcial)}%"></span>
+    <span class="without" style="width:${pct(v.sem_evidencia)}%"></span>
+    <span class="verify" style="width:${pct(v.verificar)}%"></span>
+  </div>`;
+}
+function documentaryGapCount(a=current){
+  const c=documentaryCoverage(a);
+  return Object.values(c).reduce((s,v)=>s+v.parcial+v.sem_evidencia+v.verificar,0);
+}
+function openResearchFromPrici(){
+  try{
+    window.ATLAS_MINHA_PESQUISA?.attachPrici?.();
+    setTimeout(()=>window.ATLAS_MINHA_PESQUISA?.open?.(),80);
+  }catch(e){console.error(e);}
+}
+
+function renderSummary(){
+  const s=q('[data-section="resumo"]');if(!s)return;
+  syncIdentification();
+  const x=summary();
+  const dims=[['D1','Gestão sustentável'],['D2','Sustentabilidade econômica'],['D3','Sustentabilidade sociocultural'],['D4','Sustentabilidade ambiental']];
+  const cov=documentaryCoverage();
+  const gapCount=documentaryGapCount();
+  const routeLabel=current?.source_route_id
+    ? `Rota vinculada · ${esc(current.identification?.name||current.source_route_id)}`
+    : `Itinerário criado pelo usuário · ${esc(current.identification?.name||'sem nome')}`;
+  s.innerHTML=`<h3 class="prici-self-title">Resumo da autoavaliação</h3>
+  <p class="prici-self-sub">Síntese para discussão pelo grupo de trabalho. O resultado orienta prioridades e não representa certificação.</p>
+  <div class="prici-summary-grid">
+    <div class="prici-summary-metric"><b>${x.sim}</b><span>Sim</span></div>
+    <div class="prici-summary-metric"><b>${x.parcial}</b><span>Parcial</span></div>
+    <div class="prici-summary-metric"><b>${x.nao}</b><span>Não</span></div>
+    <div class="prici-summary-metric"><b>${x.nao_sei}</b><span>Requer verificação</span></div>
+  </div>
+  <div class="prici-self-notice"><strong>Percentual auxiliar de respostas Sim</strong> · ${pctText(x.pct)}. Denominador = Sim + Não. Estados auxiliares Parcial, Não se aplica e Não sei ficam fora do denominador. Este valor não é pontuação, validação ou certificação PRICI.</div>
+  <table class="prici-dim-table"><thead><tr><th>Dimensão</th><th>Sim</th><th>Parcial</th><th>Não</th><th>Verificar</th><th>% Sim</th></tr></thead><tbody>${dims.map(([d,n])=>{const v=dimensionSummary(d);return `<tr><td>${esc(n)}</td><td>${v.sim}</td><td>${v.parcial}</td><td>${v.nao}</td><td>${v.nao_sei}</td><td>${pctText(v.pct)}</td></tr>`;}).join('')}</tbody></table>
+
+  <section class="prici-doc-coverage" aria-labelledby="priciDocCoverageTitle">
+    <div class="prici-doc-head">
+      <div><div class="workspace-kicker">Visualização por proposta</div><h4 id="priciDocCoverageTitle">Cobertura documental</h4><p>${routeLabel}</p></div>
+      <div class="prici-doc-gap-badge"><b>${gapCount}</b><span>itens para revisar</span></div>
+    </div>
+    <p class="prici-doc-explain">Esta visualização mede o estado de documentação desta autoavaliação, não a qualidade do itinerário. “Documentado” exige resposta Sim ou Não acompanhada de evidência ou fonte registrada. Respostas parciais, incertas ou sem evidência permanecem visíveis como lacunas de trabalho.</p>
+    <div class="prici-doc-dims">${dims.map(([d,n])=>{const v=cov[d],den=Math.max(1,v.total-v.nao_aplica),pc=Math.round(100*v.documentado/den);return `<div class="prici-doc-row"><div class="prici-doc-row-head"><b>${esc(n)}</b><span>${v.documentado}/${den} documentados · ${pc}%</span></div>${documentaryCoverageBar(v)}</div>`;}).join('')}</div>
+    <div class="prici-doc-legend">
+      <span><i class="doc"></i>Documentado</span>
+      <span><i class="partial"></i>Parcial</span>
+      <span><i class="without"></i>Resposta sem evidência</span>
+      <span><i class="verify"></i>Requer verificação</span>
+    </div>
+    <div class="prici-doc-rule"><strong>SEM DADO ≠ AUSÊNCIA VERIFICADA</strong><span>O estado “Não” do questionário não é convertido automaticamente em ausência territorial ou patrimonial.</span></div>
+    <div class="prici-doc-actions">
+      <button class="btn light small" type="button" id="priciDocToGapsBtn">Revisar lacunas</button>
+      <button class="btn light small" type="button" id="priciDocToResearchBtn">Anexar à Minha Pesquisa</button>
+    </div>
+  </section>
+
+  <div class="prici-self-notice info" style="margin-top:14px"><strong>Próximo uso recomendado</strong> · revisar as lacunas com a entidade gestora e os membros pertinentes, anexar evidências, atribuir responsáveis e definir periodicidade de monitoramento. Quando houver comunidades ou detentores de direitos coletivos relacionados, a ficha não substitui participação, consulta ou consentimento aplicável.</div>
+  <div class="prici-self-notice bad"><strong>Declaração de origem e função</strong> · o questionário e a folha de autoavaliação de referência pertencem ao Manual PRICI/OEI. O Atlas oferece somente uma interface digital independente de apoio à organização e gestão do processo. Consulte o Manual oficial. Esta interface não constitui avaliação, validação, reconhecimento ou certificação pela OEI ou pelo PRICI.</div>`;
+  $('priciDocToGapsBtn')?.addEventListener('click',()=>setTab('lacunas'));
+  $('priciDocToResearchBtn')?.addEventListener('click',openResearchFromPrici);
+}
+function refreshSavedSelect(){
+  const sel=$('priciSavedSelect');if(!sel)return;
+  const s=stores(),rows=Object.values(s).sort((a,b)=>String(b.updated_at).localeCompare(String(a.updated_at)));
+  sel.innerHTML='<option value="">Selecione uma avaliação salva</option>'+rows.map(a=>`<option value="${esc(a.assessment_id)}">${esc(a.identification?.name||'Sem nome')} · ${new Date(a.updated_at).toLocaleDateString('pt-BR')}</option>`).join('');
+  const b=$('priciLoadSavedBtn');
+  if(b){
+    b.disabled=!sel.value;
+    b.title=rows.length?'Selecione uma avaliação salva para abrir':'Ainda não há avaliações salvas neste navegador';
+  }
+}
+function loadSaved(){
+  const sel=$('priciSavedSelect');
+  const id=sel?.value;
+  if(!id){
+    alert('Selecione primeiro uma avaliação salva neste navegador.');
+    return;
+  }
+  const a=stores()[id];
+  if(a){
+    current=a;
+    renderAll();
+    setTab('identificacao');
+  }else{
+    alert('A avaliação selecionada não foi encontrada. Atualize a lista ou salve novamente.');
+    refreshSavedSelect();
+  }
+}
 function validateImported(a){return a&&a.schema_version===VERSION&&a.assessment_id&&a.identification&&a.criteria;}
 async function importJSON(e){const f=e.target.files?.[0];if(!f)return;try{const a=JSON.parse(await f.text());if(!validateImported(a))throw new Error('Arquivo não corresponde ao schema '+VERSION);current=a;renderAll();setTab('identificacao');alert('Avaliação importada. Ela ainda não foi salva neste navegador.');}catch(err){alert('Não foi possível importar a avaliação. '+err.message);}finally{e.target.value='';}}
 function exportJSON(){syncIdentification();current.updated_at=now();download(`${slug(current.identification.name)}_autoavaliacao_atlas_prici.json`,JSON.stringify(current,null,2)+'\n');}
@@ -5498,7 +5994,7 @@ function printReport(){syncIdentification();const a=current,x=summary(),win=wind
 }
 </style>
 
-</head><body><h1>Apoio digital à Autoavaliação do Manual PRICI</h1><div class="meta">Atlas Interativo MS · ${esc(a.atlas_version)} · ficha ${esc(VERSION)} · ${new Date(a.updated_at).toLocaleString('pt-BR')}</div><div class="notice"><b>Origem do questionário.</b> A folha de autoavaliação e o questionário de referência pertencem ao <i>Manual de Rutas e Itinerarios Culturales para Iberoamérica</i>, PRICI/OEI. O Atlas fornece somente uma interface digital independente de apoio à gestão. Os rótulos operacionais não substituem a redação oficial. Consulte o Manual para critérios, definições, indicadores e qualquer uso formal. Esta interface não constitui avaliação, validação, reconhecimento ou certificação pela OEI ou pelo PRICI.</div><h2>Identificação</h2><div class="grid"><b>Itinerário</b><span>${esc(a.identification.name)}</span><b>Tema</b><span>${esc(a.identification.theme)}</span><b>Território</b><span>${esc(a.identification.territory)}</span><b>Municípios</b><span>${esc(a.identification.municipalities)}</span><b>Entidade gestora</b><span>${esc(a.identification.manager_entity||'Não informada')}</span><b>Fase</b><span>${esc(a.identification.phase)}</span><b>Comunidades relacionadas</b><span>${esc(a.identification.communities||'Não informadas')}</span></div><h2>Resumo</h2><div class="summary"><div><b>${x.sim}</b>Sim</div><div><b>${x.parcial}</b>Parcial</div><div><b>${x.nao}</b>Não</div><div><b>${x.nao_sei}</b>Requer verificação</div></div><p><b>Percentual auxiliar de respostas Sim entre respostas binárias registradas</b> · ${pctText(x.pct)}. Denominador = Sim + Não.</p><table><thead><tr><th>Dimensão</th><th>Sim</th><th>Parcial</th><th>Não</th><th>Verificar</th><th>% Sim</th></tr></thead><tbody>${dims.map(([d,n])=>{const v=dimensionSummary(d,a);return `<tr><td>${esc(n)}</td><td>${v.sim}</td><td>${v.parcial}</td><td>${v.nao}</td><td>${v.nao_sei}</td><td>${pctText(v.pct)}</td></tr>`;}).join('')}</tbody></table><h2>Registros de apoio ao questionário</h2>${criteria}${ind}<h2>Lacunas e próximas ações</h2>${gapsRows?`<ul>${gapsRows}</ul>`:'<p>Nenhuma lacuna registrada com os estados Não, Parcial ou Não sei.</p>'}<div class="footer">Questionário e metodologia de referência · ${esc(MANUAL.title)} · OEI · ${esc(MANUAL.year)}. Implementação digital independente de apoio · Atlas Interativo MS. Assessment ID · ${esc(a.assessment_id)}. Os dados digitados permanecem sob controle e responsabilidade do usuário e não são enviados pelo módulo à OEI, ao PRICI ou ao GitHub.</div><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script>
+</head><body><h1>Apoio digital à Autoavaliação do Manual PRICI</h1><div class="meta">Atlas Interativo MS · ${esc(a.atlas_version)} · ficha ${esc(VERSION)} · ${new Date(a.updated_at).toLocaleString('pt-BR')}</div><div class="notice"><b>Origem do questionário.</b> A folha de autoavaliação e o questionário de referência pertencem ao <i>Manual de Rutas e Itinerarios Culturales para Iberoamérica</i>, PRICI/OEI. O Atlas fornece somente uma interface digital independente de apoio à gestão. Os rótulos operacionais não substituem a redação oficial. Consulte o Manual para critérios, definições, indicadores e qualquer uso formal. Esta interface não constitui avaliação, validação, reconhecimento ou certificação pela OEI ou pelo PRICI.</div><h2>Identificação</h2><div class="grid"><b>Itinerário</b><span>${esc(a.identification.name)}</span><b>Tema</b><span>${esc(a.identification.theme)}</span><b>Território</b><span>${esc(a.identification.territory)}</span><b>Municípios</b><span>${esc(a.identification.municipalities)}</span><b>Entidade gestora</b><span>${esc(a.identification.manager_entity||'Não informada')}</span><b>Fase</b><span>${esc(a.identification.phase)}</span><b>Comunidades relacionadas</b><span>${esc(a.identification.communities||'Não informadas')}</span></div><h2>Resumo</h2><div class="summary"><div><b>${x.sim}</b>Sim</div><div><b>${x.parcial}</b>Parcial</div><div><b>${x.nao}</b>Não</div><div><b>${x.nao_sei}</b>Requer verificação</div></div><p><b>Percentual auxiliar de respostas Sim entre respostas binárias registradas</b> · ${pctText(x.pct)}. Denominador = Sim + Não.</p><table><thead><tr><th>Dimensão</th><th>Sim</th><th>Parcial</th><th>Não</th><th>Verificar</th><th>% Sim</th></tr></thead><tbody>${dims.map(([d,n])=>{const v=dimensionSummary(d,a);return `<tr><td>${esc(n)}</td><td>${v.sim}</td><td>${v.parcial}</td><td>${v.nao}</td><td>${v.nao_sei}</td><td>${pctText(v.pct)}</td></tr>`;}).join('')}</tbody></table><h2>Registros de apoio ao questionário</h2>${criteria}${ind}<h2>Lacunas e próximas ações</h2>${gapsRows?`<ul>${gapsRows}</ul>`:'<p>Nenhuma lacuna registrada com os estados Não, Parcial ou Não sei.</p>'}<div class="footer">Questionário e metodologia de referência · ${esc(MANUAL.short_title||MANUAL.title)} · OEI · ${esc(MANUAL.year)}. Implementação digital independente de apoio · Atlas Interativo MS. Assessment ID · ${esc(a.assessment_id)}. Os dados digitados permanecem sob controle e responsabilidade do usuário e não são enviados pelo módulo à OEI, ao PRICI ou ao GitHub.</div><script>window.onload=()=>setTimeout(()=>window.print(),300)<\/script>
 
 
 <!-- JOAJU R6 · módulo Campo integrado à Minha Pesquisa -->

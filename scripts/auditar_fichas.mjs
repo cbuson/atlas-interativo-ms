@@ -4,6 +4,9 @@ import vm from 'node:vm';
 
 const root=path.resolve(process.cwd());
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const version=JSON.parse(fs.readFileSync(path.join(root,'VERSION.json'),'utf8'));
+const expectedRuntime=Number(version.runtime_layers);
+const expectedVectors=Number(version.vector_manifest_entries);
 let passes=0,warnings=0,failures=0;
 const pass=m=>{passes++;console.log(`PASS · ${m}`)};
 const warn=m=>{warnings++;console.warn(`WARN · ${m}`)};
@@ -40,11 +43,11 @@ const meta=JSON.parse(fs.readFileSync(path.join(root,'dados/precalculados/snapsh
 const gridIds=new Set((grid.features||[]).map(f=>String(f?.properties?.hex_id||'')));
 const profileIds=new Set((profile.features||[]).map(f=>String(f?.properties?.hex_id||'')));
 
-check(configs.length===153,`153 fichas de camada cobertas pelo template comum`);
-check(new Set(configs.map(c=>c.id)).size===configs.length,'IDs das 153 camadas são únicos');
+check(configs.length===expectedRuntime,`${expectedRuntime} fichas de camada cobertas pelo template comum`);
+check(new Set(configs.map(c=>c.id)).size===configs.length,`IDs das ${expectedRuntime} camadas são únicos`);
 for(const field of ['id','name','group','mode','source','dataStatus','validationLevel','source_id']){
   const missing=configs.filter(c=>!String(c?.[field]??'').trim()).map(c=>c.id);
-  check(missing.length===0,`${field} preenchido nas 153 configurações de camada`);
+  check(missing.length===0,`${field} preenchido nas ${expectedRuntime} configurações de camada`);
 }
 check(gridIds.size===1554&&profileIds.size===1554,'malha R5 e Ficha Territorial possuem 1554 IDs únicos');
 check([...gridIds].every(id=>profileIds.has(id)),'Ficha Territorial usa exatamente os mesmos hex_id da malha R5');
@@ -87,7 +90,7 @@ for(const [id,item] of Object.entries(data)){
   totalNoGeometry+=noGeometry;totalExplicitR5+=valid;totalLegacyExplicit+=legacy;
   if(legacy)legacyByDataset.push({id,legacy,features:feats.length});
 }
-check(Object.keys(data).length===90,'90 conjuntos vetoriais locais auditados para comportamento de ficha');
+check(Object.keys(data).length===expectedVectors,`${expectedVectors} conjuntos vetoriais locais auditados para comportamento de ficha`);
 pass(`${totalFeatures.toLocaleString('pt-BR')} feições locais percorridas pelo auditor estrutural de fichas`);
 check(unexpectedInvalid.length===0,'nenhum hex_id não-R5 inesperado aparece fora dos conjuntos legados conhecidos');
 check(legacyByDataset.length===3&&legacyByDataset.every(x=>knownLegacy.has(x.id)),'IDs de grade histórica estão confinados aos três conjuntos legados conhecidos');

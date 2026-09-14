@@ -5,6 +5,9 @@ import crypto from 'node:crypto';
 
 const root=path.resolve(process.cwd());
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const version=JSON.parse(fs.readFileSync(path.join(root,'VERSION.json'),'utf8'));
+const expectedRuntime=Number(version.runtime_layers);
+const expectedVectors=Number(version.vector_manifest_entries);
 let pass=0,warn=0,fail=0;
 const P=m=>{pass++;console.log(`PASS · ${m}`)};
 const W=m=>{warn++;console.warn(`WARN · ${m}`)};
@@ -21,17 +24,18 @@ function validGeometry(g){if(g===null)return true;if(!g||typeof g!=='object'||!g
 
 const configs=getConfigs(),dm=extractObject('const DATA_MANIFEST ='),rm=extractObject('const RASTER_MANIFEST =');
 const byId=new Map(configs.map(c=>[c.id,c]));
-C(configs.length===153,'153 configurações de camada presentes');
-C(new Set(configs.map(c=>c.id)).size===153,'153 IDs de camada únicos');
-for(const k of ['id','name','group','mode','source','dataStatus','validationLevel','source_id'])C(configs.every(c=>String(c?.[k]??'').trim()),`${k} preenchido nas 153 configurações`);
+C(configs.length===expectedRuntime,`${expectedRuntime} configurações de camada presentes`);
+C(new Set(configs.map(c=>c.id)).size===expectedRuntime,`${expectedRuntime} IDs de camada únicos`);
+for(const k of ['id','name','group','mode','source','dataStatus','validationLevel','source_id'])C(configs.every(c=>String(c?.[k]??'').trim()),`${k} preenchido nas ${expectedRuntime} configurações`);
 
 let totalFeatures=0,nullGeometry=0,badGeometry=0;
 for(const [id,item] of Object.entries(dm)){
  const fp=path.join(root,item.arquivo);if(!fs.existsSync(fp)){F(`${id} · arquivo DATA_MANIFEST ausente`);continue;}
  try{const d=executeDataset(fp,id,item.registros);totalFeatures+=d.features.length;for(const f of d.features){if(!f.geometry)nullGeometry++;else if(!validGeometry(f.geometry))badGeometry++;}P(`${id} · ${d.features.length} registros carregáveis pelo manifesto`);}catch(e){F(`${id} · ${e.message}`)}
 }
-C(Object.keys(dm).length===90,'90 conjuntos DATA_MANIFEST verificados');
-C(totalFeatures===50912,'50.912 feições locais percorridas');
+C(Object.keys(dm).length===expectedVectors,`${expectedVectors} conjuntos DATA_MANIFEST verificados`);
+const expectedFeatures=Object.values(dm).reduce((a,x)=>a+Number(x.registros||0),0);
+C(totalFeatures===expectedFeatures,`${expectedFeatures.toLocaleString('pt-BR')} feições locais percorridas`);
 C(badGeometry===0,'nenhuma geometria GeoJSON inválida nos conjuntos locais');
 if(nullGeometry===14)P('14 registros documentais sem geometria preservados explicitamente');else W(`${nullGeometry} registros sem geometria · conferir relatório espacial`);
 

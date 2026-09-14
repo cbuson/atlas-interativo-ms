@@ -2,8 +2,8 @@
   "project": "JOAJU MS",
   "version": "v1.8.0-dev",
   "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-full-layer-ficha-audit",
-  "generated_at": "2026-08-12",
-  "status": "PASS_WITH_SPATIAL_SCOPE_FINDING",
+  "generated_at": "2026-09-14",
+  "status": "PASS",
   "snapshot_validation": {
     "status": "PASS",
     "hexagons": 1554,
@@ -13,7 +13,7 @@
   },
   "release_audit": {
     "status": "PASS",
-    "passes": 216,
+    "passes": 234,
     "warnings": 0,
     "failures": 0
   },
@@ -22,11 +22,11 @@
     "passes": 47,
     "warnings": 0,
     "failures": 0,
-    "scope": "153 camadas, 90 conjuntos locais, 50.912 feições, 1.554 fichas R5 e 3.288 IDs legados"
+    "scope": "155 camadas, 92 conjuntos locais, 50.987 feições, 1.554 fichas R5 e 3.288 IDs legados"
   },
   "runtime": {
-    "layers": 153,
-    "data_manifest_entries": 90,
+    "layers": 155,
+    "data_manifest_entries": 92,
     "raster_manifest_entries": 9,
     "derived_products_materialized": 4
   },
@@ -166,7 +166,7 @@
     "offline_pack_estimated_mb": 50,
     "offline_pack_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
     "remote_layers_offline": false,
-    "cache_revision": "2026-08-12-pwa-4-fichas-r5-cachefix",
+    "cache_revision": "2026-09-14-pwa-33-turismo-r2-fichas",
     "update_strategy": "updateViaCache none + update/skipWaiting/controllerchange + recarga automática",
     "precomputed_strategy": "network-first com cache offline como contingência"
   },
@@ -216,5 +216,13 @@
     "datasets_affected": 41,
     "interpretation": "snapshots de fonte capturados por envelope podem incluir registros de UFs vizinhas; originais devem ser preservados e saneamento deve ser específico por fonte",
     "closed_indices_affected": false
+  },
+  "tourism_r2": {
+    "status": "PASS",
+    "date": "2026-09-14",
+    "feature_fichas": "Cadastur principal exposto diretamente nas fichas municipais",
+    "regionalization": "recorte de 10 regiões reclassificado como referência histórica; Manual FUNDTUR-MS 2025 registra 9 regiões vigentes",
+    "federal_map": "link direto para https://www.mapa.turismo.gov.br/mapa/init.html#/home",
+    "analytical_effect": "nenhum sobre os oito índices fechados"
   }
 }

@@ -25,10 +25,11 @@ function loadAtlasJs(file, id) {
 }
 
 const routes = loadAtlasJs(files.routes, "rotas_culturais_propostas")
+const researchRoutes = routes.features.filter(f => f?.properties?.participa_analise_prici !== false)
 const ucs = loadAtlasJs(files.ucs, "unidades_conservacao")
 const caves = loadAtlasJs(files.caves, "cavernas_canie")
 
-if (routes.features.length !== 32) throw new Error(`Rotas inesperadas · ${routes.features.length}/32`)
+if (researchRoutes.length !== 32) throw new Error(`Rotas de pesquisa inesperadas · ${researchRoutes.length}/32`)
 if (ucs.features.length !== 8) throw new Error(`Unidades de conservação inesperadas · ${ucs.features.length}/8`)
 if (caves.features.length !== 341) throw new Error(`Cavidades CANIE inesperadas · ${caves.features.length}/341`)
 
@@ -211,7 +212,7 @@ function caveName(f) {
 function buildRouteUc() {
   const features = []
 
-  for (const route of routes.features) {
+  for (const route of researchRoutes) {
     for (const uc of ucs.features) {
       const point = geometryRelationPoint(route.geometry, uc.geometry)
       if (!point) continue
@@ -249,7 +250,7 @@ function buildRouteUc() {
     atlas_metadata: {
       produto: "Interações exploratórias entre rotas e unidades de conservação",
       data_corte: cut,
-      rotas_base: routes.features.length,
+      rotas_base: researchRoutes.length,
       unidades_conservacao_base: ucs.features.length,
       metodo: "interseção geométrica rota–polígono",
       natureza: "análise derivada exploratória"
@@ -268,7 +269,7 @@ function buildCavesRoutes() {
     let best = Infinity
     let nearest = null
 
-    for (const route of routes.features) {
+    for (const route of researchRoutes) {
       const d = minDistanceToRouteKm(point, route.geometry)
       if (d < best) {
         best = d
@@ -308,7 +309,7 @@ function buildCavesRoutes() {
       produto: "Cavidades próximas às rotas em estudo",
       data_corte: cut,
       cavidades_base: caves.features.length,
-      rotas_base: routes.features.length,
+      rotas_base: researchRoutes.length,
       limiar_km: thresholdKm,
       metodo: "distância mínima ponto–segmento",
       natureza: "análise derivada exploratória"
@@ -600,7 +601,7 @@ function validateProduct(data, name, geometryTypes, expectedCount) {
 
 console.log("")
 console.log("JOAJU MS · MATERIALIZAÇÃO DAS ANÁLISES DERIVADAS")
-console.log(`Rotas · ${routes.features.length}`)
+console.log(`Rotas de pesquisa · ${researchRoutes.length} · itens totais na camada ${routes.features.length}`)
 console.log(`Unidades de conservação · ${ucs.features.length}`)
 console.log(`Cavidades CANIE · ${caves.features.length}`)
 console.log("")

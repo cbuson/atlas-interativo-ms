@@ -2,7 +2,7 @@
   "project": "JOAJU MS",
   "version": "v1.8.0-dev",
   "package_date": "2026-08-10",
-  "package_build_date": "2026-08-12",
+  "package_build_date": "2026-09-14",
   "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-patch17-sparse-indices-visual-coherence",
   "entrypoint": "index.html",
   "deployment": "GitHub Pages from main branch root",
@@ -25,8 +25,8 @@
     "ICD"
   ],
   "territorial_indices_status": "fechado",
-  "runtime_layers": 153,
-  "vector_manifest_entries": 90,
+  "runtime_layers": 155,
+  "vector_manifest_entries": 92,
   "raster_manifest_entries": 9,
   "github_distribution_exceptions": [
     {
@@ -52,7 +52,7 @@
     "null_display_rule": "em snapshot fechado, null em IPG/PEIC/IATI é ausência de evidência/resultado conforme protocolo e nunca cálculo pendente"
   },
   "pwa": {
-    "version": "1.0.6",
+    "version": "1.0.8",
     "status": "ativo",
     "manifest": "manifest.webmanifest",
     "service_worker": "service-worker.js",
@@ -61,11 +61,33 @@
     "offline_territorial_pack": "opcional · aproximadamente 50 MB",
     "offline_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
     "remote_layers_offline": false,
-    "cache_revision": "2026-08-22-pwa-31-prici-latest-base",
+    "cache_revision": "2026-09-14-pwa-33-turismo-r2-fichas",
     "update_strategy": "Service Worker updateViaCache=none, skipWaiting/controllerchange com recarga e dados precalculados network-first com fallback offline"
   },
   "ui_patch": "PATCH 17 · coerência visual dos índices esparsos e auditoria célula a célula",
   "integration_patch": "PRICI-recursos-rotas sobre base latest 2026-08-22",
   "patch": "PRICI-R2",
-  "build": "2026-08-22-prici-r2"
+  "build": "2026-08-22-prici-r2",
+  "contextual_update_2026_09_14": {
+    "id": "BIOCEANICA-MS-R1",
+    "scope": "camada contextual de rotas",
+    "change": "Rota Bioceânica em Mato Grosso do Sul adicionada como corredor institucional separado das 32 propostas metodológicas",
+    "analysis_effect": "nenhum; participa_analise_prici=false e participa_convergencia_rotas=false",
+    "geometry_basis": "rodovias federais materializadas no pacote: BR-262, BR-060 e BR-267; conexão urbana generalizada em Campo Grande",
+    "entry": "Três Lagoas / divisa SP-MS pela BR-262",
+    "exit": "Porto Murtinho / direção Carmelo Peralta, Paraguai"
+  },
+  "contextual_update_tourism_2026_09_14": {
+    "id": "TURISMO-MS-R2",
+    "scope": "correção de fichas, regionalização e referência federal",
+    "changes": [
+      "fichas Cadastur exibem diretamente totais municipais, hospedagem, leitos, agências, guias e transportadoras quando disponíveis",
+      "a geometria de 10 regiões do Perfil MS é reclassificada como referência histórica, pois o Manual Informativo FUNDTUR-MS 2025 informa nove regiões vigentes",
+      "a referência histórica recebe cores categóricas, legenda nominal e nomes das regiões nas fichas e tooltips",
+      "Mapa do Turismo Brasileiro abre diretamente o portal cartográfico oficial 2026 e permanece referência externa dinâmica até haver snapshot vetorial local verificado",
+      "recurso Cadastur de alimentação permanece configurado sem ser somado ao núcleo enquanto o XLSX não estiver materializado e validado"
+    ],
+    "analysis_effect": "nenhum; correções não alteram pesos PRICI nem os oito índices precalculados",
+    "documentation": "NOTA_TURISMO_R2_2026-09-14.md"
+  }
 }

@@ -1,0 +1,16 @@
+JOAJU MS · R3 rotas rodoviárias · 25/08/2026
+
+Arquivos modificados
+index.html
+dados/rotas_culturais_propostas.js
+
+Alterações principais
+1. ROTA-EST-014 volta a ser exclusivamente a Rota Bioceânica das Culturas de Fronteira, como objeto metodológico cultural separado.
+2. ROTA-EST-032 Caminho para os Ervais mantém a reconstrução histórica e amplia a rede rodoviária contemporânea complementar com Bela Vista–Jardim e Jardim–Bonito, além dos trechos já incorporados.
+3. Nova ROTA-EST-033 Rota Bioceânica em Mato Grosso do Sul, como corredor institucional documentado distinto da rota cultural.
+4. A nova rota usa geometria rodoviária materializada no Atlas para Três Lagoas–Campo Grande–Porto Murtinho e inclui o ramal Campo Grande–Corumbá como referência complementar multimodal.
+5. O botão Via rodoviária permanece disponível em todas as rotas. ROTA-EST-032 e ROTA-EST-033 possuem rede local materializada e não dependem de OSRM para a visualização básica da via.
+6. O cabeçalho passa a indicar 33 rotas e objetos metodológicos.
+
+Observação
+A camada institucional é de referência territorial. Não substitui cartografia rodoviária oficial, condições atuais de tráfego, sinalização, autorização de acesso ou validação de campo.

@@ -1,7 +1,7 @@
 {
   "project": "JOAJU MS",
   "version": "v1.8.0-dev",
-  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-full-layer-ficha-audit",
+  "package_variant": "github-clean-snapshot-closed-ficha-universal-pwa-data-cache-hotfix",
   "generated_at": "2026-09-14",
   "status": "PASS",
   "snapshot_validation": {
@@ -13,7 +13,7 @@
   },
   "release_audit": {
     "status": "PASS",
-    "passes": 234,
+    "passes": 235,
     "warnings": 0,
     "failures": 0
   },
@@ -22,11 +22,11 @@
     "passes": 47,
     "warnings": 0,
     "failures": 0,
-    "scope": "155 camadas, 92 conjuntos locais, 50.987 feições, 1.554 fichas R5 e 3.288 IDs legados"
+    "scope": "156 camadas, 93 conjuntos locais, 50.996 feições, 1.554 fichas R5 e 3.288 IDs legados"
   },
   "runtime": {
-    "layers": 155,
-    "data_manifest_entries": 92,
+    "layers": 156,
+    "data_manifest_entries": 93,
     "raster_manifest_entries": 9,
     "derived_products_materialized": 4
   },
@@ -224,5 +224,12 @@
     "regionalization": "recorte de 10 regiões reclassificado como referência histórica; Manual FUNDTUR-MS 2025 registra 9 regiões vigentes",
     "federal_map": "link direto para https://www.mapa.turismo.gov.br/mapa/init.html#/home",
     "analytical_effect": "nenhum sobre os oito índices fechados"
+  },
+  "cache_hotfix": {
+    "localhost_service_worker": "disabled_and_unregistered",
+    "localhost_joaju_caches": "cleared",
+    "embedded_layer_revision": "sha256_query",
+    "production_data_strategy": "network_first_with_offline_fallback",
+    "pwa_revision": "2026-09-14-pwa-36-data-networkfirst"
   }
 }

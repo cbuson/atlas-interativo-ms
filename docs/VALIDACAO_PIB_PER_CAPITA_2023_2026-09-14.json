@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "municipios": 79,
+  "p95_visual": 148862.9,
+  "comparacao_top5": [
+    {
+      "municipio": "Selvíria",
+      "reproduzido": 330535.25,
+      "publicado_semadesc": 330535.28,
+      "diferenca_reais": -0.03,
+      "diferenca_pct": -1e-05
+    },
+    {
+      "municipio": "Paraíso das Águas",
+      "reproduzido": 252215.25,
+      "publicado_semadesc": 252215.19,
+      "diferenca_reais": 0.06,
+      "diferenca_pct": 2e-05
+    },
+    {
+      "municipio": "Jateí",
+      "reproduzido": 203563.3,
+      "publicado_semadesc": 203563.32,
+      "diferenca_reais": -0.02,
+      "diferenca_pct": -1e-05
+    },
+    {
+      "municipio": "Laguna Carapã",
+      "reproduzido": 184975.73,
+      "publicado_semadesc": 184975.76,
+      "diferenca_reais": -0.03,
+      "diferenca_pct": -2e-05
+    },
+    {
+      "municipio": "Ribas do Rio Pardo",
+      "reproduzido": 144850.37,
+      "publicado_semadesc": 144850.38,
+      "diferenca_reais": -0.01,
+      "diferenca_pct": -1e-05
+    }
+  ],
+  "nota": "Diferenças de centavos compatíveis com arredondamento do PIB total a R$ mil."
+}

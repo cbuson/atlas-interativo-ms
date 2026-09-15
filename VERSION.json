@@ -25,8 +25,8 @@
     "ICD"
   ],
   "territorial_indices_status": "fechado",
-  "runtime_layers": 156,
-  "vector_manifest_entries": 93,
+  "runtime_layers": 158,
+  "vector_manifest_entries": 97,
   "raster_manifest_entries": 9,
   "github_distribution_exceptions": [
     {
@@ -61,7 +61,7 @@
     "offline_territorial_pack": "opcional · aproximadamente 50 MB",
     "offline_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
     "remote_layers_offline": false,
-    "cache_revision": "2026-09-14-pwa-35-bioceanica-online-hotfix",
+    "cache_revision": "2026-09-14-pwa-39-turismo-historico-r7",
     "update_strategy": "Service Worker updateViaCache=none, skipWaiting/controllerchange com recarga e dados precalculados network-first com fallback offline"
   },
   "ui_patch": "PATCH 17 · coerência visual dos índices esparsos e auditoria célula a célula",
@@ -84,7 +84,7 @@
       "camada local de 9 regiões turísticas vigentes adicionada com cobertura dos 79 municípios",
       "composição municipal confrontada com Manual FUNDTUR-MS 2025 e atos institucionais 2024–2026",
       "referência anterior de 10 regiões preservada exclusivamente como camada histórica",
-      "Mapa do Turismo Brasileiro 2026 federal permanece separado e dinâmico até materialização verificável da exportação oficial"
+      "Mapa do Turismo Brasileiro 2026 materializado a partir do Relatório de Categorização Simplificado exportado do portal oficial em 14/09/2026"
     ],
     "analysis_effect": "nenhum sobre os oito índices territoriais fechados; camada contextual de turismo",
     "geometry_basis": "união dos limites municipais oficiais já materializados no Atlas",
@@ -101,5 +101,55 @@
       "VERSION.json"
     ],
     "cache_action": "revisão PWA alterada para invalidar cache antigo de dados."
+  },
+  "pwa_cache_revision": "2026-09-14-pwa-38-mtur-categorizacao-local",
+  "local_dev_cache_policy": "localhost/127.0.0.1: service worker unregistered and JOAJU caches cleared to prevent cross-version contamination",
+  "embedded_layer_cache_busting": "DATA_MANIFEST sha256/query revision",
+  "release_note_cache_hotfix": "2026-09-14",
+  "contextual_update_pib_2026_09_14": {
+    "scope": "PIB municipal e PIB per capita",
+    "periodo_dados": "2023",
+    "pib_municipal": "snapshot local oficial IBGE, 79 municípios",
+    "pib_per_capita": "reprodução local usando PIB municipal 2023 e população municipal de referência TCU 2023 publicada pelo IBGE",
+    "validation": "comparação com cinco valores publicados pela SEMADESC; diferenças residuais de centavos compatíveis com arredondamento do PIB total a R$ mil",
+    "ui": "fichas numéricas e legendas específicas adicionadas"
+  },
+  "contextual_update_mtur_categorizacao_2026_09_14": {
+    "id": "MTUR-CATEG-MS-R1",
+    "source_file": "Relatorio de Categorização Simplificado.xlsx",
+    "capture_date": "2026-09-14",
+    "municipalities_in_export": 33,
+    "categories": {
+      "Município com oferta turística complementar": 23,
+      "Município turístico": 8,
+      "Município de apoio ao turismo": 2
+    },
+    "regions_represented": 9,
+    "layers": [
+      "regioes_municipios_turisticos",
+      "categoria_turistica_mtur_2026"
+    ],
+    "geometry_basis": "limites municipais oficiais já materializados no Atlas, associados pelo Código IBGE",
+    "quality_rule": "ausência de município na exportação não é convertida em ausência de turismo; categorias e dimensões não são recalculadas pelo JOAJU"
+  },
+  "contextual_update_tourism_history_2026_09_14": {
+    "id": "MTUR-HIST-MS-R7",
+    "scope": "turismo / planejamento turístico",
+    "change": "Camada municipal histórica do Mapa do Turismo adicionada para 79 municípios de MS.",
+    "municipal_cuts_materialized": [
+      2013,
+      2016,
+      2019,
+      2026
+    ],
+    "state_totals_documented": {
+      "2013": 79,
+      "2016": 60,
+      "2017": 47,
+      "2019": 42,
+      "2022": 47,
+      "2026": 33
+    },
+    "methodological_rule": "2017 e 2022 permanecem como totais estaduais até materialização nominal verificável; presença institucional não é proxy de intensidade ou potencial turístico."
   }
 }

@@ -25,8 +25,8 @@
     "ICD"
   ],
   "territorial_indices_status": "fechado",
-  "runtime_layers": 155,
-  "vector_manifest_entries": 92,
+  "runtime_layers": 156,
+  "vector_manifest_entries": 93,
   "raster_manifest_entries": 9,
   "github_distribution_exceptions": [
     {
@@ -52,7 +52,7 @@
     "null_display_rule": "em snapshot fechado, null em IPG/PEIC/IATI é ausência de evidência/resultado conforme protocolo e nunca cálculo pendente"
   },
   "pwa": {
-    "version": "1.0.8",
+    "version": "1.0.9",
     "status": "ativo",
     "manifest": "manifest.webmanifest",
     "service_worker": "service-worker.js",
@@ -61,7 +61,7 @@
     "offline_territorial_pack": "opcional · aproximadamente 50 MB",
     "offline_scope": "malha R5, ficha territorial, oito índices e quatro análises derivadas",
     "remote_layers_offline": false,
-    "cache_revision": "2026-09-14-pwa-33-turismo-r2-fichas",
+    "cache_revision": "2026-09-14-pwa-35-bioceanica-online-hotfix",
     "update_strategy": "Service Worker updateViaCache=none, skipWaiting/controllerchange com recarga e dados precalculados network-first com fallback offline"
   },
   "ui_patch": "PATCH 17 · coerência visual dos índices esparsos e auditoria célula a célula",
@@ -78,16 +78,28 @@
     "exit": "Porto Murtinho / direção Carmelo Peralta, Paraguai"
   },
   "contextual_update_tourism_2026_09_14": {
-    "id": "TURISMO-MS-R2",
-    "scope": "correção de fichas, regionalização e referência federal",
+    "id": "TURISMO-MS-R3",
+    "scope": "regionalização turística vigente de referência",
     "changes": [
-      "fichas Cadastur exibem diretamente totais municipais, hospedagem, leitos, agências, guias e transportadoras quando disponíveis",
-      "a geometria de 10 regiões do Perfil MS é reclassificada como referência histórica, pois o Manual Informativo FUNDTUR-MS 2025 informa nove regiões vigentes",
-      "a referência histórica recebe cores categóricas, legenda nominal e nomes das regiões nas fichas e tooltips",
-      "Mapa do Turismo Brasileiro abre diretamente o portal cartográfico oficial 2026 e permanece referência externa dinâmica até haver snapshot vetorial local verificado",
-      "recurso Cadastur de alimentação permanece configurado sem ser somado ao núcleo enquanto o XLSX não estiver materializado e validado"
+      "camada local de 9 regiões turísticas vigentes adicionada com cobertura dos 79 municípios",
+      "composição municipal confrontada com Manual FUNDTUR-MS 2025 e atos institucionais 2024–2026",
+      "referência anterior de 10 regiões preservada exclusivamente como camada histórica",
+      "Mapa do Turismo Brasileiro 2026 federal permanece separado e dinâmico até materialização verificável da exportação oficial"
     ],
-    "analysis_effect": "nenhum; correções não alteram pesos PRICI nem os oito índices precalculados",
-    "documentation": "NOTA_TURISMO_R2_2026-09-14.md"
+    "analysis_effect": "nenhum sobre os oito índices territoriais fechados; camada contextual de turismo",
+    "geometry_basis": "união dos limites municipais oficiais já materializados no Atlas",
+    "current_regions": 9,
+    "municipalities_covered": 79,
+    "quality_rule": "regionalização estadual e categorização federal do Mapa do Turismo não são tratadas como equivalentes"
+  },
+  "online_hotfix_2026_09_14": {
+    "id": "BIOCEANICA-ONLINE-HOTFIX",
+    "reason": "O repositório publicado continha lógica e metadados da Rota Bioceânica, mas dados/rotas_culturais_propostas.js permanecia na versão anterior sem o corredor institucional.",
+    "files_required": [
+      "dados/rotas_culturais_propostas.js",
+      "service-worker.js",
+      "VERSION.json"
+    ],
+    "cache_action": "revisão PWA alterada para invalidar cache antigo de dados."
   }
 }
